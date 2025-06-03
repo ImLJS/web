@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 import { NAV } from "@/data/nav";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialPill } from "../social-pill";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 type NavLinkType = {
 	link: string;
@@ -12,7 +12,6 @@ type NavLinkType = {
 };
 
 const DesktopNav = () => {
-
 	const NavLink = ({ name, link }: NavLinkType) => {
 		const isActive = usePathname() === link;
 
@@ -21,8 +20,11 @@ const DesktopNav = () => {
 				<Link
 					href={link}
 					prefetch={true}
-					className={cn('font-medium',
-						isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+					className={cn(
+						"font-medium",
+						isActive
+							? "text-foreground"
+							: "text-muted-foreground hover:text-foreground",
 					)}
 				>
 					{name}
