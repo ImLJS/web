@@ -1,7 +1,10 @@
 import "@/styles/globals.css";
 
+import Navbar from "@/components/common/navbar";
+import { cn } from "@/lib/utils";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 
 export const metadata: Metadata = {
 	title: "Create T3 App",
@@ -9,17 +12,25 @@ export const metadata: Metadata = {
 	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const geist = Geist({
-	subsets: ["latin"],
-	variable: "--font-geist-sans",
-});
-
-export default function RootLayout({
-	children,
-}: Readonly<{ children: React.ReactNode }>) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<html lang="en" className={`${geist.variable}`}>
-			<body>{children}</body>
+		<html lang="en" className={`${GeistMono.variable} ${GeistSans.variable}`}>
+			<body className="flex min-h-screen flex-col font-sans md:max-w-7xl lg:mx-auto lg:flex-row">
+				<main
+					className={cn(
+						"relative flex flex-1 flex-col overflow-x-hidden border-border/50 border-x",
+					)}
+				>
+					<Navbar />
+					<div className="grid flex-1 grid-cols-1 lg:grid-cols-[32px_1fr_32px]">
+						<div className="hidden w-full border-r bg-dashed opacity-75 lg:block" />
+						<div className="relative col-span-1 px-3 lg:px-0">{children}</div>
+						<div className="hidden w-full border-l bg-dashed opacity-75 lg:block" />
+					</div>
+				</main>
+			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;
