@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 
-import Navbar from "@/components/common/Navbar";
+import Navbar from "@/components/common/navbar";
 import { cn } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
