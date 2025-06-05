@@ -34,6 +34,8 @@
 	--color-warning-foreground: var(--warning-foreground);
 	--color-connection: var(--connection);
 	--color-link: var(--link);
+	--color-dark: var(--dark);
+	--color-paper: var(--paper);
 	--color-purple-primary: var(--purple-primary);
 	--color-purple-secondary: var(--purple-secondary);
 
@@ -110,6 +112,9 @@
 	--warning: hsl(36 100% 50%);
 	--warning-foreground: hsl(0 0% 98%);
 
+	--dark: oklch(0.852 0.0205 100.63);
+	--paper: oklch(0.2393 0 0);
+
 	--connection: hsl(0 0% 79.6%);
 	--link: hsl(245 100% 60%);
 
@@ -141,6 +146,9 @@
 	--border: hsl(0 0% 14.9%);
 	--input: hsl(0 0% 14.9%);
 	--ring: hsl(230 7% 21%);
+
+	--dark: oklch(0.3012 0 0);
+	--paper: oklch(0.9531 0.0173 99.6);
 
 	--sky: hsl(210 100% 79%);
 
