@@ -1,186 +1,87 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@import "./config.css";
+@import "./utilities.css";
+
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	--font-mono: var(--font-geist-mono);
-}
-
-@theme inline {
-	--color-background: var(--background);
-	--color-background-invert: var(--background-invert);
-	--color-foreground: var(--foreground);
-	--color-foreground-secondary: var(--foreground-secondary);
-	--color-foreground-tertiary: var(--foreground-tertiary);
-	--color-card: var(--card);
-	--color-card-foreground: var(--card-foreground);
-	--color-popover: var(--popover);
-	--color-popover-foreground: var(--popover-foreground);
-	--color-primary: var(--primary);
-	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
-	--color-secondary-foreground: var(--secondary-foreground);
-	--color-muted: var(--muted);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-accent: var(--accent);
-	--color-accent-foreground: var(--accent-foreground);
-	--color-destructive: var(--destructive);
-	--color-destructive-foreground: var(--destructive-foreground);
-	--color-border: var(--border);
-	--color-input: var(--input);
-	--color-ring: var(--ring);
-	--color-sky: var(--sky);
-	--color-success: var(--success);
-	--color-success-foreground: var(--success-foreground);
-	--color-warning: var(--warning);
-	--color-warning-foreground: var(--warning-foreground);
-	--color-connection: var(--connection);
-	--color-link: var(--link);
-	--color-purple-primary: var(--purple-primary);
-	--color-purple-secondary: var(--purple-secondary);
-
-	--ease-in-expo: cubic-bezier(0.32, 0.72, 0, 1);
-
-	--shadow-tile: hsla(0, 0%, 0%, 0.08) 0px 1px 4px;
-
-	--animate-loading: loading 1s ease-in-out infinite;
-	--animate-bar-pulse: bar-pulse 1s ease-in-out infinite;
-
-	@keyframes loading {
-		to {
-			background-position-x: -20%;
-		}
-	}
-
-	@keyframes bar-pulse {
-		0% {
-			height: 1px;
-			margin-top: 0;
-		}
-		10% {
-			height: 15px;
-			margin-top: -15px;
-		}
-		50% {
-			height: 5px;
-			margin-top: -5px;
-		}
-		60% {
-			height: 7px;
-			margin-top: -7px;
-		}
-		80% {
-			height: 15px;
-			margin-top: -15px;
-		}
-		100% {
-			height: 1px;
-			margin-top: 0;
-		}
-	}
-}
-
-:root {
-	--background: hsl(348 33% 96%);
-	--background-invert: oklch(0.3573 0.0051 286.14);
-	--foreground: hsl(0 0% 3.9%);
-	--foreground-secondary: oklch(0.49 0.0239 282.46);
-	--foreground-tertiary: oklch(0.7468 0.0176 250.89);
-	--card: hsl(0 0% 100%);
-	--card-foreground: hsl(0 0% 3.9%);
-	--popover: hsl(0 0% 100%);
-	--popover-foreground: hsl(0 0% 3.9%);
-	--primary: hsl(13 33% 35%);
-	--primary-foreground: hsl(0 0% 98%);
-	--secondary: hsl(0 0% 96.1%);
-	--secondary-foreground: hsl(0 0% 9%);
-	--muted: hsl(0 0% 96.1%);
-	--muted-foreground: hsl(0 0% 45.1%);
-	--accent: hsl(0 0% 96.1%);
-	--accent-foreground: hsl(0 0% 9%);
-	--destructive: hsl(0 84.2% 60.2%);
-	--destructive-foreground: hsl(0 0% 98%);
-	--border: oklch(0.8864 0.007 247.9);
-	--input: hsl(0 0% 89.8%);
-	--ring: hsl(190 3% 72%);
-
-	--sky: hsl(210 100% 79%);
-
-	--success: hsl(175 47% 57%);
-	--success-foreground: hsl(0 0% 98%);
-
-	--warning: hsl(36 100% 50%);
-	--warning-foreground: hsl(0 0% 98%);
-
-	--connection: hsl(0 0% 79.6%);
-	--link: hsl(245 100% 60%);
-
-	--purple-primary: oklch(0.5573 0.2543 283.67);
-	--purple-secondary: oklch(0.9228 0.0312 293.76);
-}
-
-.dark {
-	--background: hsl(0 0% 3.9%);
-	--foreground: hsl(0 0% 98%);
-	--background-invert: oklch(0.85 0.0051 286.14);
-	--foreground-secondary: oklch(0.75 0.0239 282.46);
-	--foreground-tertiary: oklch(0.9 0.0176 250.89);
-
-	--card: hsl(0 0% 3.9%);
-	--card-foreground: hsl(0 0% 98%);
-	--popover: hsl(0 0% 3.9%);
-	--popover-foreground: hsl(0 0% 98%);
-	--primary: hsl(13 33% 35%);
-	--primary-foreground: hsl(0 0% 98%);
-	--secondary: hsl(0 0% 14.9%);
-	--secondary-foreground: hsl(0 0% 98%);
-	--muted: hsl(0 0% 14.9%);
-	--muted-foreground: hsl(0 0% 63.9%);
-	--accent: hsl(0 0% 10.9%);
-	--accent-foreground: hsl(0 0% 98%);
-	--destructive: hsl(0 62.8% 30.6%);
-	--destructive-foreground: hsl(0 0% 98%);
-	--border: hsl(0 0% 14.9%);
-	--input: hsl(0 0% 14.9%);
-	--ring: hsl(230 7% 21%);
-
-	--sky: hsl(210 100% 79%);
-
-	--success: hsl(175 47% 57%);
-	--success-foreground: hsl(0 0% 98%);
-
-	--warning: hsl(36 100% 50%);
-	--warning-foreground: hsl(0 0% 98%);
-
-	--connection: hsl(0 0% 29.8%);
-	--link: hsl(246 74% 71%);
-
-	--purple-primary: oklch(0.5573 0.2543 283.67);
-	--purple-secondary: oklch(0.9228 0.0312 293.76);
-}
-
-@utility bg-dashed {
-	background-image: linear-gradient(
-		45deg,
-		var(--color-border) 12.5%,
-		transparent 12.5%,
-		transparent 50%,
-		var(--color-border) 50%,
-		var(--color-border) 62.5%,
-		transparent 62.5%,
-		transparent 100%
-	);
-	background-size: 0.25rem 0.25rem;
-}
-
 @layer base {
-	* {
-		@apply border-border outline-ring/50;
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-border, currentColor);
 	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
 	body {
-		@apply bg-background/90 text-foreground;
+		@apply bg-background text-foreground;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-sans;
+	}
+
+	::selection {
+		@apply bg-link text-primary-foreground;
+	}
+
+	::-webkit-scrollbar {
+		@apply w-2;
+	}
+
+	::-webkit-scrollbar-track {
+		@apply bg-background;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply bg-muted-foreground/50 rounded-full;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		@apply bg-muted-foreground;
+	}
+
+	.react-activity-calendar {
+		width: auto !important;
+	}
+
+	.react-activity-calendar svg {
+		@apply h-auto w-full;
+	}
+
+	.prose blockquote p {
+		font-style: normal;
+	}
+
+	.prose code::after,
+	.prose code::before {
+		content: none !important;
+	}
+
+	input[type="search"]::-ms-clear {
+		@apply hidden;
+	}
+	input[type="search"]::-ms-reveal {
+		@apply hidden;
+	}
+
+	input[type="search"]::-webkit-search-decoration,
+	input[type="search"]::-webkit-search-cancel-button,
+	input[type="search"]::-webkit-search-results-button,
+	input[type="search"]::-webkit-search-results-decoration {
+		@apply hidden;
 	}
 }
