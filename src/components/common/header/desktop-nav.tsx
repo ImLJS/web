@@ -2,10 +2,10 @@
 
 import { NAV } from "@/data/nav";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SocialPill } from "../social-pill";
-import Image from "next/image";
 import { MobileNavTrigger } from "./mobile-nav";
 
 type NavLinkType = {

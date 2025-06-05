@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
 
+import Header from "@/components/common/header";
 import { cn } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
-import Header from "@/components/common/header";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
