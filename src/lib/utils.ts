@@ -6,16 +6,16 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const getTimeOfDayGreeting = () => {
-  const now = new Date();
-  const hours = now.getHours();
+	const now = new Date();
+	const hours = now.getHours();
 
-  if (hours < 12) {
-    return "Good morning!";
-  } 
-  
-  if (hours < 17) {
-    return "Good afternoon!";
-  } 
+	if (hours < 12) {
+		return "Good morning!";
+	}
 
-  return "Good evening!";
+	if (hours < 17) {
+		return "Good afternoon!";
+	}
+
+	return "Good evening!";
 };
