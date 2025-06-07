@@ -22,11 +22,13 @@ const BentoLayout = ({
 	hideOverflow = true,
 	linkTo,
 }: BentoCardProps) => {
+	const spanClass = `${height} row-span-${rowSpan} col-span-${colSpan} ${className}`;
+
 	const cardContent = (
 		<div
 			className={`group relative flex flex-col rounded-2xl border bg-card p-6 hover:bg-accent ${
 				hideOverflow && "overflow-hidden"
-			} ${height}row-span-${rowSpan}col-span-${colSpan} ${className}`}
+			} ${spanClass}`}
 		>
 			{linkTo && (
 				<div className="absolute right-4 bottom-4 z-[999] flex h-9 w-9 rotate-6 items-center justify-center rounded-full bg-indigo-200 opacity-0 transition-all duration-300 ease-in-out group-hover:translate-y-[-8px] group-hover:rotate-0 group-hover:opacity-100">

@@ -96,13 +96,13 @@ const MobileNav = () => {
 					<nav className="flex flex-col items-start gap-2.5">
 						<ul className="w-full">
 							{NAV.map((link) => (
-								<li key={link.link} className="w-full">
+								<li key={link.href} className="w-full">
 									<Link
-										key={link.link}
-										href={link.link}
+										key={link.href}
+										href={link.href}
 										className="block w-full py-1.5"
 									>
-										{link.name}
+										{link.title}
 									</Link>
 								</li>
 							))}

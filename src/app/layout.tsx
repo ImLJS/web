@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import Footer from "@/components/common/footer/footer";
 import Header from "@/components/common/header";
 import { cn } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
@@ -33,6 +34,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 							<div className="relative col-span-1 px-3 lg:px-0">{children}</div>
 							<div className="hidden w-full border-l bg-dashed opacity-75 lg:block" />
 						</div>
+						<Footer />
 					</main>
 				</Providers>
 			</body>

@@ -9,16 +9,16 @@ import { SocialPill } from "../social-pill";
 import { MobileNavTrigger } from "./mobile-nav";
 
 type NavLinkType = {
-	link: string;
-	name: string;
+	title: string;
+	href: string;
 };
 
-const NavLink = ({ name, link }: NavLinkType) => {
-	const isActive = usePathname() === link;
+const NavLink = ({ title, href }: NavLinkType) => {
+	const isActive = usePathname() === href;
 
 	return (
 		<Link
-			href={link}
+			href={href}
 			prefetch={true}
 			className={cn(
 				"font-medium",
@@ -27,7 +27,7 @@ const NavLink = ({ name, link }: NavLinkType) => {
 					: "text-muted-foreground hover:text-foreground",
 			)}
 		>
-			{name}
+			{title}
 		</Link>
 	);
 };
@@ -42,7 +42,7 @@ const DesktopNav = () => {
 			</div>
 			<nav className="hidden space-x-4 rounded-full border bg-card px-5 py-2 text-sm md:flex">
 				{NAV.map((link) => (
-					<NavLink {...link} key={link.link} />
+					<NavLink {...link} key={link.href} />
 				))}
 			</nav>
 			<div className="hidden w-32 justify-end md:flex">
