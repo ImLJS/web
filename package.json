@@ -25,6 +25,7 @@
 		"@t3-oss/env-nextjs": "^0.12.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
+		"developer-icons": "^5.3.9",
 		"geist": "^1.4.2",
 		"jotai": "^2.12.5",
 		"lucide-react": "^0.511.0",
