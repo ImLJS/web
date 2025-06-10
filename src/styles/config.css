@@ -46,11 +46,31 @@
 	--animate-loading: loading 1s ease-in-out infinite;
 	--animate-bar-pulse: bar-pulse 1s ease-in-out infinite;
 
+	--animate-marquee: marquee var(--duration) infinite linear;
+  	--animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
 	@keyframes loading {
 		to {
 			background-position-x: -20%;
 		}
 	}
+
+	@keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
 
 	@keyframes bar-pulse {
 		0% {
