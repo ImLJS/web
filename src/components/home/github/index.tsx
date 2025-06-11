@@ -75,7 +75,10 @@ const GitHubActivity = async () => {
 	];
 
 	return (
-		<SectionLayout heading="GitHub" description="My digital footprint — one commit at a time.">
+		<SectionLayout
+			heading="GitHub"
+			description="My digital footprint — one commit at a time."
+		>
 			<ViewAnimation
 				initial={{ opacity: 0 }}
 				whileInView={{ opacity: 1 }}

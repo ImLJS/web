@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import { ViewAnimation } from "../providers/view-animation";
 import { PlusIcon } from "lucide-react";
+import { ViewAnimation } from "../providers/view-animation";
 
 type WrapperProps = {
 	children: React.ReactNode;

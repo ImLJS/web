@@ -1,5 +1,5 @@
-import { Prose } from "../ui/prose";
 import { cn } from "@/lib/utils";
+import { Prose } from "../ui/prose";
 
 import type { ReactNode } from "react";
 import SectionLayout from "./section-layout";

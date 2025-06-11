@@ -1,8 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Prose } from "../ui/prose";
 import { ViewAnimation } from "../providers/view-animation";
+import { Prose } from "../ui/prose";
 
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -86,7 +86,11 @@ const ThirdsLayout = ({
 	reverse = false,
 	...props
 }: ThirdsLayoutProps) => (
-	<SectionLayout className="grid divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0" heading="Gallery" description="A curated space celebrating the beauty of Japanese illustration and visual storytelling.">
+	<SectionLayout
+		className="grid divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0"
+		heading="Gallery"
+		description="A curated space celebrating the beauty of Japanese illustration and visual storytelling."
+	>
 		{reverse ? (
 			<>
 				<LargeSlot>{children}</LargeSlot>
