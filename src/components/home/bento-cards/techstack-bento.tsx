@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const TechStackBento = ({ linkTo }: { linkTo?: string }) => {
 	return (
-		<BentoLayout height="md:h-[304px] lg:h-[230px]" linkTo={linkTo}>
+		<BentoLayout height="md:h-[304px] lg:h-[250px]" linkTo={linkTo}>
 			<div className="group flex h-full flex-col justify-around">
 				<div>
 					<Badge

@@ -37,7 +37,7 @@ const About = () => {
 					</div>
 
 					<div className="md:col-span-7 md:row-start-1 lg:col-span-5 lg:row-span-7">
-						<TechStackBento linkTo="#" />
+						<TechStackBento />
 					</div>
 
 					<div className="md:col-span-12 lg:col-span-7 lg:row-span-5">
