@@ -100,7 +100,7 @@ const MobileNav = () => {
 									<Link
 										key={link.href}
 										href={link.href}
-										className="block w-full py-1.5"
+										className="block w-full py-1.5 text-sm"
 									>
 										{link.title}
 									</Link>
@@ -114,7 +114,7 @@ const MobileNav = () => {
 							onClick={() => setOpen(false)}
 							className="w-full"
 						>
-							<Link href="/contact">Get in touch</Link>
+							<Link href="#">Get in touch</Link>
 						</Button>
 					</nav>
 				</div>

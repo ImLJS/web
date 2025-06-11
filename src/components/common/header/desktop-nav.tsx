@@ -40,7 +40,7 @@ const DesktopNav = () => {
 					<Image src={"/avatar.png"} width={32} height={32} alt="Avatar" />
 				</Link>
 			</div>
-			<nav className="hidden space-x-4 rounded-full border bg-card px-5 py-2 text-sm md:flex">
+			<nav className="hidden space-x-4 rounded-full border bg-card px-5 py-2 text-xs md:flex">
 				{NAV.map((link) => (
 					<NavLink {...link} key={link.href} />
 				))}
