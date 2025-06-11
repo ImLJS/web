@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
 import BentoLayout from "@/components/layouts/bento-layout";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 interface ProjectCardBentoProps {
 	title: string;

@@ -1,6 +1,6 @@
-import { cn, getTimeOfDayGreeting } from "@/lib/utils";
 import BentoLayout from "@/components/layouts/bento-layout";
 import { Badge } from "@/components/ui/badge";
+import { cn, getTimeOfDayGreeting } from "@/lib/utils";
 
 const AboutMeBento = ({ linkTo }: { linkTo?: string }) => {
 	const timeOfDayGreeting = getTimeOfDayGreeting();
@@ -11,7 +11,9 @@ const AboutMeBento = ({ linkTo }: { linkTo?: string }) => {
 				<div className="flex flex-col justify-around text-balance">
 					<Badge
 						variant="outline"
-						className={cn("mb-2 w-fit rounded-full border-success text-success")}
+						className={cn(
+							"mb-2 w-fit rounded-full border-success text-success",
+						)}
 					>
 						{"About Me"}
 					</Badge>

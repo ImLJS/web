@@ -1,8 +1,8 @@
-import { cn } from "@/lib/utils";
 import BentoLayout from "@/components/layouts/bento-layout";
 import { Badge } from "@/components/ui/badge";
 import { Marquee } from "@/components/ui/marquee";
 import { allSkills } from "@/data/skills";
+import { cn } from "@/lib/utils";
 
 const TechStackBento = ({ linkTo }: { linkTo?: string }) => {
 	return (
