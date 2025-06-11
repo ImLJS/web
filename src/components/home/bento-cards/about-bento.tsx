@@ -1,5 +1,6 @@
-import { getTimeOfDayGreeting } from "@/lib/utils";
-import BentoLayout from "../layouts/bento-layout";
+import { cn, getTimeOfDayGreeting } from "@/lib/utils";
+import BentoLayout from "@/components/layouts/bento-layout";
+import { Badge } from "@/components/ui/badge";
 
 const AboutMeBento = ({ linkTo }: { linkTo?: string }) => {
 	const timeOfDayGreeting = getTimeOfDayGreeting();
@@ -7,12 +8,20 @@ const AboutMeBento = ({ linkTo }: { linkTo?: string }) => {
 	return (
 		<BentoLayout height="h-[275px] md:h-[304px] lg:h-[220px]" linkTo={linkTo}>
 			<div className="group flex h-full">
-				<div className="text-balance">
-					<h2 className="mb-4 font-medium text-base">Learn more about me</h2>
-					<p className="mb-2 text-balance pr-1 text-text-secondary md:pr-4">
-						{timeOfDayGreeting} <br />
-						I&apos;m Leone, an experienced front-end developer.
-					</p>
+				<div className="flex flex-col justify-around text-balance">
+					<Badge
+						variant="outline"
+						className={cn("mb-2 w-fit rounded-full border-success text-success")}
+					>
+						{"About Me"}
+					</Badge>
+					<div className="flex flex-col">
+						<h2 className="mb-2 font-medium text-base">Learn more about me</h2>
+						<p className="mb-2 text-balance pr-1 text-base text-muted-foreground md:pr-4">
+							{timeOfDayGreeting} <br />
+							I&apos;m Leone, an experienced front-end developer.
+						</p>
+					</div>
 				</div>
 				<div className="relative">
 					<div className="group inline-block text-center">
