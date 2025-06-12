@@ -25,7 +25,7 @@ export const env = createEnv({
 		NEXT_PUBLIC_GITHUB_USERNAME: z.string(),
 		NEXT_PUBLIC_GITHUB: z.string().url(),
 		NEXT_PUBLIC_EMAIL: z.string().email(),
-		NEXT_PUBLIC_LINKEDIN: z.string()
+		NEXT_PUBLIC_LINKEDIN: z.string(),
 	},
 
 	/**

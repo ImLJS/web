@@ -1,11 +1,9 @@
 import dayjs from "dayjs";
 import { unstable_cache as cache } from "next/cache";
 
-import { ViewAnimation } from "@/components/providers/view-animation";
-
 import { Calendar } from "./calendar";
 
-import SectionLayout from "@/components/layouts/section-layout";
+import SectionWrapper from "@/components/layouts/section-wrapper";
 import { siteMetadata } from "@/data/siteMetadata";
 import Link from "next/link";
 import type { Activity } from "react-activity-calendar";
@@ -75,15 +73,11 @@ const GitHubActivity = async () => {
 	];
 
 	return (
-		<SectionLayout
+		<SectionWrapper
 			heading="GitHub"
 			description="My digital footprint — one commit at a time."
 		>
-			<ViewAnimation
-				initial={{ opacity: 0 }}
-				whileInView={{ opacity: 1 }}
-				className="relative grid gap-0.5 py-6 sm:grid-cols-2 sm:p-8"
-			>
+			<div className="relative grid gap-0.5 border-t py-6 sm:grid-cols-2 sm:p-8">
 				{totalData.map((data) => (
 					<Calendar
 						key={data.id}
@@ -102,8 +96,8 @@ const GitHubActivity = async () => {
 				>
 					{github.total} contributions in the last year 🔥
 				</Link>
-			</ViewAnimation>
-		</SectionLayout>
+			</div>
+		</SectionWrapper>
 	);
 };
 

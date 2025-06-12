@@ -6,7 +6,6 @@ const SideProjectsBento = ({ linkTo }: { linkTo?: string }) => {
 	return (
 		<BentoLayout height="md:h-[304px] lg:h-[200px]" linkTo={linkTo}>
 			<div className="group flex h-full items-center justify-between gap-4">
-
 				<div className="flex w-full max-w-[50%] flex-col justify-center">
 					<Badge
 						variant="outline"
