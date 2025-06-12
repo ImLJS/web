@@ -34,22 +34,22 @@ const SectionWrapper = ({
 		<div
 			className={cn(
 				"relative w-full",
-				"before:absolute before:top-0 before:h-px before:bg-border",
-				"before:-left-4 md:before:-left-8 before:right-[-1rem] md:before:right-[-2rem] lg:before:inset-x-0",
 				"after:-left-4 md:after:-left-8 after:right-[-1rem] md:after:right-[-2rem] lg:after:inset-x-0",
+				"before:-left-4 md:before:-left-8 before:right-[-1rem] md:before:right-[-2rem] lg:before:inset-x-0",
 				"after:absolute after:bottom-0 after:h-px after:bg-border",
+				"before:absolute before:top-0 before:h-px before:bg-border",
 				className,
 			)}
 		>
 			{(heading || description) && (
-				<div className="space-y-4 border-x border-b pb-8 text-center">
+				<div className="divide-y text-center">
 					{heading && (
-						<div className="border-b text-center font-medium text-indigo-600 text-sm">
+						<div className="text-center font-medium text-indigo-600 text-sm">
 							<span>{heading}</span>
 						</div>
 					)}
 					{description && (
-						<h2 className="text-center font-medium text-3xl text-text-primary leading-10 tracking-tighter md:mx-auto md:max-w-lg md:text-4xl">
+						<h2 className="flex items-center justify-center py-5 text-center font-medium text-3xl text-text-primary leading-10 tracking-tighter md:mx-auto md:max-w-lg md:text-4xl">
 							{description}
 						</h2>
 					)}

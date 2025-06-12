@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 
 const SideProjectsBento = ({ linkTo }: { linkTo?: string }) => {
 	return (
-		<BentoLayout height="h-[200px]" linkTo={linkTo}>
-			<div className="group flex h-full flex-col items-center justify-between gap-4 md:flex-row">
-				{/* Left Side – Text */}
+		<BentoLayout height="md:h-[304px] lg:h-[200px]" linkTo={linkTo}>
+			<div className="group flex h-full items-center justify-between gap-4">
+
 				<div className="flex w-full max-w-[50%] flex-col justify-center">
 					<Badge
 						variant="outline"
@@ -25,7 +25,6 @@ const SideProjectsBento = ({ linkTo }: { linkTo?: string }) => {
 					</p>
 				</div>
 
-				{/* Right Side – Image */}
 				<div className="relative w-full">
 					<img
 						src="/projects/temp_project.webp"

@@ -8,7 +8,7 @@ const Misc = () => {
 			heading="Currently Enjoying"
 			description="From my headphones to my bookshelf"
 		>
-			<div className="grid divide-y lg:grid-cols-2 lg:divide-x lg:divide-y-0">
+			<div className="grid divide-y border-t lg:grid-cols-2 lg:divide-x lg:divide-y-0">
 				<div className="min-w-0 px-6 py-4 lg:py-6">
 					<Spotify />
 				</div>
