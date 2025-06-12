@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils";
 import BentoLayout from "@/components/layouts/bento-layout";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 interface ProjectCardBentoProps {
 	title: string;
@@ -16,7 +16,7 @@ const ProjectCardBento = ({
 	linkTo,
 }: ProjectCardBentoProps) => {
 	return (
-		<BentoLayout height="h-[250px]" linkTo={linkTo}>
+		<BentoLayout height="h-[270px]" linkTo={linkTo}>
 			<div className="group grid h-full grid-rows-2">
 				<div className="flex flex-col pr-3 text-left">
 					<Badge

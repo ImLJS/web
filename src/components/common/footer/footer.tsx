@@ -1,4 +1,3 @@
-import GridLayout from "@/components/layouts/grid-layout";
 import { EXTRA_NAV, NAV } from "@/data/nav";
 import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
@@ -52,8 +51,8 @@ const Footer = () => {
 	return (
 		<>
 			<div className="relative max-w-7xl border-border/50">
-				<GridLayout>
-					<div className="max-w-6xl divide-y px-4 lg:mx-auto lg:flex lg:divide-x lg:px-4 xl:px-0">
+				<section>
+					<div className="max-w-6xl divide-y px-4 lg:mx-auto lg:flex lg:px-4 xl:px-0">
 						<div className="flex w-full py-6 text-sm">
 							<div>
 								<div className="flex-grow space-y-6">
@@ -90,7 +89,7 @@ const Footer = () => {
 							</div>
 						</div>
 					</div>
-				</GridLayout>
+				</section>
 			</div>
 			<div className="relative h-8 w-full bg-dashed" />
 		</>

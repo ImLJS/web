@@ -8,6 +8,9 @@ export const env = createEnv({
 	 */
 	server: {
 		DATABASE_URL: z.string().url(),
+		SPOTIFY_CLIENT_ID: z.string(),
+		SPOTIFY_CLIENT_SECRET: z.string(),
+		SPOTIFY_REFRESH_TOKEN: z.string(),
 		NODE_ENV: z
 			.enum(["development", "test", "production"])
 			.default("development"),
@@ -19,7 +22,10 @@ export const env = createEnv({
 	 * `NEXT_PUBLIC_`.
 	 */
 	client: {
-		// NEXT_PUBLIC_CLIENTVAR: z.string(),
+		NEXT_PUBLIC_GITHUB_USERNAME: z.string(),
+		NEXT_PUBLIC_GITHUB: z.string().url(),
+		NEXT_PUBLIC_EMAIL: z.string().email(),
+		NEXT_PUBLIC_LINKEDIN: z.string(),
 	},
 
 	/**
@@ -28,6 +34,13 @@ export const env = createEnv({
 	 */
 	runtimeEnv: {
 		DATABASE_URL: process.env.DATABASE_URL,
+		NEXT_PUBLIC_GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
+		NEXT_PUBLIC_GITHUB: process.env.NEXT_PUBLIC_GITHUB,
+		NEXT_PUBLIC_EMAIL: process.env.NEXT_PUBLIC_EMAIL,
+		NEXT_PUBLIC_LINKEDIN: process.env.NEXT_PUBLIC_LINKEDIN,
+		SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+		SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
+		SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
 		NODE_ENV: process.env.NODE_ENV,
 		// NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 	},
