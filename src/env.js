@@ -8,10 +8,6 @@ export const env = createEnv({
 	 */
 	server: {
 		DATABASE_URL: z.string().url(),
-		GITHUB_USERNAME: z.string(),
-		GITHUB: z.string().url(),
-		EMAIL: z.string().email(),
-		LINKEDIN: z.string(),
 		SPOTIFY_CLIENT_ID: z.string(),
 		SPOTIFY_CLIENT_SECRET: z.string(),
 		SPOTIFY_REFRESH_TOKEN: z.string(),
@@ -26,7 +22,10 @@ export const env = createEnv({
 	 * `NEXT_PUBLIC_`.
 	 */
 	client: {
-		// NEXT_PUBLIC_CLIENTVAR: z.string(),
+		NEXT_PUBLIC_GITHUB_USERNAME: z.string(),
+		NEXT_PUBLIC_GITHUB: z.string().url(),
+		NEXT_PUBLIC_EMAIL: z.string().email(),
+		NEXT_PUBLIC_LINKEDIN: z.string()
 	},
 
 	/**
@@ -35,13 +34,13 @@ export const env = createEnv({
 	 */
 	runtimeEnv: {
 		DATABASE_URL: process.env.DATABASE_URL,
-		GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
-		GITHUB: process.env.NEXT_PUBLIC_GITHUB,
-		EMAIL: process.env.NEXT_PUBLIC_EMAIL,
-		LINKEDIN: process.env.NEXT_PUBLIC_LINKEDIN,
-		SPOTIFY_CLIENT_ID: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
-		SPOTIFY_CLIENT_SECRET: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET,
-		SPOTIFY_REFRESH_TOKEN: process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN,
+		NEXT_PUBLIC_GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
+		NEXT_PUBLIC_GITHUB: process.env.NEXT_PUBLIC_GITHUB,
+		NEXT_PUBLIC_EMAIL: process.env.NEXT_PUBLIC_EMAIL,
+		NEXT_PUBLIC_LINKEDIN: process.env.NEXT_PUBLIC_LINKEDIN,
+		SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
+		SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
+		SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
 		NODE_ENV: process.env.NODE_ENV,
 		// NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 	},
