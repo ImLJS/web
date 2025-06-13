@@ -8,7 +8,6 @@ import SectionLayout from "./section-layout";
 import type { ReactNode } from "react";
 
 interface HeroProps {
-	image?: ReactNode;
 	caption?: ReactNode;
 	title: string;
 	children?: ReactNode;
@@ -16,7 +15,6 @@ interface HeroProps {
 }
 
 const HeroLayout = ({
-	image,
 	caption,
 	title,
 	children,
@@ -29,49 +27,26 @@ const HeroLayout = ({
 				"sm:items-center sm:gap-6 sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-tile lg:gap-8",
 			)}
 		>
-			{image && (
-				<ViewAnimation
-					initial={{ opacity: 0, translateY: -8 }}
-					whileInView={{ opacity: 1, translateY: 0 }}
-				>
-					{image}
-				</ViewAnimation>
-			)}
 			<div className="flex flex-col gap-4 sm:items-center">
 				{caption && (
-					<ViewAnimation
-						initial={{ opacity: 0, translateY: -8 }}
-						whileInView={{ opacity: 1, translateY: 0 }}
-					>
-						<small className="block text-muted-foreground text-sm sm:text-base">
-							{caption}
-						</small>
-					</ViewAnimation>
+					<small className="block text-muted-foreground text-sm sm:text-base">
+						{caption}
+					</small>
 				)}
-				<ViewAnimation
-					initial={{ opacity: 0, translateY: -8 }}
-					whileInView={{ opacity: 1, translateY: 0 }}
-					delay={0.4}
+				<h1
+					className={cn(
+						"max-w-4xl text-balance font-bold font-kenfolg text-3xl leading-tighter tracking-tight",
+						"sm:text-center sm:text-4xl sm:leading-tight",
+						"lg:text-5xl lg:leading-tight",
+					)}
 				>
-					<h1
-						className={cn(
-							"max-w-4xl text-balance font-bold font-kenfolg text-3xl leading-tighter tracking-tight",
-							"sm:text-center sm:text-4xl sm:leading-tight",
-							"lg:text-5xl lg:leading-tight",
-						)}
-					>
-						{title}
-					</h1>
-				</ViewAnimation>
+					{title}
+				</h1>
 			</div>
 			{Children.map(children, (child, index) => (
-				<ViewAnimation
-					initial={{ opacity: 0, translateY: -8 }}
-					whileInView={{ opacity: 1, translateY: 0 }}
-					delay={0.8 + index * 0.4}
-				>
+				<div key={index}>
 					{child}
-				</ViewAnimation>
+				</div>
 			))}
 		</div>
 	</SectionLayout>

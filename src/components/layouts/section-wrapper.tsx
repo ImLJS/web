@@ -38,7 +38,6 @@ const SectionWrapper = ({
 				"before:-left-4 md:before:-left-8 before:right-[-1rem] md:before:right-[-2rem] lg:before:inset-x-0",
 				"after:absolute after:bottom-0 after:h-px after:bg-border",
 				"before:absolute before:top-0 before:h-px before:bg-border",
-				className,
 			)}
 		>
 			{(heading || description) && (
