@@ -25,7 +25,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 				<Providers>
 					<main
 						className={cn(
-							"relative flex flex-1 min-h-screen flex-col border-border/50 border-x",
+							"relative flex min-h-screen flex-1 flex-col border-border/50 border-x",
 						)}
 					>
 						<Header />

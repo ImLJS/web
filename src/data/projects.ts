@@ -1,4 +1,9 @@
-import { FaDatabase, FaLaptopCode, FaMobileAlt, FaPencilRuler } from "react-icons/fa";
+import {
+	FaDatabase,
+	FaLaptopCode,
+	FaMobileAlt,
+	FaPencilRuler,
+} from "react-icons/fa";
 import TempProjectImage from "../../public/projects/temp_project.webp";
 
 export const PROJECTS = [

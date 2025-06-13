@@ -1,13 +1,13 @@
 import { cn } from "@/lib/utils";
 
+import SectionWrapper from "@/components/layouts/section-wrapper";
 import { PROJECTS } from "@/data/projects";
 import ProjectThumbnail from "./thumbnail";
-import SectionWrapper from "@/components/layouts/section-wrapper";
 
 const Projects = () => {
 	return (
 		<SectionWrapper
-			className="grid md:grid-cols-2 border-t"
+			className="grid border-t md:grid-cols-2"
 			heading="Projects"
 			description="Personal builds and creative experiments."
 		>

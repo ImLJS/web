@@ -1,6 +1,6 @@
-import HeroLayout from "../layouts/hero-layout";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import HeroLayout from "../layouts/hero-layout";
 
 interface HeroProps {
 	readonly description: string;

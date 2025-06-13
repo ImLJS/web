@@ -14,12 +14,7 @@ interface HeroProps {
 	className?: string;
 }
 
-const HeroLayout = ({
-	caption,
-	title,
-	children,
-	className,
-}: HeroProps) => (
+const HeroLayout = ({ caption, title, children, className }: HeroProps) => (
 	<SectionLayout className={cn("border-b p-6", className)}>
 		<div
 			className={cn(
@@ -44,9 +39,7 @@ const HeroLayout = ({
 				</h1>
 			</div>
 			{Children.map(children, (child, index) => (
-				<div key={index}>
-					{child}
-				</div>
+				<div key={index}>{child}</div>
 			))}
 		</div>
 	</SectionLayout>

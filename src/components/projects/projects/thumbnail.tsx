@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Prose } from "@/components/ui/prose";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import type { StaticImageData } from "next/image";
 import Link from "next/link";
 
@@ -14,7 +14,7 @@ export type Project = {
 	tags: string[];
 	image: StaticImageData;
 	archived: boolean;
-	featured: boolean
+	featured: boolean;
 };
 
 interface ProjectThumbnailProps {

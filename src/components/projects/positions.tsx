@@ -4,11 +4,15 @@ import { buttonVariants } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
 import { allPositions } from "@/data/experience";
 import { cn } from "@/lib/utils";
-import SectionLayout from "../layouts/section-layout";
 import Link from "next/link";
+import SectionLayout from "../layouts/section-layout";
 
 const Positions = () => (
-	<SectionLayout className="grid lg:grid-cols-2" heading="Work Experience" description="Crafting web apps through real-world experience.">
+	<SectionLayout
+		className="grid lg:grid-cols-2"
+		heading="Work Experience"
+		description="Crafting web apps through real-world experience."
+	>
 		{allPositions.map((position, index, array) => (
 			<div
 				className={cn(
@@ -55,9 +59,7 @@ const Positions = () => (
 			</div>
 		))}
 		{allPositions.length % 2 && (
-			<div
-				className="hidden flex-col items-center justify-center gap-6 border-t bg-dashed p-8 lg:flex"
-			>
+			<div className="hidden flex-col items-center justify-center gap-6 border-t bg-dashed p-8 lg:flex">
 				<h2 className="text-center font-semibold text-3xl">
 					Want to build together?
 				</h2>
