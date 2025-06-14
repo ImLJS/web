@@ -21,11 +21,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 			className={`${GeistMono.variable} ${GeistSans.variable}`}
 			suppressHydrationWarning
 		>
-			<body className="flex min-h-screen flex-col font-sans md:max-w-7xl lg:mx-auto lg:flex-row">
+			<body className="flex min-h-screen flex-col font-sans md:max-w-7xl lg:mx-auto">
 				<Providers>
 					<main
 						className={cn(
-							"relative flex flex-1 flex-col border-border/50 border-x",
+							"relative flex min-h-screen flex-1 flex-col border-border/50 border-x",
 						)}
 					>
 						<Header />
