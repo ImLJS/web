@@ -5,10 +5,10 @@ import { Prose } from "@/components/ui/prose";
 import { allPositions } from "@/data/experience";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import SectionLayout from "../layouts/section-layout";
+import SectionWrapper from "../layouts/section-wrapper";
 
 const Positions = () => (
-	<SectionLayout
+	<SectionWrapper
 		className="grid lg:grid-cols-2"
 		heading="Work Experience"
 		description="Crafting web apps through real-world experience."
@@ -26,7 +26,7 @@ const Positions = () => (
 					target="_blank"
 					rel="noopener noreferrer"
 					className={cn(
-						"flex h-full flex-col items-start gap-6 p-6 transition-colors hover:bg-card dark:hover:bg-accent",
+						"flex h-full flex-col items-start gap-6 border-t p-6 transition-colors hover:bg-card dark:hover:bg-accent",
 						"sm:p-8 lg:flex-row",
 					)}
 				>
@@ -63,12 +63,12 @@ const Positions = () => (
 				<h2 className="text-center font-semibold text-3xl">
 					Want to build together?
 				</h2>
-				<Link href="contact" className={buttonVariants()}>
+				<Link href="/contact" className={buttonVariants()}>
 					Let&apos;s talk about work
 				</Link>
 			</div>
 		)}
-	</SectionLayout>
+	</SectionWrapper>
 );
 
 export default Positions;
