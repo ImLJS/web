@@ -3,7 +3,7 @@ import { siteMetadata } from "@/data/siteMetadata";
 
 const AboutPage = () => {
 	return (
-		<div className="relative space-y-16">
+		<div className="mt-6 space-y-10 md:mt-0 md:space-y-16">
 			<Hero description={siteMetadata.aboutDescription} />
 		</div>
 	);
