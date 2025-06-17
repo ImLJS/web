@@ -1,12 +1,10 @@
 import Link from "next/link";
 import ThemeToggle from "./header/theme-toggle";
 import { Icons } from "./icons";
-import Search from "./search";
 
 export function SocialPill() {
 	return (
 		<div className="z-30 flex items-center justify-center gap-2 rounded-full bg-dark px-4 py-1">
-			<Search />
 			<ThemeToggle />
 			<Link
 				href="#link"
