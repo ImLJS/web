@@ -48,7 +48,7 @@ const SectionWrapper = ({
 						</div>
 					)}
 					{description && (
-						<h2 className="flex items-center justify-center py-5 text-center font-medium text-3xl text-text-primary leading-10 tracking-tighter md:mx-auto md:max-w-lg md:text-4xl">
+						<h2 className="flex items-center justify-center py-5 text-center font-medium text-3xl leading-10 tracking-tighter md:mx-auto md:max-w-lg md:text-4xl">
 							{description}
 						</h2>
 					)}

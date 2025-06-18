@@ -4,7 +4,7 @@ import { Icons } from "./icons";
 
 export function SocialPill() {
 	return (
-		<div className="z-30 flex items-center justify-center gap-1.5 rounded-full bg-dark px-3.5 py-1">
+		<div className="z-30 flex items-center justify-center gap-2 rounded-full bg-dark px-4 py-1">
 			<ThemeToggle />
 			<Link
 				href="#link"
