@@ -52,7 +52,7 @@ const Footer = () => {
 		<>
 			<div className="relative max-w-7xl border-border/50">
 				<section>
-					<div className="max-w-6xl divide-y px-4 lg:mx-auto lg:flex lg:divide-y-0 lg:px-4 xl:px-0">
+					<div className="max-w-6xl divide-y border-t px-4 lg:mx-auto lg:flex lg:divide-y-0 lg:border-t-0 lg:px-4 xl:px-0">
 						<div className="flex w-full py-6 text-sm">
 							<div>
 								<div className="flex-grow space-y-6">

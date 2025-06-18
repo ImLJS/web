@@ -7,6 +7,7 @@ type WrapperProps = {
 	className?: string;
 	heading?: string;
 	description?: string;
+	id?: string;
 };
 
 const Cross = () => (
@@ -25,6 +26,7 @@ const Cross = () => (
 );
 
 const SectionWrapper = ({
+	id,
 	children,
 	className,
 	heading,
@@ -54,7 +56,9 @@ const SectionWrapper = ({
 					)}
 				</div>
 			)}
-			<div className={cn(className)}>{children}</div>
+			<div className={cn(className)} {...(id ? { id } : {})}>
+				{children}
+			</div>
 			<div className="-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block">
 				<Cross />
 			</div>
