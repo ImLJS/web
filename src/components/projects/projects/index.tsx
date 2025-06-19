@@ -6,11 +6,7 @@ import ProjectThumbnail from "./thumbnail";
 
 const Projects = () => {
 	return (
-		<SectionWrapper
-			className="grid border-t md:grid-cols-2"
-			heading="Projects"
-			description="Personal builds and creative experiments."
-		>
+		<SectionWrapper className="grid border-t md:grid-cols-2">
 			{PROJECTS.map((project, index) => (
 				<ProjectThumbnail
 					key={project.slug}

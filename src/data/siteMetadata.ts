@@ -10,8 +10,7 @@ export const siteMetadata = {
 	spotifyRefreshToken: process.env.SPOTIFY_REFRESH_TOKEN,
 	homeDescription:
 		"Software engineer building products to help people lead better lives 🎯",
-	aboutDescription: `I'm a Software Engineer not afraid of any technology 🎓`,
-	projectsDescription:
-		"I love shipping products and building great software 🔨",
+	aboutDescription: "I'm Leone Jacob, Frontend Developer",
+	projectsDescription: "A collection of my favorite works.",
 	githubUser: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
 };

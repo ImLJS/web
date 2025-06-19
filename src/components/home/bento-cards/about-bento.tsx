@@ -28,7 +28,7 @@ const AboutMeBento = ({ linkTo }: { linkTo?: string }) => {
 				<div className="relative">
 					<div className="group inline-block text-center">
 						<div
-							className="rounded-[20px] border p-2 transition-all duration-500 ease-out group-hover:border-indigo-400"
+							className="rounded-[20px] border p-2 transition-all duration-500 ease-out group-hover:border-indigo-primary"
 							style={{ width: 188, height: 278 }}
 						>
 							<div

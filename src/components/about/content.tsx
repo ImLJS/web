@@ -14,7 +14,6 @@ const Content = () => {
 				)}
 			>
 				<div className="flex flex-col gap-2">
-					<small className="text-muted-foreground">About me</small>
 					<Prose className="[&_a]:no-underline">
 						<p>
 							I&apos;m a software developer who enjoys building thoughtful,
@@ -45,7 +44,7 @@ const Content = () => {
 
 						<p>
 							Sound interesting? Feel free to{" "}
-							<Link href="/contact">chat with me!</Link>
+							<Link href="#contact">chat with me!</Link>
 						</p>
 					</Prose>
 				</div>

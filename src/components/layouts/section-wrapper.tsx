@@ -45,7 +45,7 @@ const SectionWrapper = ({
 			{(heading || description) && (
 				<div className="divide-y text-center">
 					{heading && (
-						<div className="text-center font-medium text-indigo-600 text-sm">
+						<div className="text-center font-medium text-indigo-secondary text-sm">
 							<span>{heading}</span>
 						</div>
 					)}

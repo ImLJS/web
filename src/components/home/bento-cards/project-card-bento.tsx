@@ -32,7 +32,7 @@ const ProjectCardBento = ({
 				</div>
 				<div className="relative w-full">
 					<div
-						className="rounded-[20px] border p-2 transition-all duration-500 ease-out group-hover:border-indigo-400"
+						className="rounded-[20px] border p-2 transition-all duration-500 ease-out group-hover:border-indigo-primary"
 						style={{ width: "100%", height: "200px" }}
 					>
 						<div

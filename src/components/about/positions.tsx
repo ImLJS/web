@@ -63,7 +63,7 @@ const Positions = () => (
 				<h2 className="text-center font-semibold text-3xl">
 					Want to build together?
 				</h2>
-				<Link href="/contact" className={buttonVariants()}>
+				<Link href="#contact" className={buttonVariants()}>
 					Let&apos;s talk about work
 				</Link>
 			</div>
