@@ -1,4 +1,6 @@
+import { siteMetadata } from "@/data/siteMetadata";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import SectionWrapper from "../layouts/section-wrapper";
 import { Icons } from "./icons";
 
@@ -18,9 +20,14 @@ const Contact = () => {
 						<Icons.file className="h-8 w-8 text-paper opacity-50 hover:opacity-100" />
 						<h3 className="ml-2 font-semibold text-xl">Resume</h3>
 					</div>
-					<div className="flex items-center justify-center py-5 transition-colors hover:bg-paper/10 md:py-0">
-						<Icons.mail className="h-8 w-8 text-paper opacity-50 hover:opacity-100" />
-						<h3 className="ml-2 font-semibold text-xl">Email</h3>
+					<div className="py-5 transition-colors hover:bg-paper/10 md:py-0">
+						<Link
+							href={`mailto:${siteMetadata.email}`}
+							className="flex h-full items-center justify-center"
+						>
+							<Icons.mail className="h-8 w-8 text-paper opacity-50 hover:opacity-100" />
+							<h3 className="ml-2 font-semibold text-xl">Email</h3>
+						</Link>
 					</div>
 				</div>
 				<div className="faded-line-bottom" />
