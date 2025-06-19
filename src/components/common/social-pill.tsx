@@ -1,37 +1,35 @@
 import Link from "next/link";
 import ThemeToggle from "./header/theme-toggle";
-import { Icons } from "./icons";
+import { socialIcons } from "@/data/social-icons";
 
-export function SocialPill() {
+type SocialLinkProps = {
+	href: string;
+	title: string;
+	Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
+
+const SocialLinks = ({ href, title, Icon }: SocialLinkProps) => {
+	return (
+		<Link
+			href={href}
+			title={title}
+			className="flex items-center justify-center"
+		>
+			<Icon className="h-6 w-6 text-paper opacity-50 hover:opacity-100" />
+			<span className="sr-only">{title}</span>
+		</Link>
+	);
+};
+
+const SocialPill = () => {
 	return (
 		<div className="z-30 flex items-center justify-center gap-2 rounded-full bg-dark px-4 py-1">
 			<ThemeToggle />
-			<Link
-				href="#link"
-				title="Twitter"
-				className="flex items-center justify-center"
-			>
-				<Icons.twitter className="h-6 w-6 text-paper opacity-50 hover:opacity-100" />
-				<span className="sr-only">Twitter</span>
-			</Link>
-
-			<Link
-				href="#link"
-				title="LinkedIn"
-				className="flex items-center justify-center"
-			>
-				<Icons.linkedIn className="h-6 w-6 text-paper opacity-50 hover:opacity-100" />
-				<span className="sr-only">LinkedIn</span>
-			</Link>
-
-			<Link
-				href="#link"
-				title="GitHub"
-				className="flex items-center justify-center"
-			>
-				<Icons.gitHub className="h-6 w-6 text-paper opacity-50 hover:opacity-100" />
-				<span className="sr-only">GitHub</span>
-			</Link>
+			{socialIcons.map((social) => (
+				<SocialLinks key={social.title} {...social} />
+			))}
 		</div>
 	);
 }
+
+export default SocialPill;

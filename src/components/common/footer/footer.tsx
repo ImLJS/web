@@ -1,7 +1,7 @@
 import { EXTRA_NAV, NAV } from "@/data/nav";
 import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
-import { SocialPill } from "../social-pill";
+import SocialPill from "../social-pill";
 
 type FooterLink = {
 	href: string;
@@ -81,7 +81,7 @@ const Footer = () => {
 										</span>
 										<ul className="space-y-2 text-sm">
 											{section.links.map((link) => (
-												<li key={link.href}>{renderFooterLink(link)}</li>
+												<li key={link.title}>{renderFooterLink(link)}</li>
 											))}
 										</ul>
 									</div>
