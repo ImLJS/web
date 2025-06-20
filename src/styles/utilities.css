@@ -9,7 +9,7 @@
 		transparent 62.5%,
 		transparent 100%
 	);
-	background-size: 0.25rem 0.25rem;
+	background-size: 5px 5px;
 }
 
 @utility border-archive {

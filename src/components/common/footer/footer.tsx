@@ -1,7 +1,7 @@
 import { EXTRA_NAV, NAV } from "@/data/nav";
 import { PROJECTS } from "@/data/projects";
 import Link from "next/link";
-import { SocialPill } from "../social-pill";
+import SocialPill from "../social-pill";
 
 type FooterLink = {
 	href: string;
@@ -52,7 +52,7 @@ const Footer = () => {
 		<>
 			<div className="relative max-w-7xl border-border/50">
 				<section>
-					<div className="max-w-6xl divide-y px-4 lg:mx-auto lg:flex lg:divide-y-0 lg:px-4 xl:px-0">
+					<div className="max-w-6xl divide-y border-t px-4 lg:mx-auto lg:flex lg:divide-y-0 lg:border-t-0 lg:px-4 xl:px-0">
 						<div className="flex w-full py-6 text-sm">
 							<div>
 								<div className="flex-grow space-y-6">
@@ -81,7 +81,7 @@ const Footer = () => {
 										</span>
 										<ul className="space-y-2 text-sm">
 											{section.links.map((link) => (
-												<li key={link.href}>{renderFooterLink(link)}</li>
+												<li key={link.title}>{renderFooterLink(link)}</li>
 											))}
 										</ul>
 									</div>
