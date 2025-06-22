@@ -1,12 +1,12 @@
+import { socialIcons } from "@/data/social-icons";
 import Link from "next/link";
 import ThemeToggle from "./header/theme-toggle";
-import { socialIcons } from "@/data/social-icons";
 
 type SocialLinkProps = {
 	href: string;
 	title: string;
 	Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-}
+};
 
 const SocialLinks = ({ href, title, Icon }: SocialLinkProps) => {
 	return (
@@ -30,6 +30,6 @@ const SocialPill = () => {
 			))}
 		</div>
 	);
-}
+};
 
 export default SocialPill;
