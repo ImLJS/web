@@ -13,4 +13,9 @@ export const siteMetadata = {
 	aboutDescription: "I'm Leone Jacob, Frontend Developer",
 	projectsDescription: "A collection of my favorite works.",
 	githubUser: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
+	webToEpubRepo: "https://github.com/dteviot/WebToEpub",
+	webToEpubCommitLeaderboard:
+		"https://github.com/dteviot/WebToEpub/graphs/contributors",
+	spotifyRadwimps:
+		"https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7?si=FbtygkrfQ7-bZjrpl32AVw",
 };

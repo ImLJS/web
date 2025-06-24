@@ -1,4 +1,5 @@
 import { Icons } from "@/components/common/icons";
+import { siteMetadata } from "./siteMetadata";
 
 export const socialIcons = [
 	{
@@ -13,7 +14,7 @@ export const socialIcons = [
 	},
 	{
 		title: "GitHub",
-		href: "#",
+		href: siteMetadata.github,
 		Icon: Icons.gitHub,
 	},
 ] as const;
