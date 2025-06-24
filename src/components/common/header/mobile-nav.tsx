@@ -114,7 +114,7 @@ const MobileNav = () => {
 							onClick={() => setOpen(false)}
 							className="w-full"
 						>
-							<Link href="#">Get in touch</Link>
+							<Link href="#contact">Get in touch</Link>
 						</Button>
 					</nav>
 				</div>

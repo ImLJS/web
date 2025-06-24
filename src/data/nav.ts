@@ -9,7 +9,7 @@ export const NAV = [
 // This is a list of extra navigation links that are not part of the main site navigation.
 // Will Change isExternal to true when the external links are added.
 export const EXTRA_NAV = [
-	{ title: "Analytics", href: "#a", isExternal: false },
-	{ title: "RSS", href: "#b", isExternal: false },
-	{ title: "Source Code", href: "#c", isExternal: false },
+	{ title: "Analytics", href: "#", isExternal: false },
+	{ title: "RSS", href: "#", isExternal: false },
+	{ title: "Source Code", href: "#", isExternal: false },
 ];

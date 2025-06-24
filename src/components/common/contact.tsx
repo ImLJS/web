@@ -16,16 +16,16 @@ const Contact = () => {
 			</h2>
 			<div className="relative">
 				<div className="grid h-full grid-cols-2 divide-x">
-					<div className="flex items-center justify-center py-5 transition-colors hover:bg-paper/10 md:py-0">
-						<Icons.file className="h-8 w-8 text-paper opacity-50 hover:opacity-100" />
+					<div className="group flex items-center justify-center py-5 transition-colors hover:bg-paper/10 md:py-0">
+						<Icons.file className="h-8 w-8 text-paper opacity-50 group-hover:opacity-100" />
 						<h3 className="ml-2 font-semibold text-xl">Resume</h3>
 					</div>
-					<div className="py-5 transition-colors hover:bg-paper/10 md:py-0">
+					<div className="group py-5 transition-colors hover:bg-paper/10 md:py-0">
 						<Link
 							href={`mailto:${siteMetadata.email}`}
 							className="flex h-full items-center justify-center"
 						>
-							<Icons.mail className="h-8 w-8 text-paper opacity-50 hover:opacity-100" />
+							<Icons.mail className="h-8 w-8 text-paper opacity-50 group-hover:opacity-100" />
 							<h3 className="ml-2 font-semibold text-xl">Email</h3>
 						</Link>
 					</div>
