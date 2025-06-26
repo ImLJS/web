@@ -17,15 +17,16 @@ type FeaturedProjectCardProps = {
 
 const FeaturedProjectCard = ({ project }: FeaturedProjectCardProps) => {
 	return (
-		<BentoLayout linkTo={project.href} height="h-[276px]">
-			<div className="flex h-full flex-col gap-8">
+		<BentoLayout linkTo={project.href} height="h-[276px]" className="p-0">
+			<div className="relative flex h-full flex-col">
 				<Image
 					src={project.image}
 					alt={project.title}
 					fill
 					className="rounded-3xl p-4"
+					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 				/>
-				<div className="z-50 flex h-full flex-col justify-end">
+				<div className="z-50 flex h-full flex-col justify-end pb-6 pl-6">
 					<h2 className="mb-2 font-medium">{project.title}</h2>
 					<p className="text-muted-foreground text-sm">{project.description}</p>
 				</div>

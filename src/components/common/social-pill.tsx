@@ -3,7 +3,7 @@ import Link from "next/link";
 import ThemeToggle from "./header/theme-toggle";
 
 type SocialLinkProps = {
-	href: string;
+	href: string | undefined;
 	title: string;
 	Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 };
@@ -11,7 +11,7 @@ type SocialLinkProps = {
 const SocialLinks = ({ href, title, Icon }: SocialLinkProps) => {
 	return (
 		<Link
-			href={href}
+			href={href || "#"}
 			title={title}
 			className="flex items-center justify-center"
 		>

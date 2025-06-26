@@ -32,6 +32,7 @@ const Education = () => (
 								width={48}
 								height={48}
 								alt="Presidency University Logo"
+								style={{ width: "auto", height: "auto" }}
 							/>
 						</div>
 						<div className="flex flex-col gap-2">

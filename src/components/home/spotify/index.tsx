@@ -73,6 +73,7 @@ const Spotify = async () => {
 							src={album.images[0].url}
 							alt={album.name}
 							fill
+							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 							className="object-cover transition-transform group-hover:scale-105"
 						/>
 					</div>
