@@ -1,7 +1,7 @@
 "use client";
 
 import BentoLayout from "@/components/layouts/bento-layout";
-import { motion, type Variants } from "motion/react";
+import { type Variants, motion } from "motion/react";
 
 const lineVariants: Variants = {
 	initial: {

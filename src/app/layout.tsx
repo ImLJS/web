@@ -3,12 +3,12 @@ import "@/styles/globals.css";
 import Contact from "@/components/common/contact";
 import Footer from "@/components/common/footer/footer";
 import Header from "@/components/common/header";
+import { siteMetadata } from "@/data/siteMetadata";
 import { cn } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import Providers from "./providers";
-import { siteMetadata } from "@/data/siteMetadata";
 
 export const metadata: Metadata = {
 	title: {

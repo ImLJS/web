@@ -9,10 +9,10 @@ import { siteMetadata } from "@/data/siteMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'About',
-  description: siteMetadata.aboutDescription,
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-}
+	title: "About",
+	description: siteMetadata.aboutDescription,
+	icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
 
 const AboutPage = () => {
 	return (

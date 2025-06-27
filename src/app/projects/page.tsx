@@ -6,10 +6,10 @@ import { siteMetadata } from "@/data/siteMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Projects',
-  description: siteMetadata.projectsDescription,
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-}
+	title: "Projects",
+	description: siteMetadata.projectsDescription,
+	icons: [{ rel: "icon", url: "/favicon.ico" }],
+};
 
 const ProjectsPage = () => {
 	return (
