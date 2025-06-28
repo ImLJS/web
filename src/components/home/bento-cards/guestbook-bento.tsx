@@ -1,9 +1,9 @@
 "use client";
 
 import BentoLayout from "@/components/layouts/bento-layout";
-import { motion } from "motion/react";
+import { type Variants, motion } from "motion/react";
 
-const lineVariants = {
+const lineVariants: Variants = {
 	initial: {
 		opacity: 0.5,
 	},
@@ -17,7 +17,7 @@ const lineVariants = {
 	},
 };
 
-const card1Variants = {
+const card1Variants: Variants = {
 	initial: {
 		rotate: -8,
 		y: -15,
@@ -36,7 +36,7 @@ const card1Variants = {
 	},
 };
 
-const card2Variants = {
+const card2Variants: Variants = {
 	initial: {
 		rotate: 8,
 		y: -5,
@@ -141,7 +141,7 @@ const GuestbookBento = () => {
 										/>
 									</g>
 									<motion.rect
-										opacity="0.5"
+										opacity={0.5}
 										x="32.8682"
 										y="22.5352"
 										width="58"
@@ -152,7 +152,7 @@ const GuestbookBento = () => {
 										variants={lineVariants}
 									/>
 									<motion.rect
-										opacity="0.5"
+										opacity={0.5}
 										x="39.5215"
 										y="53.8359"
 										width="58"
@@ -163,7 +163,7 @@ const GuestbookBento = () => {
 										variants={lineVariants}
 									/>
 									<motion.rect
-										opacity="0.5"
+										opacity={0.5}
 										x="97.4263"
 										y="8.81303"
 										width="16"
@@ -174,7 +174,7 @@ const GuestbookBento = () => {
 										variants={lineVariants}
 									/>
 									<motion.rect
-										opacity="0.5"
+										opacity={0.5}
 										width="58"
 										height="8"
 										rx="4"
@@ -183,7 +183,7 @@ const GuestbookBento = () => {
 										variants={lineVariants}
 									/>
 									<motion.rect
-										opacity="0.5"
+										opacity={0.5}
 										width="16"
 										height="8"
 										rx="4"
@@ -429,7 +429,7 @@ const GuestbookBento = () => {
 									fill="url(#paint0_linear_1_2773)"
 								/>
 								<motion.rect
-									opacity="0.5"
+									opacity={0.5}
 									x="78.4663"
 									y="58.4864"
 									width="58"
@@ -440,7 +440,7 @@ const GuestbookBento = () => {
 									variants={lineVariants}
 								/>
 								<motion.rect
-									opacity="0.5"
+									opacity={0.5}
 									x="71.8135"
 									y="89.7871"
 									width="58"
@@ -451,7 +451,7 @@ const GuestbookBento = () => {
 									variants={lineVariants}
 								/>
 								<motion.rect
-									opacity="0.5"
+									opacity={0.5}
 									x="143.024"
 									y="72.2085"
 									width="16"
@@ -462,7 +462,7 @@ const GuestbookBento = () => {
 									variants={lineVariants}
 								/>
 								<motion.rect
-									opacity="0.5"
+									opacity={0.5}
 									width="58"
 									height="8"
 									rx="4"
@@ -471,7 +471,7 @@ const GuestbookBento = () => {
 									variants={lineVariants}
 								/>
 								<motion.rect
-									opacity="0.5"
+									opacity={0.5}
 									width="16"
 									height="8"
 									rx="4"

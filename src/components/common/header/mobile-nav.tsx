@@ -3,7 +3,7 @@
 import { atom, useAtom } from "jotai";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { memo } from "react";
+import { memo, useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import { NAV } from "@/data/nav";
@@ -81,11 +81,28 @@ export const MobileNavTrigger = () => {
 // Mobile nav component
 const MobileNav = () => {
 	const [open, setOpen] = useAtom(mobileMenuOpen);
+	const navRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				open &&
+				navRef.current &&
+				!navRef.current.contains(event.target as Node)
+			) {
+				setOpen(false);
+			}
+		};
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, [open, setOpen]);
 
 	return (
 		<>
 			<div className="pointer-events-none fixed top-14 left-0 z-10 flex h-[calc(100vh-5rem)] w-full flex-col gap-7 overflow-auto lg:hidden">
 				<div
+					ref={navRef}
 					className={cn(
 						"-translate-y-full flex w-full flex-col gap-2 rounded-b-md border-b bg-background px-6 pb-6 transition-transform duration-500 ease-in-expo sm:px-8",
 						{
@@ -101,6 +118,7 @@ const MobileNav = () => {
 										key={link.href}
 										href={link.href}
 										className="block w-full py-1.5 text-sm"
+										onClick={() => setOpen(false)}
 									>
 										{link.title}
 									</Link>

@@ -37,7 +37,13 @@ const DesktopNav = () => {
 		<>
 			<div className="w-32">
 				<Link href="/" aria-label="Avatar">
-					<Image src={"/avatar.png"} width={32} height={32} alt="Avatar" />
+					<Image
+						src={"/avatar.png"}
+						width={32}
+						height={32}
+						alt="Avatar"
+						priority
+					/>
 				</Link>
 			</div>
 			<nav className="hidden space-x-4 rounded-full border bg-card px-5 py-2 text-xs md:flex">

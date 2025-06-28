@@ -16,12 +16,7 @@ const NotFound = () => {
 				<p className="mx-2 mb-8 text-center">
 					But dont worry, you can find plenty of other things on our homepage.
 					Or you watch{" "}
-					<Link
-						href={
-							"https://youtu.be/dPmZqsQNzGA"
-						}
-						className="text-link"
-					>
+					<Link href={"https://youtu.be/dPmZqsQNzGA"} className="text-link">
 						This
 					</Link>{" "}
 					while you wait for the page to load.
