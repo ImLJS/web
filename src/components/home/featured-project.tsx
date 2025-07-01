@@ -19,15 +19,17 @@ const FeaturedProject = () => (
 		<div className="pt-4 pl-4 sm:pt-8 sm:pl-8">
 			<div className="dashed-line-top" />
 			<div className="dashed-line-left" />
-			<Image
-				alt="Project Image"
-				src={TempProjectImage}
-				className="aspect-video w-full rounded-tl-lg bg-muted sm:rounded-tl-2xl"
-				priority
-				width={1600}
-				height={900}
-				decoding="async"
-			/>
+			<div className="relative aspect-video w-full overflow-hidden rounded-tl-lg bg-muted sm:rounded-tl-2xl">
+				<Image
+					alt="Project Image"
+					src={TempProjectImage}
+					fill
+					className="object-cover"
+					priority
+					sizes="(min-width: 640px) 800px, 100vw"
+					decoding="async"
+				/>
+			</div>
 		</div>
 	</SplitWrapper>
 );

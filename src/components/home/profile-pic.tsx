@@ -19,7 +19,7 @@ const ProfilePicture = () => {
 					<motion.img
 						key={"avatar"}
 						className="h-[100px] w-[100px] rounded-full"
-						src={"./avatar.png"}
+						src={"/avatar.webp"}
 						alt=""
 						initial={{ scale: 0.8, opacity: 0 }}
 						animate={{ scale: 1, opacity: 1 }}

@@ -1,6 +1,7 @@
 import BentoLayout from "@/components/layouts/bento-layout";
 import { Badge } from "@/components/ui/badge";
 import { cn, getTimeOfDayGreeting } from "@/lib/utils";
+import Image from "next/image";
 
 const AboutMeBento = ({ linkTo }: { linkTo?: string }) => {
 	const timeOfDayGreeting = getTimeOfDayGreeting();
@@ -37,11 +38,15 @@ const AboutMeBento = ({ linkTo }: { linkTo?: string }) => {
 							/>
 						</div>
 					</div>
-					<img
-						className="-top-1 absolute left-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow transition-all duration-500 group-hover:rotate-[4deg] group-hover:scale-105"
-						src="/avatar.png"
-						alt="A headshot"
-					/>
+					<Image
+                        className="-top-1 absolute left-0 h-[270px] w-[180px] rotate-[8deg] rounded-lg object-cover shadow transition-all duration-500 group-hover:rotate-[4deg] group-hover:scale-105"
+                        src="/avatar.webp"
+                        alt="Avatar"
+                        width={180}
+                        height={270}
+                        sizes="180px"
+                        priority
+                    />
 				</div>
 			</div>
 		</BentoLayout>
