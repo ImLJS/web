@@ -57,7 +57,7 @@ const Footer = () => {
 							<div>
 								<div className="flex-grow space-y-6">
 									<Link className="inline-block" href="/">
-										<img className="h-10 w-10" src="/avatar.png" alt="Avatar" />
+										<img className="h-10 w-10" src="/avatar.webp" alt="Avatar" />
 									</Link>
 									<p className="w-60 text-muted-foreground leading-5">
 										I&apos;m Leone — a front-end developer, open-source

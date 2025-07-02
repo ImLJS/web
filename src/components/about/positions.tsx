@@ -11,7 +11,7 @@ const Positions = () => (
 	<SectionWrapper
 		className="grid lg:grid-cols-2"
 		heading="Work Experience"
-		description="Crafting web apps through real-world experience."
+		description="Crafting web apps from experience."
 	>
 		{allPositions.map((position, index, array) => (
 			<div

@@ -38,7 +38,7 @@ const DesktopNav = () => {
 			<div className="w-32">
 				<Link href="/" aria-label="Avatar">
 					<Image
-						src={"/avatar.png"}
+						src={"/avatar.webp"}
 						width={32}
 						height={32}
 						alt="Avatar"

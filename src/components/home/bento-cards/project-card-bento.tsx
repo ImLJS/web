@@ -1,6 +1,7 @@
 import BentoLayout from "@/components/layouts/bento-layout";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface ProjectCardBentoProps {
 	title: string;
@@ -33,18 +34,22 @@ const ProjectCardBento = ({
 				<div className="relative w-full">
 					<div
 						className="rounded-[20px] border p-2 transition-all duration-500 ease-out group-hover:border-indigo-primary"
-						style={{ width: "100%", height: "200px" }}
+						style={{ width: "100%", height: "130px" }}
 					>
 						<div
 							className="grid h-full place-items-center rounded-xl border-2 border-border/10 bg-muted"
 							style={{ boxShadow: "0px 2px 1.5px 0px #A5AEB852 inset" }}
 						/>
 					</div>
-					<img
-						className="absolute top-5 left-0 h-[200px] w-full rounded-lg object-cover shadow transition-all duration-500 group-hover:rotate-[4deg] group-hover:scale-105"
-						src={imageUrl}
-						alt={`${title} preview`}
-					/>
+					<div className="absolute top-6 left-0 h-[200px] w-full">
+						<Image
+							className="rounded-lg object-cover shadow transition-all duration-500 group-hover:scale-y-115"
+							src={imageUrl}
+							alt={`${title} preview`}
+							fill
+							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+						/>
+					</div>
 				</div>
 			</div>
 		</BentoLayout>

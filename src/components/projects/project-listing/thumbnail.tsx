@@ -23,7 +23,7 @@ interface ProjectThumbnailProps {
 }
 
 const ProjectThumbnail = ({ project, className }: ProjectThumbnailProps) => (
-	<Link href={`/work/${project.slug}`} key={project.slug}>
+	<Link href={"#"} key={project.slug}>
 		<article
 			className={cn(
 				"flex h-full flex-col justify-between gap-8 bg-background px-6 pt-6 transition-colors hover:bg-card dark:hover:bg-accent",
@@ -66,6 +66,7 @@ const ProjectThumbnail = ({ project, className }: ProjectThumbnailProps) => (
 					src={project.image}
 					alt={project.title}
 					fill
+					className="object-cover"
 					sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 				/>
 			</div>

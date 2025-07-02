@@ -75,7 +75,7 @@ const GitHubActivity = async () => {
 	return (
 		<SectionWrapper
 			heading="GitHub"
-			description="My digital footprint — one commit at a time."
+			description="Traces of what I build."
 		>
 			<div className="relative grid gap-0.5 border-t py-6 sm:grid-cols-2 sm:p-8">
 				{totalData.map((data) => (
