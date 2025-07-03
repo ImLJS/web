@@ -1,7 +1,6 @@
-import SplitWrapper from "../layouts/split-wrapper";
-
-import TempProjectImage from "../../../public/projects/temp_project.webp";
 import Image from "next/image";
+import TempProjectImage from "../../../public/projects/temp_project.webp";
+import SplitWrapper from "../layouts/split-wrapper";
 
 const FeaturedProject = () => (
 	<SplitWrapper
@@ -25,9 +24,8 @@ const FeaturedProject = () => (
 					src={TempProjectImage}
 					fill
 					className="object-cover"
-					priority
+					priority={false}
 					sizes="(min-width: 640px) 800px, 100vw"
-					decoding="async"
 				/>
 			</div>
 		</div>

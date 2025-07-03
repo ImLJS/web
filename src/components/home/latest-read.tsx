@@ -1,7 +1,7 @@
 import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
 
-import { ViewAnimation } from "../providers/view-animation";
+import Link from "next/link";
 
 const getLatestRead = cache(
 	() =>
@@ -23,12 +23,8 @@ const LatestRead = async () => {
 	const { title, author, thumbnail, link } = data;
 
 	return (
-		<ViewAnimation
-			initial={{ opacity: 0 }}
-			whileInView={{ opacity: 1 }}
-			className="h-full"
-		>
-			<a
+		<div className="h-full">
+			<Link
 				href={link}
 				className="group relative block h-full w-full overflow-hidden rounded-lg border bg-card shadow-tile transition-colors hover:bg-accent"
 				target="_blank"
@@ -58,8 +54,8 @@ const LatestRead = async () => {
 						/>
 					</div>
 				</div>
-			</a>
-		</ViewAnimation>
+			</Link>
+		</div>
 	);
 };
 

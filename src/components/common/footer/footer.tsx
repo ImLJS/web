@@ -1,5 +1,6 @@
 import { EXTRA_NAV, NAV } from "@/data/nav";
 import { PROJECTS } from "@/data/projects";
+import Image from "next/image";
 import Link from "next/link";
 import SocialPill from "../social-pill";
 
@@ -57,7 +58,14 @@ const Footer = () => {
 							<div>
 								<div className="flex-grow space-y-6">
 									<Link className="inline-block" href="/">
-										<img className="h-10 w-10" src="/avatar.webp" alt="Avatar" />
+										<Image
+											className="h-10 w-10"
+											src="/avatar.webp"
+											alt="Avatar"
+											width={40}
+											height={40}
+											sizes="40px"
+										/>
 									</Link>
 									<p className="w-60 text-muted-foreground leading-5">
 										I&apos;m Leone — a front-end developer, open-source

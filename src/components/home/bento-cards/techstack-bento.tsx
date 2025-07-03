@@ -25,7 +25,7 @@ const TechStackBento = ({ linkTo }: { linkTo?: string }) => {
 				</div>
 				<div className="relative mt-2 w-full">
 					<Marquee pauseOnHover className="h-[48px]">
-						{allSkills.map(({ name, icon: Icon, link }) => (
+						{allSkills.map(({ name, icon: Icon }) => (
 							<div
 								key={name}
 								title={name}

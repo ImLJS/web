@@ -1,4 +1,5 @@
 import * as motion from "motion/react-client";
+import Image from "next/image";
 import { Icons } from "../common/icons";
 
 const ProfilePicture = () => {
@@ -16,11 +17,9 @@ const ProfilePicture = () => {
 					<Icons.concentric_circles className="mx-auto" />
 				</motion.div>
 				<div className="absolute inset-0 flex items-center justify-center">
-					<motion.img
+					<motion.div
 						key={"avatar"}
-						className="h-[100px] w-[100px] rounded-full"
-						src={"/avatar.webp"}
-						alt=""
+						className="h-[100px] w-[100px] overflow-hidden rounded-full"
 						initial={{ scale: 0.8, opacity: 0 }}
 						animate={{ scale: 1, opacity: 1 }}
 						exit={{ scale: 0.8, opacity: 0 }}
@@ -29,7 +28,17 @@ const ProfilePicture = () => {
 							stiffness: 300,
 							damping: 20,
 						}}
-					/>
+					>
+						<Image
+							src="/avatar.webp"
+							alt="avatar"
+							width={100}
+							height={100}
+							className="h-full w-full object-cover"
+							sizes="100px"
+							priority
+						/>
+					</motion.div>
 				</div>
 			</div>
 		</div>
