@@ -1,8 +1,5 @@
 import "@/styles/globals.css";
 
-import Contact from "@/components/common/contact";
-import Footer from "@/components/common/footer/footer";
-import Header from "@/components/common/header";
 import { siteMetadata } from "@/data/siteMetadata";
 import { cn } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
@@ -33,14 +30,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 							"relative flex min-h-screen flex-1 flex-col border-border/50 border-x",
 						)}
 					>
-						<Header />
-						<div className="grid flex-1 grid-cols-1 lg:grid-cols-[32px_1fr_32px]">
-							<div className="hidden w-full border-r bg-dashed opacity-75 lg:block" />
-							<div className="relative col-span-1">{children}</div>
-							<div className="hidden w-full border-l bg-dashed opacity-75 lg:block" />
-						</div>
-						<Contact />
-						<Footer />
+						{children}
 					</main>
 				</Providers>
 			</body>
