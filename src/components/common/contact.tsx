@@ -1,12 +1,11 @@
 import { siteMetadata } from "@/data/siteMetadata";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import SectionWrapper from "../layouts/section-wrapper";
 import { Icons } from "./icons";
 
 const Contact = () => {
 	return (
-		<SectionWrapper
+		<div
 			id="contact"
 			className={cn("grid gap-8 bg-dashed p-6 sm:grid-cols-2 sm:p-8")}
 		>
@@ -35,7 +34,7 @@ const Contact = () => {
 				<div className="faded-line-left" />
 				<div className="faded-line-right" />
 			</div>
-		</SectionWrapper>
+		</div>
 	);
 };
 
