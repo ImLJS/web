@@ -14,9 +14,7 @@ const GuestbookBento = ({ title, description, href }: GuestbookBentoProps) => {
 			<div className="grid h-full grid-cols-2 grid-rows-2 items-end gap-8">
 				<div className="z-10 col-1 row-start-2">
 					<h2 className="mb-2 font-medium">{title}</h2>
-					<p className="text-muted-foreground">
-						{description}
-					</p>
+					<p className="text-muted-foreground">{description}</p>
 				</div>
 			</div>
 		</BentoLayout>

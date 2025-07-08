@@ -15,7 +15,22 @@ export const EXTRA_NAV = [
 ];
 
 export const MISC_NAV = [
-	{ title: "Guestbook", href: ROUTES.GUESTBOOK, isExternal: false, description: "Let everyone know you were here" },
-	{ title: "Apps", href: ROUTES.APP, isExternal: false, description: "Explore my web apps" },
-	{ title: "Snippets", href: ROUTES.SNIPPETS, isExternal: false, description: "Explore my code snippets" },
-]
+	{
+		title: "Guestbook",
+		href: ROUTES.GUESTBOOK,
+		isExternal: false,
+		description: "Let everyone know you were here",
+	},
+	{
+		title: "Apps",
+		href: ROUTES.APP,
+		isExternal: false,
+		description: "Explore my web apps",
+	},
+	{
+		title: "Snippets",
+		href: ROUTES.SNIPPETS,
+		isExternal: false,
+		description: "Explore my code snippets",
+	},
+];
