@@ -1,15 +1,23 @@
+"use client";
+
 import Header from "@/components/common/header";
 import ProfilePicture from "@/components/home/profile-pic";
 import DashedLayout from "@/components/layouts/dashed-layout";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/data/routes";
-import { signIn } from "@/lib/auth/auth-client";
+import { authClient } from "@/lib/auth-client";
 
 const handleSignIn = async () => {
-	await signIn.social({
-		provider: "github",
-		callbackURL: ROUTES.ADMIN,
-	});
+	try {
+		console.log("Attempting to sign in...");
+		const result = await authClient.signIn.social({
+			provider: "github",
+			callbackURL: ROUTES.ADMIN,
+		});
+		console.log("Sign in result:", result);
+	} catch (error) {
+		console.error("Sign in error:", error);
+	}
 };
 
 const SignIn = () => {
@@ -34,7 +42,10 @@ const SignIn = () => {
 
 					<div className="flex flex-col items-center justify-center gap-6 px-6">
 						<ProfilePicture />
-						<Button className="rounded-lg px-6 py-5 font-medium text-base">
+						<Button
+							className="rounded-lg px-6 py-5 font-medium text-base"
+							onClick={handleSignIn}
+						>
 							Sign in as
 							<span className="font-semibold">@ImLJS</span>
 						</Button>
