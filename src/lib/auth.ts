@@ -1,17 +1,16 @@
 import { getBaseUrl } from "@/utils/get-base-url";
-import { PrismaClient } from "@prisma/client";
 import { betterAuth } from "better-auth";
-import { prismaAdapter } from "better-auth/adapters/prisma";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { headers } from "next/headers";
 import type { NextRequest } from "next/server";
-
-const prisma = new PrismaClient();
+import { db } from "@/db";
 
 export const auth = betterAuth({
 	baseURL: getBaseUrl(),
 	trustedOrigins: [getBaseUrl()],
-	database: prismaAdapter(prisma, {
-		provider: "sqlite",
+	database: drizzleAdapter(db, {
+		provider: "pg",
+		usePlural: true
 	}),
 	socialProviders: {
 		github: {
