@@ -25,7 +25,6 @@ const Path = (
 		strokeWidth="2"
 		className="stroke-foreground"
 		strokeLinecap="round"
-		layout
 		{...props}
 	/>
 );
@@ -36,7 +35,7 @@ interface HamburgerProps {
 }
 
 const Hamburger = memo<HamburgerProps>(({ open, onToggle }) => (
-	<motion.button onClick={onToggle}>
+	<motion.button onClick={onToggle} data-mobile-nav-trigger="true">
 		<span className="sr-only">{open ? "close" : "open"} menu</span>
 		<svg width="22" height="20" viewBox="0 0 22 20">
 			<title>Hamburger</title>
@@ -88,7 +87,8 @@ const MobileNav = () => {
 			if (
 				open &&
 				navRef.current &&
-				!navRef.current.contains(event.target as Node)
+				!navRef.current.contains(event.target as Node) &&
+				!(event.target as Element).closest("[data-mobile-nav-trigger]")
 			) {
 				setOpen(false);
 			}

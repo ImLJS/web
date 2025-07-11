@@ -2,6 +2,7 @@ export const siteMetadata = {
 	title: "me",
 	name: "Leone Jacob",
 	headerTitle: "Leone Jacob",
+	baseUrl: process.env.BETTER_AUTH_URL,
 	github: process.env.NEXT_PUBLIC_GITHUB,
 	linkedin: process.env.NEXT_PUBLIC_LINKEDIN,
 	email: process.env.NEXT_PUBLIC_EMAIL,

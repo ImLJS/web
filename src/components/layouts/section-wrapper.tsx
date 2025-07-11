@@ -36,8 +36,14 @@ const SectionWrapper = ({
 		<div
 			className={cn(
 				"relative w-full",
-				"after:-left-4 md:after:-left-8 after:right-[-1rem] md:after:right-[-2rem] lg:after:inset-x-0",
-				"before:-left-4 md:before:-left-8 before:right-[-1rem] md:before:right-[-2rem] lg:before:inset-x-0",
+				// Mobile: keep lines within viewport
+				"after:right-0 after:left-0",
+				"before:right-0 before:left-0",
+				// Medium screens and up: extend lines
+				"md:after:-left-8 md:after:right-[-2rem]",
+				"md:before:-left-8 md:before:right-[-2rem]",
+				// Large screens: full width
+				"lg:after:inset-x-0 lg:before:inset-x-0",
 				"after:absolute after:bottom-0 after:h-px after:bg-border",
 				"before:absolute before:top-0 before:h-px before:bg-border",
 			)}

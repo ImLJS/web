@@ -1,6 +1,7 @@
 import BentoLayout from "@/components/layouts/bento-layout";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const SideProjectsBento = ({ linkTo }: { linkTo?: string }) => {
 	return (
@@ -24,11 +25,13 @@ const SideProjectsBento = ({ linkTo }: { linkTo?: string }) => {
 					</p>
 				</div>
 
-				<div className="relative w-full">
-					<img
+				<div className="relative h-[160px] w-full">
+					<Image
 						src="/projects/temp_project.webp"
 						alt="Side Projects Preview"
-						className="h-[160px] w-full rounded-xl object-cover shadow transition-all duration-500 group-hover:scale-105"
+						fill
+						className="rounded-xl object-cover shadow transition-all duration-500 group-hover:scale-105"
+						sizes="(max-width: 768px) 100vw, 50vw"
 					/>
 				</div>
 			</div>

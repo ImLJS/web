@@ -7,9 +7,9 @@ const Hero = () => {
 			<div className="relative text-balance">
 				<ProfilePicture />
 				<SectionWrapper>
-					<p className="mx-auto max-w-2xl text-center font-medium text-4xl leading-tight tracking-tighter md:text-6xl md:leading-[64px]">
+					<h1 className="mx-auto max-w-2xl text-center font-medium text-4xl leading-tight tracking-tighter md:text-6xl md:leading-[64px]">
 						Hey, I&apos;m Leone! <br /> Welcome to my corner of the internet!
-					</p>
+					</h1>
 				</SectionWrapper>
 				<SectionWrapper>
 					<div className="mt-4 text-center md:mt-8">

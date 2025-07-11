@@ -1,12 +1,10 @@
-import dayjs from "dayjs";
-import { unstable_cache as cache } from "next/cache";
-
-import { Calendar } from "./calendar";
-
 import SectionWrapper from "@/components/layouts/section-wrapper";
 import { siteMetadata } from "@/data/siteMetadata";
+import dayjs from "dayjs";
+import { unstable_cache as cache } from "next/cache";
 import Link from "next/link";
 import type { Activity } from "react-activity-calendar";
+import { Calendar } from "./calendar";
 
 const getContributions = cache(
 	async () => {
@@ -73,10 +71,7 @@ const GitHubActivity = async () => {
 	];
 
 	return (
-		<SectionWrapper
-			heading="GitHub"
-			description="Traces of what I build."
-		>
+		<SectionWrapper heading="GitHub" description="Traces of what I build.">
 			<div className="relative grid gap-0.5 border-t py-6 sm:grid-cols-2 sm:p-8">
 				{totalData.map((data) => (
 					<Calendar

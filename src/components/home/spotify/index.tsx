@@ -1,8 +1,6 @@
 import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
-
-import { ViewAnimation } from "@/components/providers/view-animation";
-
+import Link from "next/link";
 import { FaCircle, FaSpotify } from "react-icons/fa";
 import { fetchLastTrack } from "./api/spotify";
 import { TRACK_STATUS } from "./types";
@@ -17,12 +15,8 @@ const Spotify = async () => {
 	const { artists, album, name, external_urls } = data.track;
 
 	return (
-		<ViewAnimation
-			initial={{ opacity: 0 }}
-			whileInView={{ opacity: 1 }}
-			className="h-full"
-		>
-			<a
+		<div className="h-full">
+			<Link
 				href={external_urls.spotify}
 				className="group relative block h-full w-full overflow-hidden rounded-lg border bg-card shadow-tile transition-colors hover:bg-accent"
 				target="_blank"
@@ -71,15 +65,16 @@ const Spotify = async () => {
 					<div className="relative w-2/5 shrink-0 self-stretch">
 						<Image
 							src={album.images[0].url}
-							alt={album.name}
+							alt={`${album.name} album cover`}
 							fill
-							sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+							sizes="(max-width: 768px) 40vw, (max-width: 1200px) 20vw, 15vw"
 							className="object-cover transition-transform group-hover:scale-105"
+							priority={false}
 						/>
 					</div>
 				</div>
-			</a>
-		</ViewAnimation>
+			</Link>
+		</div>
 	);
 };
 
