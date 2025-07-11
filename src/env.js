@@ -14,6 +14,8 @@ export const env = createEnv({
 		BETTER_AUTH_SECRET: z.string(),
 		GITHUB_CLIENT_ID: z.string(),
 		GITHUB_CLIENT_SECRET: z.string(),
+		GITHUB_CLIENT_ID_DEV: z.string().optional(),
+		GITHUB_CLIENT_SECRET_DEV: z.string().optional(),
 		NODE_ENV: z
 			.enum(["development", "test", "production"])
 			.default("development"),
@@ -47,6 +49,8 @@ export const env = createEnv({
 		SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
 		GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
 		GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+		GITHUB_CLIENT_ID_DEV: process.env.GITHUB_CLIENT_ID_DEV,
+		GITHUB_CLIENT_SECRET_DEV: process.env.GITHUB_CLIENT_SECRET_DEV,
 		BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
 		NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
 		NODE_ENV: process.env.NODE_ENV,

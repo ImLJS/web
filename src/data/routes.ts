@@ -6,4 +6,5 @@ export const ROUTES = {
 	APP: "/app",
 	SNIPPETS: "/snippets",
 	ADMIN: "/admin",
+	SIGN_IN: "/sign-in",
 };

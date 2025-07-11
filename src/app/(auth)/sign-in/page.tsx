@@ -5,22 +5,26 @@ import ProfilePicture from "@/components/home/profile-pic";
 import DashedLayout from "@/components/layouts/dashed-layout";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/data/routes";
-import { authClient } from "@/lib/auth-client";
-
-const handleSignIn = async () => {
-	try {
-		console.log("Attempting to sign in...");
-		const result = await authClient.signIn.social({
-			provider: "github",
-			callbackURL: ROUTES.ADMIN,
-		});
-		console.log("Sign in result:", result);
-	} catch (error) {
-		console.error("Sign in error:", error);
-	}
-};
+import { signIn } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const SignIn = () => {
+	const router = useRouter();
+
+	const handleSignIn = async () => {
+		await signIn.social({
+			provider: "github",
+			callbackURL: ROUTES.ADMIN,
+			fetchOptions: {
+				onError: () => {
+					router.push(ROUTES.SIGN_IN);
+					toast.error("Failed to sign in. Please try again.");
+				},
+			},
+		});
+	};
+
 	return (
 		<>
 			<Header />

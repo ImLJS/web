@@ -25,7 +25,6 @@ const Path = (
 		strokeWidth="2"
 		className="stroke-foreground"
 		strokeLinecap="round"
-		layout
 		{...props}
 	/>
 );

@@ -1,27 +1,26 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { authClient } from "@/lib/auth-client";
+import { ROUTES } from "@/data/routes";
+import { signOut } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const AdminPage = () => {
 	const router = useRouter();
 
 	const handleSignOut = async () => {
-		try {
-			console.log("Attempting to sign out...");
-			const result = await authClient.signOut({
-				fetchOptions: {
-					onSuccess: () => {
-						console.log("Sign out successful, redirecting to home page...");
-						router.push("/");
-					},
+		await signOut({
+			fetchOptions: {
+				onSuccess: () => {
+					router.push(ROUTES.SIGN_IN);
+					toast.success("Successfully signed out!");
 				},
-			});
-			console.log("Sign out result:", result);
-		} catch (error) {
-			console.error("Sign out error:", error);
-		}
+				onError: () => {
+					toast.error("Failed to sign out. Please try again.");
+				},
+			},
+		});
 	};
 
 	return (
