@@ -1,5 +1,6 @@
 import { socialIcons } from "@/data/social-icons";
 import Link from "next/link";
+import LogOut from "./header/log-out";
 import ThemeToggle from "./header/theme-toggle";
 
 type SocialLinkProps = {
@@ -24,6 +25,7 @@ const SocialLinks = ({ href, title, Icon }: SocialLinkProps) => {
 const SocialPill = () => {
 	return (
 		<div className="z-30 flex items-center justify-center gap-2 rounded-full bg-dark px-4 py-1">
+			<LogOut />
 			<ThemeToggle />
 			{socialIcons.map((social) => (
 				<SocialLinks key={social.title} {...social} />

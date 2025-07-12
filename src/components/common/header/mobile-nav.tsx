@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ADMIN_NAV, NAV } from "@/data/nav";
 import { cn } from "@/lib/utils";
 
-import { useSession } from "@/lib/auth-client";
+import { checkIsAdminClient } from "@/lib/auth-client";
 import type { ForwardRefComponent, SVGMotionProps } from "motion/react";
 import type { ComponentProps } from "react";
 
@@ -82,9 +82,7 @@ export const MobileNavTrigger = () => {
 const MobileNav = () => {
 	const [open, setOpen] = useAtom(mobileMenuOpen);
 	const navRef = useRef<HTMLDivElement>(null);
-	const { data: session } = useSession();
-
-	const isAdmin = session && session?.user?.role === "admin";
+	const isAdmin = checkIsAdminClient();
 
 	const NAV_DATA = isAdmin ? ADMIN_NAV : NAV;
 

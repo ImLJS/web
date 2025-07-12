@@ -35,3 +35,8 @@ export const getSession = async (request?: NextRequest) => {
 		headers: request ? request.headers : await headers(),
 	});
 };
+
+export const checkIsAdmin = async (request?: NextRequest) => {
+	const session = await getSession(request);
+	return session?.user?.role === "admin";
+};

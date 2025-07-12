@@ -9,7 +9,7 @@ import { signIn } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
-const SignIn = () => {
+const LogIn = () => {
 	const router = useRouter();
 
 	const handleSignIn = async () => {
@@ -18,7 +18,7 @@ const SignIn = () => {
 			callbackURL: ROUTES.ADMIN,
 			fetchOptions: {
 				onError: () => {
-					router.push(ROUTES.SIGN_IN);
+					router.push(ROUTES.LOGIN);
 					toast.error("Failed to sign in. Please try again.");
 				},
 			},
@@ -60,4 +60,4 @@ const SignIn = () => {
 	);
 };
 
-export default SignIn;
+export default LogIn;

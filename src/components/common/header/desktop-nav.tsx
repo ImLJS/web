@@ -1,7 +1,7 @@
 "use client";
 
 import { ADMIN_NAV, NAV } from "@/data/nav";
-import { useSession } from "@/lib/auth-client";
+import { checkIsAdminClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,9 +34,7 @@ const NavLink = ({ title, href }: NavLinkType) => {
 };
 
 const DesktopNav = () => {
-	const { data: session } = useSession();
-
-	const isAdmin = session && session?.user?.role === "admin";
+	const isAdmin = checkIsAdminClient();
 
 	const NAV_DATA = isAdmin ? ADMIN_NAV : NAV;
 	return (
