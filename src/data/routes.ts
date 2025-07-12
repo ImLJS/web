@@ -7,4 +7,6 @@ export const ROUTES = {
 	SNIPPETS: "/snippets",
 	ADMIN: "/admin",
 	SIGN_IN: "/sign-in",
+	DASHBOARD: "/admin/dashboard",
+	MANAGE: "/admin/manage",
 };

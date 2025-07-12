@@ -1,6 +1,7 @@
 "use client";
 
-import { NAV } from "@/data/nav";
+import { ADMIN_NAV, NAV } from "@/data/nav";
+import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,6 +34,11 @@ const NavLink = ({ title, href }: NavLinkType) => {
 };
 
 const DesktopNav = () => {
+	const { data: session } = useSession();
+
+	const isAdmin = session && session?.user?.role === "admin";
+
+	const NAV_DATA = isAdmin ? ADMIN_NAV : NAV;
 	return (
 		<>
 			<div className="w-32">
@@ -47,7 +53,7 @@ const DesktopNav = () => {
 				</Link>
 			</div>
 			<nav className="hidden space-x-4 rounded-full border bg-card px-5 py-2 text-xs md:flex">
-				{NAV.map((link) => (
+				{NAV_DATA.map((link) => (
 					<NavLink {...link} key={link.href} />
 				))}
 			</nav>

@@ -1,23 +1,9 @@
+import { db } from "@/db";
 import { getBaseUrl } from "@/utils/get-base-url";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { headers } from "next/headers";
 import type { NextRequest } from "next/server";
-import { db } from "@/db";
-
-const getGitHubConfig = () => {
-	const baseUrl = getBaseUrl();
-	const isNetworkIP = baseUrl.includes("10.221.96.26");
-
-	return {
-		clientId: isNetworkIP
-			? (process.env.GITHUB_CLIENT_ID_DEV as string)
-			: (process.env.GITHUB_CLIENT_ID as string),
-		clientSecret: isNetworkIP
-			? (process.env.GITHUB_CLIENT_SECRET_DEV as string)
-			: (process.env.GITHUB_CLIENT_SECRET as string),
-	};
-};
 
 export const auth = betterAuth({
 	baseURL: getBaseUrl(),
@@ -27,7 +13,10 @@ export const auth = betterAuth({
 		usePlural: true,
 	}),
 	socialProviders: {
-		github: getGitHubConfig()
+		github: {
+			clientId: process.env.GITHUB_CLIENT_ID as string,
+			clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+		},
 	},
 	user: {
 		additionalFields: {
