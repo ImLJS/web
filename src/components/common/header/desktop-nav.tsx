@@ -37,6 +37,7 @@ const DesktopNav = () => {
 	const isAdmin = checkIsAdminClient();
 
 	const NAV_DATA = isAdmin ? ADMIN_NAV : NAV;
+
 	return (
 		<>
 			<div className="w-32">
