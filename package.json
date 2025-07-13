@@ -27,7 +27,6 @@
 		"dayjs": "^1.11.13",
 		"developer-icons": "^5.3.9",
 		"drizzle-orm": "^0.44.2",
-		"geist": "^1.4.2",
 		"jotai": "^2.12.5",
 		"lucide-react": "^0.511.0",
 		"motion": "^12.23.3",
@@ -60,6 +59,8 @@
 	},
 	"trustedDependencies": [
 		"@biomejs/biome",
-		"@tailwindcss/oxide"
+		"@tailwindcss/oxide",
+		"esbuild",
+		"sharp"
 	]
 }

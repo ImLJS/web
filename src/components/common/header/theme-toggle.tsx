@@ -13,7 +13,9 @@ const ThemeToggle = () => {
 	}, []);
 
 	if (!mounted) {
-		return null;
+		return (
+			<Icons.mode_toggle className="size-4.5 text-paper opacity-50 hover:opacity-100" />
+		);
 	}
 
 	const handleSetTheme = () => {

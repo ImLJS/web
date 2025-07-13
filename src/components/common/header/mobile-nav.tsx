@@ -6,9 +6,10 @@ import Link from "next/link";
 import { memo, useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
-import { NAV } from "@/data/nav";
+import { ADMIN_NAV, NAV } from "@/data/nav";
 import { cn } from "@/lib/utils";
 
+import { checkIsAdminClient } from "@/lib/auth-client";
 import type { ForwardRefComponent, SVGMotionProps } from "motion/react";
 import type { ComponentProps } from "react";
 
@@ -81,6 +82,9 @@ export const MobileNavTrigger = () => {
 const MobileNav = () => {
 	const [open, setOpen] = useAtom(mobileMenuOpen);
 	const navRef = useRef<HTMLDivElement>(null);
+	const isAdmin = checkIsAdminClient();
+
+	const NAV_DATA = isAdmin ? ADMIN_NAV : NAV;
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -112,7 +116,7 @@ const MobileNav = () => {
 				>
 					<nav className="flex flex-col items-start gap-2.5">
 						<ul className="w-full">
-							{NAV.map((link) => (
+							{NAV_DATA.map((link) => (
 								<li key={link.href} className="w-full">
 									<Link
 										key={link.href}
@@ -126,14 +130,16 @@ const MobileNav = () => {
 							))}
 						</ul>
 
-						<Button
-							variant="outline"
-							asChild
-							onClick={() => setOpen(false)}
-							className="w-full"
-						>
-							<Link href="#contact">Get in touch</Link>
-						</Button>
+						{!isAdmin && (
+							<Button
+								variant="outline"
+								asChild
+								onClick={() => setOpen(false)}
+								className="w-full"
+							>
+								<Link href="#contact">Get in touch</Link>
+							</Button>
+						)}
 					</nav>
 				</div>
 			</div>
