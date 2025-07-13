@@ -4,14 +4,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
 	robots: { index: false, follow: false },
 	...getMetadata({
-		title: "Admin",
+		title: "Log In",
 		description: "Internal",
-		url: "/admin",
+		url: "/login",
 	}),
 };
 
-const AdminPage = () => {
-	return <div>Hello Admin!</div>;
+const LogInLayout = ({ children }: { children: React.ReactNode }) => {
+	return <>{children}</>;
 };
-
-export default AdminPage;
+export default LogInLayout;

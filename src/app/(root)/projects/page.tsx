@@ -3,13 +3,14 @@ import HeroLayout from "@/components/layouts/hero-layout";
 import Projects from "@/components/projects/project-listing";
 import Skills from "@/components/projects/skills";
 import { siteMetadata } from "@/data/siteMetadata";
+import { getMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = getMetadata({
 	title: "Projects",
 	description: siteMetadata.projectsDescription,
-	icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
+	url: "/projects",
+});
 
 const ProjectsPage = () => {
 	return (

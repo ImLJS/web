@@ -3,11 +3,13 @@ import type { Metadata } from "next";
 type MetadataProps = {
 	title: string;
 	description: string;
+	url?: string;
 };
 
 export const getMetadata = ({
 	title,
 	description,
+	url = "/",
 }: MetadataProps): Metadata => {
 	return {
 		title,
@@ -15,7 +17,7 @@ export const getMetadata = ({
 		openGraph: {
 			title,
 			description,
-			url: "/",
+			url,
 			images: [
 				{
 					url: "https://imljs.dev/og-image.png",

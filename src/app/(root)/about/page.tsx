@@ -6,13 +6,14 @@ import GitHubActivity from "@/components/home/github";
 import HeroLayout from "@/components/layouts/hero-layout";
 import Skills from "@/components/projects/skills";
 import { siteMetadata } from "@/data/siteMetadata";
+import { getMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = getMetadata({
 	title: "About",
 	description: siteMetadata.aboutDescription,
-	icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
+	url: "/about",
+});
 
 const AboutPage = () => {
 	return (
