@@ -1,6 +1,6 @@
 import About from "@/components/home/about";
 import FeaturedProject from "@/components/home/featured-project";
-import GitHubActivity from "@/components/home/github";
+import GitHubActivity from "@/components/common/github";
 import Hero from "@/components/home/hero";
 import Misc from "@/components/home/misc";
 import MySite from "@/components/home/my-site";

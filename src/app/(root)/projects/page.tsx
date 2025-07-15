@@ -1,4 +1,4 @@
-import GitHubActivity from "@/components/home/github";
+import GitHubActivity from "@/components/common/github";
 import HeroLayout from "@/components/layouts/hero-layout";
 import Projects from "@/components/projects/project-listing";
 import Skills from "@/components/projects/skills";
