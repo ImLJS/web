@@ -1,8 +1,9 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import type { IconType } from "react-icons/lib";
 import { Icons } from "../common/icons";
 
-interface BentoCardProps {
+interface BentoLayoutProps {
 	children: React.ReactNode;
 	height?: string;
 	rowSpan?: number;
@@ -11,6 +12,13 @@ interface BentoCardProps {
 	showHoverGradient?: boolean;
 	hideOverflow?: boolean;
 	linkTo?: string;
+}
+
+interface BentoCardProps {
+	title: string;
+	href: string;
+	description: string;
+	icon: IconType;
 }
 
 const BentoLayout = ({
@@ -22,7 +30,7 @@ const BentoLayout = ({
 	showHoverGradient = true,
 	hideOverflow = true,
 	linkTo,
-}: BentoCardProps) => {
+}: BentoLayoutProps) => {
 	const spanClass = `${height} row-span-${rowSpan} col-span-${colSpan} ${className}`;
 
 	const cardContent = (
@@ -63,6 +71,27 @@ const BentoLayout = ({
 	}
 
 	return cardContent;
+};
+
+export const BentoCard = ({
+	title,
+	href,
+	description,
+	icon: Icon,
+}: BentoCardProps) => {
+	return (
+		<BentoLayout linkTo={href}>
+			<div className="flex items-center gap-4">
+				<div className="flex size-10 items-center justify-center rounded-lg bg-muted p-2">
+					<Icon />
+				</div>
+				<div>
+					<h2 className="mb-1 font-semibold">{title}</h2>
+					<p className="line-clamp-2 text-muted-foreground">{description}</p>
+				</div>
+			</div>
+		</BentoLayout>
+	);
 };
 
 export default BentoLayout;

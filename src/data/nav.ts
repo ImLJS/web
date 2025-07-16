@@ -1,3 +1,12 @@
+import {
+	FiBox,
+	FiCode,
+	FiEdit3,
+	FiImage,
+	FiMessageCircle,
+	FiTerminal,
+	FiUploadCloud,
+} from "react-icons/fi";
 import { ROUTES } from "./routes";
 
 export const NAV = [
@@ -19,20 +28,68 @@ export const EXTRA_NAV = [
 export const MISC_NAV = [
 	{
 		title: "Guestbook",
-		href: ROUTES.GUESTBOOK,
+		href: "#",
 		isExternal: false,
 		description: "Let everyone know you were here",
+		icon: FiMessageCircle,
 	},
 	{
 		title: "Apps",
-		href: ROUTES.APP,
+		href: "#",
 		isExternal: false,
 		description: "Explore my web apps",
+		icon: FiBox,
 	},
 	{
 		title: "Snippets",
-		href: ROUTES.SNIPPETS,
+		href: "#",
 		isExternal: false,
 		description: "Explore my code snippets",
+		icon: FiCode,
+	},
+];
+
+export const ADMIN_APP_CARDS = [
+	{
+		title: "Gallery",
+		href: "/admin/gallery",
+		isExternal: false,
+		description: "Manage your image uploads",
+		icon: FiImage,
+	},
+	{
+		title: "File Manager",
+		href: "/admin/files",
+		isExternal: false,
+		description: "Upload and organize your files",
+		icon: FiUploadCloud,
+	},
+	{
+		title: "Notes",
+		href: "/admin/notes",
+		isExternal: false,
+		description: "Write and store personal notes",
+		icon: FiEdit3,
+	},
+	{
+		title: "Playground",
+		href: "/admin/playground",
+		isExternal: false,
+		description: "Experiment and test new features",
+		icon: FiTerminal,
+	},
+	{
+		title: "Guestbook",
+		href: "/admin/guestbook",
+		isExternal: false,
+		description: "Let everyone know you were here",
+		icon: FiMessageCircle,
+	},
+	{
+		title: "Snippets",
+		href: "/admin/snippets",
+		isExternal: false,
+		description: "Explore and reuse code snippets",
+		icon: FiCode,
 	},
 ];
