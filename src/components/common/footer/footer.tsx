@@ -1,4 +1,4 @@
-import { EXTRA_NAV, NAV } from "@/data/nav";
+import { NAVIGATION } from "@/data/nav";
 import { PROJECTS } from "@/data/projects";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +13,7 @@ type FooterLink = {
 const footerSections = [
 	{
 		title: "General",
-		links: NAV,
+		links: NAVIGATION.main,
 	},
 	{
 		title: "Projects",
@@ -21,7 +21,7 @@ const footerSections = [
 	},
 	{
 		title: "This Site",
-		links: EXTRA_NAV,
+		links: NAVIGATION.extra,
 	},
 ];
 

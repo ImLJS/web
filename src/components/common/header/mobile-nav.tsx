@@ -6,7 +6,7 @@ import Link from "next/link";
 import { memo, useEffect, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
-import { ADMIN_NAV, NAV } from "@/data/nav";
+import { NAVIGATION } from "@/data/nav";
 import { cn } from "@/lib/utils";
 
 import { checkIsAdminClient } from "@/lib/auth-client";
@@ -84,7 +84,7 @@ const MobileNav = () => {
 	const navRef = useRef<HTMLDivElement>(null);
 	const isAdmin = checkIsAdminClient();
 
-	const NAV_DATA = isAdmin ? ADMIN_NAV : NAV;
+	const NAV_DATA = isAdmin ? NAVIGATION.admin : NAVIGATION.main;
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
