@@ -3,7 +3,7 @@ import SectionWrapper from "./section-wrapper";
 
 interface HeroProps {
 	caption?: ReactNode;
-	title: string;
+	title?: string;
 	children?: ReactNode;
 	className?: string;
 }

@@ -1,0 +1,30 @@
+import { Client, Storage } from "appwrite";
+
+export const client = new Client();
+
+export const storage = new Storage(client);
+
+const BUCKET_ID = process.env.APPWRITE_BUCKET_ID as string;
+
+client
+	.setEndpoint(process.env.APPWRITE_ENDPOINT as string)
+	.setProject(process.env.APPWRITE_PROJECT_ID as string);
+
+export const createFile = ({ file }: { file: File }) => {
+	const promise = storage.createFile(BUCKET_ID, crypto.randomUUID(), file);
+
+	promise.then(
+		(response) => {
+			console.log(response);
+		},
+		(error) => {
+			console.log(error);
+		},
+	);
+};
+
+export const getFilePreview = ({ fileId }: { fileId: string }) => {
+	const result = storage.getFilePreview(BUCKET_ID, fileId);
+
+	console.log(result);
+};

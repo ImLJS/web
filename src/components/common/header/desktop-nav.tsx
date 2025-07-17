@@ -1,6 +1,6 @@
 "use client";
 
-import { ADMIN_NAV, NAV } from "@/data/nav";
+import { NAVIGATION } from "@/data/nav";
 import { checkIsAdminClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -36,7 +36,7 @@ const NavLink = ({ title, href }: NavLinkType) => {
 const DesktopNav = () => {
 	const isAdmin = checkIsAdminClient();
 
-	const NAV_DATA = isAdmin ? ADMIN_NAV : NAV;
+	const NAV_DATA = isAdmin ? NAVIGATION.admin : NAVIGATION.main;
 
 	return (
 		<>

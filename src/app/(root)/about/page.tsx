@@ -2,7 +2,7 @@ import Content from "@/components/about/content";
 import Education from "@/components/about/education";
 import Facts from "@/components/about/facts";
 import Positions from "@/components/about/positions";
-import GitHubActivity from "@/components/home/github";
+import GitHubActivity from "@/components/common/github";
 import HeroLayout from "@/components/layouts/hero-layout";
 import Skills from "@/components/projects/skills";
 import { siteMetadata } from "@/data/siteMetadata";
