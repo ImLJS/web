@@ -65,9 +65,13 @@ const GalleryForm = () => {
 						<div className="flex flex-col gap-3">
 							<FileUpload
 								onChange={(files: File[]) => {
-									setUploadedFile(files[0] ?? null);
+									if (files[0]) {
+										field.handleChange(files[0]);
+									}
 								}}
-							/>
+                                key={field.state.value ? "reset" : "upload"}
+                                value={field.state.value}
+                            />
 							{field.state.meta.errors?.[0]?.message && (
 								<p className="text-center text-destructive text-sm">
 									{field.state.meta.errors[0].message}
