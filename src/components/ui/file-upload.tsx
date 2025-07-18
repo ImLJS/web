@@ -13,8 +13,8 @@ export const FileUpload = ({
 	const fileInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
-        setFile(value || null);
-    }, [value, setFile]);
+		setFile(value || null);
+	}, [value]);
 
 	const handleFileChange = (newFiles: File[]) => {
 		const selectedFile = newFiles[0] ?? null;

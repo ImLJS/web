@@ -1,4 +1,4 @@
-import { Client, Storage, ID } from "appwrite";
+import { Client, ID, Storage } from "appwrite";
 
 export const client = new Client();
 

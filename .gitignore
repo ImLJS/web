@@ -9,7 +9,7 @@
 /coverage
 
 # database
-/db/migrations/
+migrations/
 db.sqlite
 
 # next.js
