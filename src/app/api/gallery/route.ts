@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
-import { createFile, getFilePreview } from "@/lib/appwrite";
 import { insertGallery } from "@/db/admin/gallery";
+import { createFile, getFilePreview } from "@/lib/appwrite";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
 	try {
@@ -12,7 +12,10 @@ export async function POST(req: Request) {
 		const image = formData.get("Image") as File;
 
 		if (!username || !handle || !source || !image) {
-			return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+			return NextResponse.json(
+				{ error: "Missing required fields" },
+				{ status: 400 },
+			);
 		}
 
 		// Upload image to Appwrite

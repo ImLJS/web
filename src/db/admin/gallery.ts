@@ -18,3 +18,8 @@ export const insertGallery = async (data: SubmitPayload) => {
 		previewUrl: data.previewUrl,
 	});
 };
+
+export const getGallery = async () => {
+	const result = await db.select().from(gallery);
+	return result;
+};

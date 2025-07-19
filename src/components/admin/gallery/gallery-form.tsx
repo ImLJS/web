@@ -93,7 +93,7 @@ const GalleryForm = () => {
 						</div>
 					)}
 				</AppField>
-				
+
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
 					{fields.map(({ name, label }) => (
 						<AppField name={name} key={name}>
@@ -124,11 +124,7 @@ const GalleryForm = () => {
 						</Button>
 					</AppForm>
 					<AppForm>
-						<Button
-							type="button"
-							variant="secondary"
-							onClick={() => reset()}
-						>
+						<Button type="button" variant="secondary" onClick={() => reset()}>
 							Reset
 						</Button>
 					</AppForm>
