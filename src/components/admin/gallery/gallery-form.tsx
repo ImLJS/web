@@ -5,6 +5,7 @@ import { FileUpload } from "@/components/ui/file-upload";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const { fieldContext, formContext } = createFormHookContexts();
@@ -43,10 +44,18 @@ const GalleryForm = () => {
 			formData.append("Source", value.Source);
 			formData.append("Image", value.Image as File);
 
-			await fetch("/api/gallery", {
+			const response = await fetch("/api/gallery", {
 				method: "POST",
 				body: formData,
 			});
+
+			if (response.ok && response.status === 200) {
+				toast.success("Gallery item added successfully!");
+				reset();
+			} else {
+				const errorData = await response.json();
+				toast.error(errorData.error || "Failed to add gallery item");
+			}
 		},
 	});
 
