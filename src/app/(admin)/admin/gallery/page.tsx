@@ -14,11 +14,9 @@ export const metadata: Metadata = {
 
 const GalleryPage = () => {
 	return (
-		<div className="mt-6 space-y-10 md:mt-10 md:space-y-16">
+		<div className="my-6 space-y-10 md:mt-10 md:space-y-16">
 			<GalleryForm />
-			<div className="overflow-x-auto">
-				<GalleryTable />
-			</div>
+			<GalleryTable />
 		</div>
 	);
 };
