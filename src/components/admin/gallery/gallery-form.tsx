@@ -5,7 +5,7 @@ import { FileUpload } from "@/components/ui/file-upload";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
-import { useState } from "react";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const { fieldContext, formContext } = createFormHookContexts();
@@ -27,8 +27,6 @@ const { useAppForm } = createFormHook({
 });
 
 const GalleryForm = () => {
-	const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-
 	const { AppField, AppForm, handleSubmit, reset } = useAppForm({
 		defaultValues: {
 			Username: "",
@@ -39,9 +37,25 @@ const GalleryForm = () => {
 		validators: {
 			onSubmit: userSchema,
 		},
-		onSubmit: ({ value }) => {
-			alert(JSON.stringify(value, null, 2));
-			console.log("Submitted File:", value.Image);
+		onSubmit: async ({ value }) => {
+			const formData = new FormData();
+			formData.append("Username", value.Username);
+			formData.append("Handle", value.Handle);
+			formData.append("Source", value.Source);
+			formData.append("Image", value.Image as File);
+
+			const response = await fetch("/api/gallery", {
+				method: "POST",
+				body: formData,
+			});
+
+			if (response.ok && response.status === 200) {
+				toast.success("Gallery item added successfully!");
+				reset();
+			} else {
+				const errorData = await response.json();
+				toast.error(errorData.error || "Failed to add gallery item");
+			}
 		},
 	});
 
@@ -65,8 +79,11 @@ const GalleryForm = () => {
 						<div className="flex flex-col gap-3">
 							<FileUpload
 								onChange={(files: File[]) => {
-									setUploadedFile(files[0] ?? null);
+									if (files[0]) {
+										field.handleChange(files[0]);
+									}
 								}}
+								value={field.state.value}
 							/>
 							{field.state.meta.errors?.[0]?.message && (
 								<p className="text-center text-destructive text-sm">
@@ -76,6 +93,7 @@ const GalleryForm = () => {
 						</div>
 					)}
 				</AppField>
+
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-3">
 					{fields.map(({ name, label }) => (
 						<AppField name={name} key={name}>
@@ -106,14 +124,7 @@ const GalleryForm = () => {
 						</Button>
 					</AppForm>
 					<AppForm>
-						<Button
-							type="button"
-							variant="secondary"
-							onClick={() => {
-								reset();
-								setUploadedFile(null);
-							}}
-						>
+						<Button type="button" variant="secondary" onClick={() => reset()}>
 							Reset
 						</Button>
 					</AppForm>

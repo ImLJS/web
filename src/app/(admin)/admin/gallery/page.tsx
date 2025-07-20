@@ -1,4 +1,5 @@
 import GalleryForm from "@/components/admin/gallery/gallery-form";
+import GalleryTable from "@/components/admin/gallery/gallery-table";
 import { getMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -13,8 +14,9 @@ export const metadata: Metadata = {
 
 const GalleryPage = () => {
 	return (
-		<div className="mt-6 space-y-10 md:mt-10 md:space-y-16">
+		<div className="my-6 space-y-10 md:mt-10 md:space-y-16">
 			<GalleryForm />
+			<GalleryTable />
 		</div>
 	);
 };

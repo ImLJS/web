@@ -1,4 +1,11 @@
-import { boolean, pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import {
+	boolean,
+	pgEnum,
+	pgTable,
+	serial,
+	text,
+	timestamp,
+} from "drizzle-orm/pg-core";
 
 export const roleEnum = pgEnum("role", ["user", "admin"]);
 
@@ -61,4 +68,14 @@ export const verifications = pgTable("verifications", {
 	updatedAt: timestamp("updated_at").$defaultFn(
 		() => /* @__PURE__ */ new Date(),
 	),
+});
+
+export const gallery = pgTable("gallery", {
+	id: serial("id").primaryKey(),
+	username: text("username").notNull(),
+	handle: text("handle").notNull(),
+	source: text("source").notNull(),
+	fileId: text("file_id").notNull(),
+	previewUrl: text("preview_url").notNull(),
+	createdAt: timestamp("created_at").defaultNow(),
 });
