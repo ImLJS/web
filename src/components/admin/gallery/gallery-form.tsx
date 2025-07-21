@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Input } from "@/components/ui/input";
@@ -13,9 +12,9 @@ const { fieldContext, formContext } = createFormHookContexts();
 
 const userSchema = z.object({
 	Username: z.string().min(1, "Username is required"),
-	Source: z.url("Source must be a valid URL"),
+	Source: z.string().url("Source must be a valid URL"),
 	Handle: z.string().min(1, "Handle is required"),
-	Image: z.file("Invalid file type"),
+	Image: z.file("Please select a valid image file"),
 });
 
 type UserFormValues = z.infer<typeof userSchema>;
@@ -28,10 +27,9 @@ const { useAppForm } = createFormHook({
 });
 
 const GalleryForm = () => {
-	const createFileMutation = api.gallery.createFile.useMutation();
-	const insertGalleryMutation = api.gallery.insert.useMutation();
+	const utils = api.useUtils();
 
-	const { AppField, AppForm, handleSubmit, reset } = useAppForm({
+	const { AppField, AppForm, handleSubmit, reset, state } = useAppForm({
 		defaultValues: {
 			Username: "",
 			Source: "",
@@ -43,29 +41,29 @@ const GalleryForm = () => {
 		},
 		onSubmit: async ({ value }) => {
 			try {
-				const createResponse = await createFileMutation.mutateAsync({
-					image: value.Image as File,
-				});
-				console.log("File created:", createResponse);
+				const formData = new FormData();
+				formData.append("Username", value.Username);
+				formData.append("Handle", value.Handle);
+				formData.append("Source", value.Source);
+				formData.append("Image", value.Image as File);
 
-				const insertResponse = await insertGalleryMutation.mutateAsync({
-					username: value.Username,
-					handle: value.Handle,
-					source: value.Source,
-					fileId: createResponse.$id,
-					previewUrl: createResponse.previewUrl,
+				const response = await fetch("/api/gallery", {
+					method: "POST",
+					body: formData,
 				});
-				console.log("Gallery item inserted:", insertResponse);
 
-				if (insertResponse.success) {
-					toast.success("Gallery item created successfully!");
+				if (response.ok && response.status === 200) {
+					await utils.gallery.getAll.invalidate();
+
+					toast.success("Gallery item added successfully!");
 					reset();
 				} else {
-					toast.error("Failed to create gallery item.");
+					const errorData = await response.json();
+					toast.error(errorData.error || "Failed to add gallery item");
 				}
 			} catch (error) {
-				console.error("Error creating file or inserting gallery item:", error);
-				toast.error("Error creating file:");
+				console.error("Submission error:", error);
+				toast.error("Failed to add gallery item. Please try again.");
 			}
 		},
 	});
@@ -75,6 +73,8 @@ const GalleryForm = () => {
 		{ name: "Source", label: "Source URL" },
 		{ name: "Handle", label: "Handle" },
 	] as const;
+
+	const isSubmitting = state.isSubmitting;
 
 	return (
 		<div className="mx-auto max-w-6xl gap-y-10 rounded-lg border p-6">
@@ -88,10 +88,13 @@ const GalleryForm = () => {
 				<AppField name="Image">
 					{(field) => (
 						<div className="flex flex-col gap-3">
+							<Label>Image Upload</Label>
 							<FileUpload
 								onChange={(files: File[]) => {
-									if (files[0]) {
-										field.handleChange(files[0]);
+									const file = files[0];
+									if (file && file instanceof File) {
+										console.log("File selected:", file.name, file.type);
+										field.handleChange(file);
 									}
 								}}
 								value={field.state.value}
@@ -129,16 +132,18 @@ const GalleryForm = () => {
 				</div>
 
 				<div className="mt-4 flex justify-end gap-4">
-					<AppForm>
-						<Button type="submit" className="w-24">
-							Submit
-						</Button>
-					</AppForm>
-					<AppForm>
-						<Button type="button" variant="secondary" onClick={() => reset()}>
-							Reset
-						</Button>
-					</AppForm>
+					<Button type="submit" className="w-24" disabled={isSubmitting}>
+						{isSubmitting ? "Submitting..." : "Submit"}
+					</Button>
+
+					<Button
+						type="button"
+						variant="secondary"
+						onClick={() => reset()}
+						disabled={isSubmitting}
+					>
+						Reset
+					</Button>
 				</div>
 			</form>
 		</div>
