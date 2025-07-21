@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { api } from "@/trpc/react";
 import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -27,6 +28,9 @@ const { useAppForm } = createFormHook({
 });
 
 const GalleryForm = () => {
+	const createFileMutation = api.gallery.createFile.useMutation();
+	const insertGalleryMutation = api.gallery.insert.useMutation();
+
 	const { AppField, AppForm, handleSubmit, reset } = useAppForm({
 		defaultValues: {
 			Username: "",
@@ -38,23 +42,30 @@ const GalleryForm = () => {
 			onSubmit: userSchema,
 		},
 		onSubmit: async ({ value }) => {
-			const formData = new FormData();
-			formData.append("Username", value.Username);
-			formData.append("Handle", value.Handle);
-			formData.append("Source", value.Source);
-			formData.append("Image", value.Image as File);
+			try {
+				const createResponse = await createFileMutation.mutateAsync({
+					image: value.Image as File,
+				});
+				console.log("File created:", createResponse);
 
-			const response = await fetch("/api/gallery", {
-				method: "POST",
-				body: formData,
-			});
+				const insertResponse = await insertGalleryMutation.mutateAsync({
+					username: value.Username,
+					handle: value.Handle,
+					source: value.Source,
+					fileId: createResponse.$id,
+					previewUrl: createResponse.previewUrl,
+				});
+				console.log("Gallery item inserted:", insertResponse);
 
-			if (response.ok && response.status === 200) {
-				toast.success("Gallery item added successfully!");
-				reset();
-			} else {
-				const errorData = await response.json();
-				toast.error(errorData.error || "Failed to add gallery item");
+				if (insertResponse.success) {
+					toast.success("Gallery item created successfully!");
+					reset();
+				} else {
+					toast.error("Failed to create gallery item.");
+				}
+			} catch (error) {
+				console.error("Error creating file or inserting gallery item:", error);
+				toast.error("Error creating file:");
 			}
 		},
 	});
