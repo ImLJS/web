@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
+import { TRPCReactProvider } from "@/trpc/react";
 import { ThemeProvider } from "next-themes";
 
 const Providers = ({ children }: { children: React.ReactNode }) => {
@@ -10,7 +11,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
 			enableColorScheme
 			disableTransitionOnChange
 		>
-			{children}
+			<TRPCReactProvider>{children}</TRPCReactProvider>
 			<Toaster
 				toastOptions={{
 					duration: 2500,
