@@ -1,5 +1,5 @@
-import { db } from "@/db";
-import { gallery } from "@/db/schemas/schema";
+import { db } from "../db";
+import { gallery } from "../db/schema";
 
 type SubmitPayload = {
 	username: string;
@@ -17,9 +17,4 @@ export const insertGallery = async (data: SubmitPayload) => {
 		fileId: data.fileId,
 		previewUrl: data.previewUrl,
 	});
-};
-
-export const getGallery = async () => {
-	const result = await db.select().from(gallery);
-	return result;
 };

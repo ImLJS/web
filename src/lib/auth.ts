@@ -1,4 +1,4 @@
-import { db } from "@/db";
+import { db } from "@/server/db";
 import { getBaseUrl } from "@/utils/get-base-url";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
