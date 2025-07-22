@@ -12,7 +12,7 @@ const { fieldContext, formContext } = createFormHookContexts();
 
 const userSchema = z.object({
 	Username: z.string().min(1, "Username is required"),
-	Source: z.string().url("Source must be a valid URL"),
+	Source: z.url("Source must be a valid URL"),
 	Handle: z.string().min(1, "Handle is required"),
 	Image: z.file("Please select a valid image file"),
 });
@@ -29,7 +29,7 @@ const { useAppForm } = createFormHook({
 const GalleryForm = () => {
 	const utils = api.useUtils();
 
-	const { AppField, AppForm, handleSubmit, reset, state } = useAppForm({
+	const { AppField, handleSubmit, reset, state } = useAppForm({
 		defaultValues: {
 			Username: "",
 			Source: "",
