@@ -1,14 +1,11 @@
 "use client";
-import { Button } from "@/components/ui/button";
+
+import { useAppForm } from "@/components/form";
 import { FileUpload } from "@/components/ui/file-upload";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { api } from "@/trpc/react";
-import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
 import { toast } from "sonner";
 import { z } from "zod";
-
-const { fieldContext, formContext } = createFormHookContexts();
 
 const userSchema = z.object({
 	Username: z.string().min(1, "Username is required"),
@@ -19,62 +16,54 @@ const userSchema = z.object({
 
 type UserFormValues = z.infer<typeof userSchema>;
 
-const { useAppForm } = createFormHook({
-	fieldComponents: { Input },
-	formComponents: { Button },
-	fieldContext,
-	formContext,
-});
-
 const GalleryForm = () => {
 	const utils = api.useUtils();
 
-	const { AppField, handleSubmit, reset, state } = useAppForm({
-		defaultValues: {
-			Username: "",
-			Source: "",
-			Handle: "",
-			Image: null,
-		} as unknown as UserFormValues,
-		validators: {
-			onSubmit: userSchema,
-		},
-		onSubmit: async ({ value }) => {
-			try {
-				const formData = new FormData();
-				formData.append("Username", value.Username);
-				formData.append("Handle", value.Handle);
-				formData.append("Source", value.Source);
-				formData.append("Image", value.Image as File);
+	const { AppField, AppForm, handleSubmit, reset, state, SubmitButton } =
+		useAppForm({
+			defaultValues: {
+				Username: "",
+				Source: "",
+				Handle: "",
+				Image: null,
+			} as unknown as UserFormValues,
+			validators: {
+				onSubmit: userSchema,
+			},
+			onSubmit: async ({ value }) => {
+				try {
+					const formData = new FormData();
+					formData.append("Username", value.Username);
+					formData.append("Handle", value.Handle);
+					formData.append("Source", value.Source);
+					formData.append("Image", value.Image as File);
 
-				const response = await fetch("/api/gallery", {
-					method: "POST",
-					body: formData,
-				});
+					const response = await fetch("/api/gallery", {
+						method: "POST",
+						body: formData,
+					});
 
-				if (response.ok && response.status === 200) {
-					await utils.gallery.getAll.invalidate();
+					if (response.ok && response.status === 200) {
+						await utils.gallery.getAll.invalidate();
 
-					toast.success("Gallery item added successfully!");
-					reset();
-				} else {
-					const errorData = await response.json();
-					toast.error(errorData.error || "Failed to add gallery item");
+						toast.success("Gallery item added successfully!");
+						reset();
+					} else {
+						const errorData = await response.json();
+						toast.error(errorData.error || "Failed to add gallery item");
+					}
+				} catch (error) {
+					console.error("Submission error:", error);
+					toast.error("Failed to add gallery item. Please try again.");
 				}
-			} catch (error) {
-				console.error("Submission error:", error);
-				toast.error("Failed to add gallery item. Please try again.");
-			}
-		},
-	});
+			},
+		});
 
 	const fields = [
 		{ name: "Username", label: "Username" },
 		{ name: "Source", label: "Source URL" },
 		{ name: "Handle", label: "Handle" },
 	] as const;
-
-	const isSubmitting = state.isSubmitting;
 
 	return (
 		<div className="mx-auto max-w-6xl gap-y-10 rounded-lg border p-6">
@@ -93,7 +82,6 @@ const GalleryForm = () => {
 								onChange={(files: File[]) => {
 									const file = files[0];
 									if (file && file instanceof File) {
-										console.log("File selected:", file.name, file.type);
 										field.handleChange(file);
 									}
 								}}
@@ -113,18 +101,7 @@ const GalleryForm = () => {
 						<AppField name={name} key={name}>
 							{(field) => (
 								<div className="flex flex-col gap-3">
-									<Label htmlFor={field.name}>{label}</Label>
-									<field.Input
-										id={field.name}
-										value={field.state.value}
-										onChange={(e) => field.handleChange(e.target.value)}
-										placeholder={`Enter ${field.name}`}
-									/>
-									{field.state.meta.errors?.[0]?.message && (
-										<p className="mt-1 text-destructive text-sm">
-											{field.state.meta.errors[0].message}
-										</p>
-									)}
+									<field.TextField label={label} />
 								</div>
 							)}
 						</AppField>
@@ -132,18 +109,20 @@ const GalleryForm = () => {
 				</div>
 
 				<div className="mt-4 flex justify-end gap-4">
-					<Button type="submit" className="w-24" disabled={isSubmitting}>
-						{isSubmitting ? "Submitting..." : "Submit"}
-					</Button>
+					<AppForm>
+						<SubmitButton className="w-24">Submit</SubmitButton>
+					</AppForm>
 
-					<Button
-						type="button"
-						variant="secondary"
-						onClick={() => reset()}
-						disabled={isSubmitting}
-					>
-						Reset
-					</Button>
+					<AppForm>
+						<SubmitButton
+							className="w-24"
+							type="button"
+							variant="secondary"
+							onClick={() => reset()}
+						>
+							Reset
+						</SubmitButton>
+					</AppForm>
 				</div>
 			</form>
 		</div>

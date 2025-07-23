@@ -1,15 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { useAppForm } from "@/components/form";
 import { ROUTES } from "@/data/routes";
 import { authClient } from "@/lib/auth-client";
-import { createFormHook, createFormHookContexts } from "@tanstack/react-form";
 import { toast } from "sonner";
 import z from "zod";
-
-const { fieldContext, formContext } = createFormHookContexts();
 
 const passwordValidation = new RegExp(
 	/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
@@ -25,15 +20,8 @@ const userSchema = z.object({
 		}),
 });
 
-const { useAppForm } = createFormHook({
-	fieldComponents: { Input },
-	formComponents: { Button },
-	fieldContext,
-	formContext,
-});
-
 const LoginForm = () => {
-	const { AppField, handleSubmit, reset, state } = useAppForm({
+	const { AppField, handleSubmit, reset, AppForm, SubmitButton } = useAppForm({
 		defaultValues: {
 			Email: "",
 			Password: "",
@@ -61,7 +49,6 @@ const LoginForm = () => {
 		},
 	});
 
-	const isSubmitting = state.isSubmitting;
 	return (
 		<form
 			className="flex flex-col gap-6"
@@ -81,18 +68,10 @@ const LoginForm = () => {
 					<AppField name={"Email"} key={"Email"}>
 						{(field) => (
 							<div className="flex flex-col gap-3">
-								<Label htmlFor={field.name}>{field.name}</Label>
-								<field.Input
-									id={field.name}
-									value={field.state.value}
-									onChange={(e) => field.handleChange(e.target.value)}
+								<field.TextField
+									label={field.name}
 									placeholder={"m@example.com"}
 								/>
-								{field.state.meta.errors?.[0]?.message && (
-									<p className="text-destructive text-sm">
-										{field.state.meta.errors[0].message}
-									</p>
-								)}
 							</div>
 						)}
 					</AppField>
@@ -101,25 +80,14 @@ const LoginForm = () => {
 					<AppField name={"Password"} key={"Password"}>
 						{(field) => (
 							<div className="flex flex-col gap-3">
-								<Label htmlFor={field.name}>{field.name}</Label>
-								<field.Input
-									id={field.name}
-									value={field.state.value}
-									onChange={(e) => field.handleChange(e.target.value)}
-									type="password"
-								/>
-								{field.state.meta.errors?.[0]?.message && (
-									<p className="text-destructive text-sm">
-										{field.state.meta.errors[0].message}
-									</p>
-								)}
+								<field.TextField label={field.name} type="password" />
 							</div>
 						)}
 					</AppField>
 				</div>
-				<Button type="submit" className="w-full" disabled={isSubmitting}>
-					{isSubmitting ? "Submitting..." : "Submit"}
-				</Button>
+				<AppForm>
+					<SubmitButton className="w-full">Submit</SubmitButton>
+				</AppForm>
 			</div>
 		</form>
 	);
