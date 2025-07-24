@@ -1,7 +1,11 @@
 import { z } from "zod";
 
 import { createFile, getFilePreview } from "@/lib/appwrite";
-import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
+import {
+	createTRPCRouter,
+	protectedProcedure,
+	publicProcedure,
+} from "@/server/api/trpc";
 import { gallery } from "@/server/db/schema";
 
 export const galleryRouter = createTRPCRouter({
@@ -29,7 +33,7 @@ export const galleryRouter = createTRPCRouter({
 
 			return { success: true };
 		}),
-	getAll: protectedProcedure.query(async ({ ctx }) => {
+	getAll: publicProcedure.query(async ({ ctx }) => {
 		const result = await ctx.db.select().from(gallery);
 		return result;
 	}),

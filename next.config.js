@@ -18,6 +18,10 @@ const config = {
 				protocol: "https",
 				hostname: "images-na.ssl-images-amazon.com",
 			},
+			{
+				protocol: "https",
+				hostname: "fra.cloud.appwrite.io",
+			},
 		],
 	},
 };
