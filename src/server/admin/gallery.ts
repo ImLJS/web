@@ -1,3 +1,4 @@
+import { api } from "@/trpc/server";
 import { db } from "../db";
 import { gallery } from "../db/schema";
 
@@ -17,4 +18,9 @@ export const insertGallery = async (data: SubmitPayload) => {
 		fileId: data.fileId,
 		previewUrl: data.previewUrl,
 	});
+};
+
+export const getPhotos = async () => {
+	const data = await api.gallery.getAll();
+	return data;
 };
