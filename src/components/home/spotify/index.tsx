@@ -10,9 +10,9 @@ const getTrack = cache(fetchLastTrack, ["spotify"], { revalidate: 60 * 5 });
 const Spotify = async () => {
 	const data = await getTrack();
 
-	if (!data) return null;
+	if (!data || !data.track) return null;
 
-	const { artists, album, name, external_urls } = data.track;
+	const { artists, album, name, external_urls } = data.track || {};
 
 	return (
 		<div className="h-full">
@@ -64,7 +64,7 @@ const Spotify = async () => {
 
 					<div className="relative w-2/5 shrink-0 self-stretch">
 						<Image
-							src={album.images[0].url}
+							src={album?.images?.[0]?.url ?? ""}
 							alt={`${album.name} album cover`}
 							fill
 							sizes="(max-width: 768px) 40vw, (max-width: 1200px) 20vw, 15vw"
