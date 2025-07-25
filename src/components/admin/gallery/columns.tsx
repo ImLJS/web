@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "@/components/ui/data-table/data-table-column-header";
 import type { ColumnDef } from "@tanstack/react-table";
 import { z } from "zod";
+import { DataTableRowActions } from "./gallery-row-actions";
 
 export const gallerySchema = z.object({
 	id: z.number(),
@@ -63,5 +64,15 @@ export const columns: ColumnDef<Gallery>[] = [
 		header: ({ column }) => (
 			<DataTableColumnHeader column={column} title="Username" />
 		),
+	},
+	{
+		accessorKey: "handle",
+		header: ({ column }) => (
+			<DataTableColumnHeader column={column} title="Handle" />
+		),
+	},
+	{
+		id: "actions",
+		cell: ({ row }) => <DataTableRowActions row={row} />,
 	},
 ];
