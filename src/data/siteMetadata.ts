@@ -13,6 +13,8 @@ export const siteMetadata = {
 		"Software engineer building products to help people lead better lives 🎯",
 	aboutDescription: "I'm Leone Jacob, Frontend Developer",
 	projectsDescription: "A collection of my favorite works.",
+	galleryDescription:
+		"A curated gallery of visual creations, digital art, and illustrations. Explore unique imagery and creative experiments in one place.",
 	githubUser: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
 	webToEpubRepo: "https://github.com/dteviot/WebToEpub",
 	webToEpubCommitLeaderboard:
