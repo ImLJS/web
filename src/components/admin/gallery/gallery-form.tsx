@@ -1,6 +1,8 @@
 "use client";
 
 import { useAppForm } from "@/components/form";
+import { FieldErrors } from "@/components/form/field-errors";
+import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Label } from "@/components/ui/label";
 import { api } from "@/trpc/react";
@@ -87,11 +89,7 @@ const GalleryForm = () => {
 								}}
 								value={field.state.value}
 							/>
-							{field.state.meta.errors?.[0]?.message && (
-								<p className="text-center text-destructive text-sm">
-									{field.state.meta.errors[0].message}
-								</p>
-							)}
+							<FieldErrors meta={field.state.meta} />
 						</div>
 					)}
 				</AppField>
@@ -108,21 +106,19 @@ const GalleryForm = () => {
 					))}
 				</div>
 
-				<div className="mt-4 flex justify-end gap-4">
+				<div className="flex justify-end gap-4">
 					<AppForm>
 						<SubmitButton className="w-24">Submit</SubmitButton>
 					</AppForm>
 
-					<AppForm>
-						<SubmitButton
-							className="w-24"
-							type="button"
-							variant="secondary"
-							onClick={() => reset()}
-						>
-							Reset
-						</SubmitButton>
-					</AppForm>
+					<Button
+						className="w-24"
+						type="button"
+						variant="secondary"
+						onClick={() => reset()}
+					>
+						Reset
+					</Button>
 				</div>
 			</form>
 		</div>

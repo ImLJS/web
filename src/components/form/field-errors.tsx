@@ -5,11 +5,13 @@ type FieldErrorsProps = {
 };
 
 export const FieldErrors = ({ meta }: FieldErrorsProps) => {
-	if (!meta.isTouched) return null;
-
 	return (
-		<p className="h-1 font-medium text-destructive text-sm">
-			{meta.errors[0]?.message}
-		</p>
+		<div className="relative h-5">
+			{meta.errors[0]?.message && (
+				<p className="absolute top-0 left-0 font-medium text-destructive text-sm">
+					{meta.errors[0].message}
+				</p>
+			)}
+		</div>
 	);
 };
