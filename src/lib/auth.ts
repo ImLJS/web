@@ -1,4 +1,4 @@
-import { db } from "@/db";
+import { db } from "@/server/db";
 import { getBaseUrl } from "@/utils/get-base-url";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
@@ -12,11 +12,8 @@ export const auth = betterAuth({
 		provider: "pg",
 		usePlural: true,
 	}),
-	socialProviders: {
-		github: {
-			clientId: process.env.GITHUB_CLIENT_ID as string,
-			clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
-		},
+	emailAndPassword: {
+		enabled: true,
 	},
 	user: {
 		additionalFields: {

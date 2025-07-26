@@ -1,5 +1,5 @@
-import { insertGallery } from "@/db/admin/gallery";
 import { createFile, getFilePreview } from "@/lib/appwrite";
+import { insertGallery } from "@/server/admin/gallery";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {

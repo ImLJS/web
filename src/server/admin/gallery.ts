@@ -1,5 +1,6 @@
-import { db } from "@/db";
-import { gallery } from "@/db/schemas/schema";
+import { api } from "@/trpc/server";
+import { db } from "../db";
+import { gallery } from "../db/schema";
 
 type SubmitPayload = {
 	username: string;
@@ -19,7 +20,7 @@ export const insertGallery = async (data: SubmitPayload) => {
 	});
 };
 
-export const getGallery = async () => {
-	const result = await db.select().from(gallery);
-	return result;
+export const getPhotos = async () => {
+	const data = await api.gallery.getAll();
+	return data;
 };

@@ -107,7 +107,7 @@ export const fetchLastTrack = async () => {
 	}
 
 	return {
-		track: recentlyPlayedData.items[0].track,
+		track: recentlyPlayedData.items[0]?.track ?? null,
 		status: TRACK_STATUS.OFFLINE,
 	};
 };
