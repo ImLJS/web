@@ -14,9 +14,6 @@ export const env = createEnv({
 		BETTER_AUTH_SECRET: z.string(),
 		GITHUB_CLIENT_ID: z.string(),
 		GITHUB_CLIENT_SECRET: z.string(),
-		APPWRITE_ENDPOINT: z.string().url(),
-		APPWRITE_PROJECT_ID: z.string(),
-		APPWRITE_BUCKET_ID: z.string(),
 		NODE_ENV: z
 			.enum(["development", "test", "production"])
 			.default("development"),
@@ -33,6 +30,9 @@ export const env = createEnv({
 		NEXT_PUBLIC_GITHUB: z.string().url(),
 		NEXT_PUBLIC_EMAIL: z.string().email(),
 		NEXT_PUBLIC_LINKEDIN: z.string(),
+		NEXT_PUBLIC_APPWRITE_ENDPOINT: z.string().url(),
+		NEXT_PUBLIC_APPWRITE_PROJECT_ID: z.string(),
+		NEXT_PUBLIC_APPWRITE_BUCKET_ID: z.string(),
 	},
 
 	/**
@@ -52,9 +52,10 @@ export const env = createEnv({
 		GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
 		BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
 		NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
-		APPWRITE_ENDPOINT: process.env.APPWRITE_ENDPOINT,
-		APPWRITE_PROJECT_ID: process.env.APPWRITE_PROJECT_ID,
-		APPWRITE_BUCKET_ID: process.env.APPWRITE_BUCKET_ID,
+		NEXT_PUBLIC_APPWRITE_ENDPOINT: process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT,
+		NEXT_PUBLIC_APPWRITE_PROJECT_ID:
+			process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
+		NEXT_PUBLIC_APPWRITE_BUCKET_ID: process.env.NEXT_PUBLIC_APPWRITE_BUCKET_ID,
 		NODE_ENV: process.env.NODE_ENV,
 		// NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 	},

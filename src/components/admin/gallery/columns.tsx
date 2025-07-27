@@ -1,8 +1,9 @@
 "use client";
-
 import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "@/components/ui/data-table/data-table-column-header";
+import { getFileDownload } from "@/lib/appwrite"; // Update this import path
 import type { ColumnDef } from "@tanstack/react-table";
+import Image from "next/image";
 import { z } from "zod";
 import { DataTableRowActions } from "./gallery-row-actions";
 
@@ -16,6 +17,37 @@ export const gallerySchema = z.object({
 });
 
 export type Gallery = z.infer<typeof gallerySchema>;
+
+const handleFileDownload = async (fileId: string) => {
+	try {
+		const downloadUrl = getFileDownload({ fileId });
+
+		const response = await fetch(downloadUrl);
+
+		if (!response.ok) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		}
+
+		const blob = await response.blob();
+
+		const blobUrl = window.URL.createObjectURL(blob);
+
+		const link = document.createElement("a");
+		link.href = blobUrl;
+		link.download = fileId;
+
+		// Add to DOM, click, and remove
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+
+		window.URL.revokeObjectURL(blobUrl);
+
+		console.log("File download completed:", fileId);
+	} catch (error) {
+		console.error("Error downloading file:", error);
+	}
+};
 
 export const columns: ColumnDef<Gallery>[] = [
 	{
@@ -47,6 +79,30 @@ export const columns: ColumnDef<Gallery>[] = [
 		enableHiding: false,
 	},
 	{
+		id: "image",
+		cell: ({ row }) => {
+			const { previewUrl } = row.original;
+			return (
+				<div className="flex items-center justify-center">
+					<Image
+						src={previewUrl}
+						alt="Gallery Item"
+						width={40}
+						height={40}
+						className="h-10 w-10 rounded object-cover"
+					/>
+				</div>
+			);
+		},
+		header: ({ column }) => (
+			<DataTableColumnHeader
+				column={column}
+				title="Image"
+				className="text-center"
+			/>
+		),
+	},
+	{
 		accessorKey: "id",
 		accessorFn: (row) => row?.id?.toString(),
 		header: ({ column }) => (
@@ -58,6 +114,19 @@ export const columns: ColumnDef<Gallery>[] = [
 		header: ({ column }) => (
 			<DataTableColumnHeader column={column} title="File Id" />
 		),
+		cell: ({ row }) => {
+			const fileId = row.getValue("fileId") as string;
+			return (
+				<button
+					type="button"
+					onClick={() => handleFileDownload(fileId)}
+					className="cursor-pointer font-mono text-blue-600 text-sm hover:text-blue-800 hover:underline"
+					title="Click to download file"
+				>
+					{fileId}
+				</button>
+			);
+		},
 	},
 	{
 		accessorKey: "username",

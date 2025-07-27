@@ -1,4 +1,4 @@
-import { createFile, getFilePreview } from "@/lib/appwrite";
+import { createFile, getFileDownload, getFilePreview } from "@/lib/appwrite";
 import { insertGallery } from "@/server/admin/gallery";
 import { NextResponse } from "next/server";
 
@@ -35,5 +35,25 @@ export async function POST(req: Request) {
 	} catch (err) {
 		console.error("Upload error:", err);
 		return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+	}
+}
+
+export async function GET(req: Request) {
+	const { searchParams } = new URL(req.url);
+	const fileId = searchParams.get("fileId");
+
+	if (!fileId) {
+		return NextResponse.json({ error: "File ID is required" }, { status: 400 });
+	}
+
+	try {
+		// Get the file download URL from Appwrite
+		const downloadUrl = getFileDownload({ fileId });
+
+		// Redirect to the actual file download URL
+		return NextResponse.redirect(downloadUrl.toString());
+	} catch (err) {
+		console.error("Download error:", err);
+		return NextResponse.json({ error: "Download failed" }, { status: 500 });
 	}
 }
