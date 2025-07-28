@@ -1,5 +1,5 @@
-import Header from "@/components/common/header";
-import DashedLayout from "@/components/layouts/dashed-layout";
+import Header from "@/components/features/navigation/header";
+import DashedLayout from "@/components/layout/dashed-layout";
 import { ROUTES } from "@/data/routes";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";

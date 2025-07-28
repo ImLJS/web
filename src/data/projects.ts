@@ -1,6 +1,6 @@
 import { FaDatabase, FaLaptopCode, FaPencilRuler } from "react-icons/fa";
 import { FiImage } from "react-icons/fi";
-import TempProjectImage from "../../public/projects/temp_project.webp";
+import TempProjectImage from "@/assets/images/temp_project.webp";
 
 export const PROJECTS = [
 	{

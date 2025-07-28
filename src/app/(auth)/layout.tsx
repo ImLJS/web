@@ -1,4 +1,4 @@
-import DashedLayout from "@/components/layouts/dashed-layout";
+import DashedLayout from "@/components/layout/dashed-layout";
 import { ROUTES } from "@/data/routes";
 import { getSession } from "@/lib/auth";
 import { getMetadata } from "@/lib/seo";

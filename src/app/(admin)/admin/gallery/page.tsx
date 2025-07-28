@@ -1,5 +1,5 @@
-import GalleryForm from "@/components/admin/gallery/gallery-form";
-import GalleryTable from "@/components/admin/gallery/gallery-table";
+import GalleryForm from "@/components/features/gallery/gallery-form";
+import GalleryTable from "@/components/features/gallery/gallery-table";
 import { getMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 

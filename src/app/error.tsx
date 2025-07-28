@@ -1,6 +1,6 @@
 "use client";
 
-import ErrorPage from "@/components/common/error-page";
+import ErrorPage from "@/components/shared/error-page";
 
 interface ErrorProps {
 	error: Error & { digest?: string };
