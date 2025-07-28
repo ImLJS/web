@@ -7,7 +7,7 @@ export const env = createEnv({
 	 * isn't built with invalid env vars.
 	 */
 	server: {
-		DATABASE_URL: z.string().url(),
+		DATABASE_URL: z.url(),
 		SPOTIFY_CLIENT_ID: z.string(),
 		SPOTIFY_CLIENT_SECRET: z.string(),
 		SPOTIFY_REFRESH_TOKEN: z.string(),
@@ -25,12 +25,12 @@ export const env = createEnv({
 	 * `NEXT_PUBLIC_`.
 	 */
 	client: {
-		NEXT_PUBLIC_SITE_URL: z.string().url().optional(),
+		NEXT_PUBLIC_SITE_URL: z.url().optional(),
 		NEXT_PUBLIC_GITHUB_USERNAME: z.string(),
-		NEXT_PUBLIC_GITHUB: z.string().url(),
-		NEXT_PUBLIC_EMAIL: z.string().email(),
+		NEXT_PUBLIC_GITHUB: z.url(),
+		NEXT_PUBLIC_EMAIL: z.email(),
 		NEXT_PUBLIC_LINKEDIN: z.string(),
-		NEXT_PUBLIC_APPWRITE_ENDPOINT: z.string().url(),
+		NEXT_PUBLIC_APPWRITE_ENDPOINT: z.url(),
 		NEXT_PUBLIC_APPWRITE_PROJECT_ID: z.string(),
 		NEXT_PUBLIC_APPWRITE_BUCKET_ID: z.string(),
 	},
