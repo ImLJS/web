@@ -1,7 +1,6 @@
 "use client";
 
 import { NAVIGATION } from "@/data/nav";
-import { checkIsAdminClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,21 +36,13 @@ const NavLink = ({ title, href }: NavLinkType) => {
 };
 
 const DesktopNav = () => {
-	const isAdmin = checkIsAdminClient();
-
-	const NAV_DATA = isAdmin ? NAVIGATION.admin : NAVIGATION.main;
+	const NAV_DATA = NAVIGATION.main;
 
 	return (
 		<>
 			<div className="w-32">
 				<Link href="/" aria-label="Avatar">
-					<Image
-						src={AvatarPic}
-						width={32}
-						height={32}
-						alt="Avatar"
-						priority
-					/>
+					<Image src={AvatarPic} width={32} height={32} alt="Avatar" priority />
 				</Link>
 			</div>
 			<nav className="hidden space-x-4 rounded-full border bg-card px-5 py-2 text-xs md:flex">

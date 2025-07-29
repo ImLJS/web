@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { NAVIGATION } from "@/data/nav";
 import { cn } from "@/lib/utils";
 
-import { checkIsAdminClient } from "@/lib/auth-client";
 import type { ForwardRefComponent, SVGMotionProps } from "motion/react";
 import type { ComponentProps } from "react";
 
@@ -82,9 +81,8 @@ export const MobileNavTrigger = () => {
 const MobileNav = () => {
 	const [open, setOpen] = useAtom(mobileMenuOpen);
 	const navRef = useRef<HTMLDivElement>(null);
-	const isAdmin = checkIsAdminClient();
 
-	const NAV_DATA = isAdmin ? NAVIGATION.admin : NAVIGATION.main;
+	const NAV_DATA = NAVIGATION.main;
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -130,16 +128,14 @@ const MobileNav = () => {
 							))}
 						</ul>
 
-						{!isAdmin && (
-							<Button
-								variant="outline"
-								asChild
-								onClick={() => setOpen(false)}
-								className="w-full"
-							>
-								<Link href="#contact">Get in touch</Link>
-							</Button>
-						)}
+						<Button
+							variant="outline"
+							asChild
+							onClick={() => setOpen(false)}
+							className="w-full"
+						>
+							<Link href="#contact">Get in touch</Link>
+						</Button>
 					</nav>
 				</div>
 			</div>
