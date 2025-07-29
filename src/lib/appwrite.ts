@@ -23,3 +23,8 @@ export const getFileDownload = ({ fileId }: { fileId: string }) => {
 	const result = storage.getFileDownload(BUCKET_ID, fileId);
 	return result;
 };
+
+export const deleteFile = async ({ fileId }: { fileId: string }) => {
+	const response = await storage.deleteFile(BUCKET_ID, fileId);
+	return response;
+}

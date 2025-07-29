@@ -1,5 +1,10 @@
-import { createFile, getFileDownload, getFilePreview } from "@/lib/appwrite";
-import { insertGallery } from "@/server/admin/gallery";
+import {
+	createFile,
+	deleteFile,
+	getFileDownload,
+	getFilePreview,
+} from "@/lib/appwrite";
+import { deleteGalleryItems, insertGallery } from "@/server/admin/gallery";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -55,5 +60,29 @@ export async function GET(req: Request) {
 	} catch (err) {
 		console.error("Download error:", err);
 		return NextResponse.json({ error: "Download failed" }, { status: 500 });
+	}
+}
+
+export async function DELETE(req: Request) {
+	try {
+		const fileIds: string[] = await req.json();
+
+		if (!fileIds || fileIds.length === 0) {
+			return NextResponse.json(
+				{ error: "No file IDs provided" },
+				{ status: 400 },
+			);
+		}
+
+		// Delete files from Appwrite
+		await Promise.all(fileIds.map((fileId) => deleteFile({ fileId })));
+
+		// Delete from DB
+		await deleteGalleryItems(fileIds);
+
+		return NextResponse.json({ success: true });
+	} catch (err) {
+		console.error("Delete error:", err);
+		return NextResponse.json({ error: "Delete failed" }, { status: 500 });
 	}
 }

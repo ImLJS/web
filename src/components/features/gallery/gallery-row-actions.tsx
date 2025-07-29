@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { gallerySchema } from "./columns";
+import { api } from "@/trpc/react";
 
 interface DataTableRowActionsProps<TData> {
 	row: Row<TData>;
@@ -23,6 +24,24 @@ export function DataTableRowActions<TData>({
 	row,
 }: DataTableRowActionsProps<TData>) {
 	const galleryRow = gallerySchema.parse(row.original);
+	const utils = api.useUtils();
+
+	const handleDelete = async () => {
+		const fileId = galleryRow.fileId;
+		try {
+			const response = await fetch("/api/gallery", {
+				method: "DELETE",
+				body: JSON.stringify([fileId]),
+			});
+			if (!response.ok) {
+				throw new Error("Failed to delete file");
+			}
+			await utils.gallery.invalidate();
+		} catch (error) {
+			console.error("Error deleting file:", error);
+			alert("Failed to delete file. Please try again.");
+		}
+	};
 
 	return (
 		<DropdownMenu>
@@ -41,7 +60,7 @@ export function DataTableRowActions<TData>({
 				<DropdownMenuItem>Make a copy</DropdownMenuItem>
 				<DropdownMenuItem>Favorite</DropdownMenuItem>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem variant="destructive">
+				<DropdownMenuItem variant="destructive" onClick={handleDelete}>
 					Delete
 					<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
 				</DropdownMenuItem>

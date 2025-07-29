@@ -1,6 +1,7 @@
 import { api } from "@/trpc/server";
 import { db } from "../db";
 import { gallery } from "../db/schema";
+import { eq } from "drizzle-orm";
 
 type SubmitPayload = {
 	username: string;
@@ -23,4 +24,12 @@ export const insertGallery = async (data: SubmitPayload) => {
 export const getPhotos = async () => {
 	const data = await api.gallery.getAll();
 	return data;
+};
+
+export const deleteGalleryItems = async (fileIds: string[]) => {
+	const deletePromises = fileIds.map((fileId) =>
+		db.delete(gallery).where(eq(gallery.fileId, fileId)),
+	);
+
+	await Promise.all(deletePromises);
 };
