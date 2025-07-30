@@ -1,5 +1,5 @@
-import ImageSkeleton from "./image-skeleton";
 import type { GalleryImage } from "@/types/gallery";
+import ImageSkeleton from "./image-skeleton";
 
 interface LoadingGridProps {
 	galleryData: GalleryImage[];

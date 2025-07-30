@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import Image from "next/image";
 import type { ImageWithDimensions } from "@/types/gallery";
+import Image from "next/image";
 
 interface GalleryItemProps {
 	img: ImageWithDimensions;

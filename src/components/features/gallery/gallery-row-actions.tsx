@@ -13,8 +13,8 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { gallerySchema } from "./columns";
 import { api } from "@/trpc/react";
+import { gallerySchema } from "./columns";
 
 interface DataTableRowActionsProps<TData> {
 	row: Row<TData>;

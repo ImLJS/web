@@ -1,13 +1,13 @@
 "use client";
 
+import AvatarPic from "@/assets/images/avatar.webp";
+import SocialPill from "@/components/shared/social-pill";
 import { NAVIGATION } from "@/data/nav";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import SocialPill from "@/components/shared/social-pill";
 import { MobileNavTrigger } from "./mobile-nav";
-import AvatarPic from "@/assets/images/avatar.webp";
 
 type NavLinkType = {
 	title: string;

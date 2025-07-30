@@ -1,7 +1,7 @@
+import { Icons } from "@/components/shared/icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import type { IconType } from "react-icons/lib";
-import { Icons } from "@/components/shared/icons";
 
 interface BentoLayoutProps {
 	children: React.ReactNode;

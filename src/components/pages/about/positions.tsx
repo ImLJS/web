@@ -1,11 +1,11 @@
 import Image from "next/image";
 
+import SectionWrapper from "@/components/layout/section-wrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
 import { allPositions } from "@/data/experience";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import SectionWrapper from "@/components/layout/section-wrapper";
 
 const Positions = () => (
 	<SectionWrapper

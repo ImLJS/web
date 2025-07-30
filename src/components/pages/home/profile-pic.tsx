@@ -1,7 +1,7 @@
+import AvatarPic from "@/assets/images/avatar.webp";
+import { Icons } from "@/components/shared/icons";
 import * as motion from "motion/react-client";
 import Image from "next/image";
-import { Icons } from "@/components/shared/icons";
-import AvatarPic from "@/assets/images/avatar.webp";
 
 const ProfilePicture = () => {
 	return (

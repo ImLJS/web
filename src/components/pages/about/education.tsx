@@ -1,10 +1,10 @@
+import PresidencyLogo from "@/assets/images/presidency.svg";
+import StickyWrapper from "@/components/layout/sticky-wrapper";
 import { Prose } from "@/components/ui/prose";
 import { allEducation } from "@/data/education";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import PresidencyLogo from "@/assets/images/presidency.svg";
-import StickyWrapper from "@/components/layout/sticky-wrapper";
 
 const Education = () => (
 	<StickyWrapper

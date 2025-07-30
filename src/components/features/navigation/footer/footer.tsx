@@ -1,9 +1,9 @@
+import AvatarPic from "@/assets/images/avatar.webp";
+import SocialPill from "@/components/shared/social-pill";
 import { NAVIGATION } from "@/data/nav";
 import { PROJECTS } from "@/data/projects";
 import Image from "next/image";
 import Link from "next/link";
-import SocialPill from "@/components/shared/social-pill";
-import AvatarPic from "@/assets/images/avatar.webp";
 
 type FooterLink = {
 	href: string;

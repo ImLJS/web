@@ -1,6 +1,6 @@
-import Image from "next/image";
 import TempProjectImage from "@/assets/images/temp_project.webp";
 import SplitWrapper from "@/components/layout/split-wrapper";
+import Image from "next/image";
 
 const FeaturedProject = () => (
 	<SplitWrapper

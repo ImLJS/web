@@ -1,5 +1,5 @@
-import GalleryItem from "./gallery-item";
 import type { ImageWithDimensions } from "@/types/gallery";
+import GalleryItem from "./gallery-item";
 
 interface GalleryGridProps {
 	images: ImageWithDimensions[];

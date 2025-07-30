@@ -1,7 +1,7 @@
+import StickyWrapper from "@/components/layout/sticky-wrapper";
 import { Prose } from "@/components/ui/prose";
 import { allFacts } from "@/data/facts";
 import { cn } from "@/lib/utils";
-import StickyWrapper from "@/components/layout/sticky-wrapper";
 
 const Facts = () => (
 	<StickyWrapper

@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
 import type { ImageWithDimensions, SortOption } from "@/types/gallery";
+import { useMemo, useState } from "react";
 
 export const useSorting = (images: ImageWithDimensions[] | null) => {
 	const [sortBy, setSortBy] = useState<SortOption>("newest");

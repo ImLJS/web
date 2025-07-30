@@ -1,8 +1,8 @@
 "use client";
 
+import { Icons } from "@/components/shared/icons";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Icons } from "@/components/shared/icons";
 
 const ThemeToggle = () => {
 	const [mounted, setMounted] = useState(false);

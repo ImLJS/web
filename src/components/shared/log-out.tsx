@@ -1,10 +1,10 @@
 "use client";
 
+import { Icons } from "@/components/shared/icons";
 import { ROUTES } from "@/data/routes";
 import { checkIsAdminClient, signOut } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { Icons } from "@/components/shared/icons";
 
 const LogOut = () => {
 	const router = useRouter();

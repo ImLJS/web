@@ -13,9 +13,9 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import type { SortOption } from "@/types/gallery";
 import { Info } from "lucide-react";
 import { useState } from "react";
-import type { SortOption } from "@/types/gallery";
 
 interface GalleryControlsProps {
 	sortBy: SortOption;

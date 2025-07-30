@@ -1,4 +1,4 @@
-import LGSoftLogo from "@/assets/images/lgsoft.webp"; 
+import LGSoftLogo from "@/assets/images/lgsoft.webp";
 
 export const allPositions = [
 	{

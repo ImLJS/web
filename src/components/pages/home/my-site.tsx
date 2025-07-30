@@ -1,5 +1,5 @@
+import { BentoCard } from "@/components/layout/bento-layout";
 import { NAVIGATION } from "@/data/nav";
-import { BentoCard } from "@/components/layout/bento-layout"; 
 import SectionWrapper from "../../layout/section-wrapper";
 
 const MySite = () => {

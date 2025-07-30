@@ -27,4 +27,4 @@ export const getFileDownload = ({ fileId }: { fileId: string }) => {
 export const deleteFile = async ({ fileId }: { fileId: string }) => {
 	const response = await storage.deleteFile(BUCKET_ID, fileId);
 	return response;
-}
+};

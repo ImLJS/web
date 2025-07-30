@@ -1,6 +1,6 @@
-import { NAVIGATION } from "@/data/nav";
 import { BentoCard } from "@/components/layout/bento-layout";
 import SectionWrapper from "@/components/layout/section-wrapper";
+import { NAVIGATION } from "@/data/nav";
 
 const AdminAppCard = () => {
 	return (

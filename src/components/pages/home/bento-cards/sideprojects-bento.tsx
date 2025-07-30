@@ -1,8 +1,8 @@
+import TempProjectImage from "@/assets/images/temp_project.webp";
 import BentoLayout from "@/components/layout/bento-layout";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import TempProjectImage from "@/assets/images/temp_project.webp";
 
 const SideProjectsBento = ({ linkTo }: { linkTo?: string }) => {
 	return (

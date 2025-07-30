@@ -2,8 +2,8 @@ import { Prose } from "@/components/ui/prose";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-import { siteMetadata } from "@/data/siteMetadata";
 import SectionWrapper from "@/components/layout/section-wrapper";
+import { siteMetadata } from "@/data/siteMetadata";
 
 const Content = () => {
 	return (

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import type { GalleryImage, ImageWithDimensions } from "@/types/gallery";
+import { useEffect, useState } from "react";
 
 export const useImageProcessing = (galleryData: GalleryImage[]) => {
 	const [imagesWithSize, setImagesWithSize] = useState<

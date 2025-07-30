@@ -1,8 +1,8 @@
+import SectionWrapper from "@/components/layout/section-wrapper";
 import { buttonVariants } from "@/components/ui/button";
 import { allSkills } from "@/data/skills";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import SectionWrapper from "@/components/layout/section-wrapper";
 
 const Skills = () => (
 	<SectionWrapper

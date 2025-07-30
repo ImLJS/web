@@ -1,9 +1,9 @@
+import GitHubActivity from "@/components/features/github";
+import HeroLayout from "@/components/layout/hero-layout";
 import Content from "@/components/pages/about/content";
 import Education from "@/components/pages/about/education";
 import Facts from "@/components/pages/about/facts";
 import Positions from "@/components/pages/about/positions";
-import GitHubActivity from "@/components/features/github";
-import HeroLayout from "@/components/layout/hero-layout";
 import Skills from "@/components/pages/projects/skills";
 import { siteMetadata } from "@/data/siteMetadata";
 import { getMetadata } from "@/lib/seo";

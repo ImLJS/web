@@ -1,12 +1,12 @@
 "use client";
 
 import SectionWrapper from "@/components/layout/section-wrapper";
-import GalleryControls from "./gallery-controls";
-import GalleryGrid from "./gallery-grid";
-import LoadingGrid from "./loading-grid";
 import { useImageProcessing } from "@/hooks/use-image-processing";
 import { useSorting } from "@/hooks/use-sorting";
 import type { GalleryImage } from "@/types/gallery";
+import GalleryControls from "./gallery-controls";
+import GalleryGrid from "./gallery-grid";
+import LoadingGrid from "./loading-grid";
 
 interface GalleryProps {
 	galleryData: GalleryImage[];
@@ -46,7 +46,7 @@ const Gallery = ({ galleryData }: GalleryProps) => {
 				heading="Image Gallery"
 				description="A dynamic bento-style grid of uploaded visuals."
 				className="p-2"
-                headingClassName="border-b"
+				headingClassName="border-b"
 			>
 				<GalleryControls sortBy={sortBy} onSortChange={handleSortChange} />
 				<GalleryGrid images={sortedImages} onImageLoad={handleImageLoad} />

@@ -1,9 +1,9 @@
+import TempProjectImage from "@/assets/images/temp_project.webp";
 import SectionWrapper from "@/components/layout/section-wrapper";
 import AboutMeBento from "./bento-cards/about-bento";
 import ProjectCardBento from "./bento-cards/project-card-bento";
 import SideProjectsBento from "./bento-cards/sideprojects-bento";
 import TechStackBento from "./bento-cards/techstack-bento";
-import TempProjectImage from "@/assets/images/temp_project.webp";
 
 const About = () => {
 	return (

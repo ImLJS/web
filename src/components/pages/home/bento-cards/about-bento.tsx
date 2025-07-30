@@ -1,8 +1,8 @@
+import AvatarPic from "@/assets/images/avatar.webp";
 import BentoLayout from "@/components/layout/bento-layout";
 import { Badge } from "@/components/ui/badge";
 import { cn, getTimeOfDayGreeting } from "@/lib/utils";
 import Image from "next/image";
-import AvatarPic from "@/assets/images/avatar.webp";
 
 const AboutMeBento = ({ linkTo }: { linkTo?: string }) => {
 	const timeOfDayGreeting = getTimeOfDayGreeting();
