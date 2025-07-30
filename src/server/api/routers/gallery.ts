@@ -1,12 +1,13 @@
 import { z } from "zod";
 
-import { createFile, getFilePreview } from "@/lib/appwrite";
+import { createFile, deleteFile, getFilePreview } from "@/lib/appwrite";
 import {
 	createTRPCRouter,
 	protectedProcedure,
 	publicProcedure,
 } from "@/server/api/trpc";
 import { gallery } from "@/server/db/schema";
+import { eq } from "drizzle-orm";
 
 export const galleryRouter = createTRPCRouter({
 	insert: protectedProcedure
@@ -54,5 +55,20 @@ export const galleryRouter = createTRPCRouter({
 				...fileRes,
 				previewUrl,
 			};
+		}),
+	deleteFiles: protectedProcedure
+		.input(z.object({ fileIds: z.array(z.string()) }))
+		.mutation(async ({ input, ctx }) => {
+			const { fileIds } = input;
+
+			// Delete each file from the storage
+			await Promise.all(fileIds.map((fileId) => deleteFile({ fileId })));
+
+			// Remove the gallery items from the database
+			for (const fileId of fileIds) {
+				await ctx.db.delete(gallery).where(eq(gallery.fileId, fileId));
+			}
+
+			return { success: true };
 		}),
 });

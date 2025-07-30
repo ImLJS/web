@@ -1,7 +1,7 @@
 import Gallery from "@/components/pages/gallery";
 import { siteMetadata } from "@/data/siteMetadata";
 import { getMetadata } from "@/lib/seo";
-import { getPhotos } from "@/server/admin/gallery";
+import { api } from "@/trpc/server";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = getMetadata({
@@ -11,7 +11,7 @@ export const metadata: Metadata = getMetadata({
 });
 
 const GalleryPage = async () => {
-	const galleryItems = await getPhotos();
+	const galleryItems = await api.gallery.getAll();
 
 	return <Gallery galleryData={galleryItems} />;
 };

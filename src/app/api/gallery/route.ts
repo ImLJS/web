@@ -1,10 +1,5 @@
-import {
-	createFile,
-	deleteFile,
-	getFileDownload,
-	getFilePreview,
-} from "@/lib/appwrite";
-import { deleteGalleryItems, insertGallery } from "@/server/admin/gallery";
+import { createFile, getFileDownload, getFilePreview } from "@/lib/appwrite";
+import { api } from "@/trpc/server";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -28,13 +23,15 @@ export async function POST(req: Request) {
 		const fileId = fileRes.$id;
 		const previewUrl = getFilePreview({ fileId }).toString();
 
-		await insertGallery({
+		const response = await api.gallery.insert({
 			username,
 			handle,
 			source,
 			fileId,
 			previewUrl,
 		});
+
+		console.log("Insert response:", response);
 
 		return NextResponse.json({ success: true });
 	} catch (err) {
@@ -74,11 +71,7 @@ export async function DELETE(req: Request) {
 			);
 		}
 
-		// Delete files from Appwrite
-		await Promise.all(fileIds.map((fileId) => deleteFile({ fileId })));
-
-		// Delete from DB
-		await deleteGalleryItems(fileIds);
+		await api.gallery.deleteFiles({ fileIds });
 
 		return NextResponse.json({ success: true });
 	} catch (err) {
