@@ -9,33 +9,78 @@ export async function POST(req: Request) {
 		const username = formData.get("Username") as string;
 		const handle = formData.get("Handle") as string;
 		const source = formData.get("Source") as string;
-		const image = formData.get("Image") as File;
 
-		if (!username || !handle || !source || !image) {
+		// Get all images from FormData
+		const images = formData.getAll("Images") as File[];
+
+		if (!username || !handle || !source || !images || images.length === 0) {
 			return NextResponse.json(
-				{ error: "Missing required fields" },
+				{ error: "Missing required fields or no images provided" },
 				{ status: 400 },
 			);
 		}
 
-		// Upload image to Appwrite
-		const fileRes = await createFile({ file: image });
-		const fileId = fileRes.$id;
-		const previewUrl = getFilePreview({ fileId }).toString();
+		// Validate that all entries are actually File objects
+		const validImages = images.filter(
+			(image) => image instanceof File && image.size > 0,
+		);
 
-		const response = await api.gallery.insert({
-			username,
-			handle,
-			source,
-			fileId,
-			previewUrl,
-		});
+		if (validImages.length === 0) {
+			return NextResponse.json(
+				{ error: "No valid images provided" },
+				{ status: 400 },
+			);
+		}
 
-		console.log("Insert response:", response);
+		try {
+			// Upload all images to Appwrite concurrently
+			const uploadPromises = validImages.map(async (image) => {
+				const fileRes = await createFile({ file: image });
+				const fileId = fileRes.$id;
+				const previewUrl = getFilePreview({ fileId }).toString();
 
-		return NextResponse.json({ success: true });
+				return {
+					fileId,
+					previewUrl,
+					originalName: image.name,
+					size: image.size,
+					type: image.type,
+				};
+			});
+
+			const uploadResults = await Promise.all(uploadPromises);
+
+			// Prepare data for batch database insert
+			const galleryItems = uploadResults.map((result) => ({
+				username,
+				handle,
+				source,
+				fileId: result.fileId,
+				previewUrl: result.previewUrl,
+			}));
+
+			// Insert all gallery items using tRPC
+			const response = await api.gallery.insertMultiple({
+				items: galleryItems,
+			});
+
+			console.log("Insert response:", response);
+
+			return NextResponse.json({
+				success: true,
+				uploadedCount: uploadResults.length,
+				files: uploadResults,
+			});
+		} catch (uploadError) {
+			console.error("Upload error:", uploadError);
+
+			return NextResponse.json(
+				{ error: "Failed to process uploads. Please try again." },
+				{ status: 500 },
+			);
+		}
 	} catch (err) {
-		console.error("Upload error:", err);
+		console.error("Request processing error:", err);
 		return NextResponse.json({ error: "Upload failed" }, { status: 500 });
 	}
 }
