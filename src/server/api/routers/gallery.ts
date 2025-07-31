@@ -74,7 +74,7 @@ export const galleryRouter = createTRPCRouter({
 		const result = await ctx.db.select().from(gallery);
 		return result;
 	}),
-	
+
 	createFile: protectedProcedure
 		.input(
 			z.object({

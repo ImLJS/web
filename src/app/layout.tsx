@@ -2,8 +2,8 @@ import "@/styles/globals.css";
 
 import { cn } from "@/lib/utils";
 import { Geist, Geist_Mono } from "next/font/google";
-import Providers from "./providers";
 import Script from "next/script";
+import Providers from "./providers";
 
 const geist = Geist({
 	subsets: ["latin"],
