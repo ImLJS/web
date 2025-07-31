@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import { Geist, Geist_Mono } from "next/font/google";
 import Providers from "./providers";
+import Script from "next/script";
 
 const geist = Geist({
 	subsets: ["latin"],
@@ -34,6 +35,11 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 					</main>
 				</Providers>
 			</body>
+			<Script
+				defer
+				src="https://umami.imljs.me/script.js"
+				data-website-id="007d6c4b-396e-4609-af56-591645289038"
+			/>
 		</html>
 	);
 };
