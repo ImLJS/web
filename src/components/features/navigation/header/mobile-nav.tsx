@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { NAVIGATION } from "@/data/nav";
 import { cn } from "@/lib/utils";
 
+import { checkIsAdminClient } from "@/lib/auth-client";
 import type { ForwardRefComponent, SVGMotionProps } from "motion/react";
 import type { ComponentProps } from "react";
 
@@ -82,7 +83,7 @@ const MobileNav = () => {
 	const [open, setOpen] = useAtom(mobileMenuOpen);
 	const navRef = useRef<HTMLDivElement>(null);
 
-	const NAV_DATA = NAVIGATION.main;
+	const NAV_DATA = checkIsAdminClient() ? NAVIGATION.admin : NAVIGATION.main;
 
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
