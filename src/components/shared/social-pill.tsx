@@ -1,5 +1,10 @@
+"use client";
+
 import { socialIcons } from "@/data/social-icons";
+import { useSession } from "@/lib/auth-client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import LogOut from "./log-out";
 import ThemeToggle from "./theme-toggle";
 
 type SocialLinkProps = {
@@ -22,8 +27,16 @@ const SocialLinks = ({ href, title, Icon }: SocialLinkProps) => {
 };
 
 const SocialPill = () => {
+	const { data: session } = useSession();
+	const pathname = usePathname();
+
+	const isSignedIn = !!session?.user;
+	const isOnAdminPage = pathname.startsWith("/admin");
+	const shouldShowLogout = isSignedIn && isOnAdminPage;
+
 	return (
 		<div className="z-30 flex items-center justify-center gap-2 rounded-full bg-dark px-4 py-1">
+			{shouldShowLogout && <LogOut />}
 			<ThemeToggle />
 			{socialIcons.map((social) => (
 				<SocialLinks key={social.title} {...social} />

@@ -23,7 +23,7 @@ interface ProjectThumbnailProps {
 }
 
 const ProjectThumbnail = ({ project, className }: ProjectThumbnailProps) => (
-	<Link href={`projects/${project.slug}`} key={project.slug}>
+	<Link href={project.href} key={project.slug}>
 		<article
 			className={cn(
 				"flex h-full flex-col justify-between gap-8 bg-background px-6 pt-6 transition-colors hover:bg-card dark:hover:bg-accent",

@@ -1,5 +1,6 @@
 import { useStore } from "@tanstack/react-form";
 import { useFormContext } from ".";
+import { Icons } from "../shared/icons";
 import { Button } from "../ui/button";
 
 type SubmitButtonProps = {
@@ -35,6 +36,7 @@ export const SubmitButton = ({
 			disabled={isSubmitting || !canSubmit}
 			{...props}
 		>
+			{isSubmitting && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
 			{children}
 		</Button>
 	);
