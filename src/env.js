@@ -12,6 +12,9 @@ export const env = createEnv({
 		SPOTIFY_CLIENT_SECRET: z.string(),
 		SPOTIFY_REFRESH_TOKEN: z.string(),
 		BETTER_AUTH_SECRET: z.string(),
+		UMAMI_WEBSITE_URL: z.url(),
+		UMAMI_WEBSITE_ID: z.string(),
+		UMAMI_SHARE_URL: z.url(),
 		NODE_ENV: z
 			.enum(["development", "test", "production"])
 			.default("development"),
@@ -44,6 +47,9 @@ export const env = createEnv({
 		SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
 		SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
 		BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
+		UMAMI_WEBSITE_URL: process.env.UMAMI_WEBSITE_URL,
+		UMAMI_WEBSITE_ID: process.env.UMAMI_WEBSITE_ID,
+		UMAMI_SHARE_URL: process.env.UMAMI_SHARE_URL,
 
 		// Client-side environment variables
 		NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
