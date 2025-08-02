@@ -5,6 +5,7 @@ import { FieldErrors } from "@/components/forms/field-errors";
 import { Button } from "@/components/ui/button";
 import { FileUpload } from "@/components/ui/file-upload";
 import { Label } from "@/components/ui/label";
+import { getImageDimensions } from "@/lib/utils";
 import { api } from "@/trpc/react";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -39,10 +40,20 @@ const GalleryForm = () => {
 					formData.append("Handle", value.Handle);
 					formData.append("Source", value.Source);
 
-					// Append all images
-					value.Images.forEach((image, index) => {
-						formData.append("Images", image);
+					const imageDataPromises = value.Images.map(async (image) => {
+						const { width, height } = await getImageDimensions(image);
+						return { image, width, height };
 					});
+
+					// Append all images
+					const imageData = await Promise.all(imageDataPromises);
+
+					// Now append all the data to FormData
+					for (const { image, width, height } of imageData) {
+						formData.append("Images", image);
+						formData.append("Width", width.toString());
+						formData.append("Height", height.toString());
+					}
 
 					const response = await fetch("/api/gallery", {
 						method: "POST",

@@ -9,6 +9,8 @@ export async function POST(req: Request) {
 		const username = formData.get("Username") as string;
 		const handle = formData.get("Handle") as string;
 		const source = formData.get("Source") as string;
+		const widths = formData.getAll("Width") as string[];
+		const heights = formData.getAll("Height") as string[];
 
 		// Get all images from FormData
 		const images = formData.getAll("Images") as File[];
@@ -51,12 +53,14 @@ export async function POST(req: Request) {
 			const uploadResults = await Promise.all(uploadPromises);
 
 			// Prepare data for batch database insert
-			const galleryItems = uploadResults.map((result) => ({
+			const galleryItems = uploadResults.map((result, index) => ({
 				username,
 				handle,
 				source,
 				fileId: result.fileId,
 				previewUrl: result.previewUrl,
+				width: Number.parseInt(widths[index] || "0", 10),
+				height: Number.parseInt(heights[index] || "0", 10),
 			}));
 
 			// Insert all gallery items using tRPC
