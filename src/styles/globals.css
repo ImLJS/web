@@ -20,7 +20,7 @@
 	html {
 		scroll-behavior: smooth;
 		scrollbar-width: thin;
-		scrollbar-gutter: stable
+		scrollbar-gutter: stable;
 	}
 
 	body {

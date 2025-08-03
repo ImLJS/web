@@ -96,7 +96,7 @@ const GalleryForm = () => {
 				<AppField name="Images">
 					{(field) => (
 						<div className="flex flex-col gap-3">
-							<Label>Image Upload (Multiple)</Label>
+							<Label>Image Upload</Label>
 							<FileUpload
 								multiple={true}
 								onChange={(files: File[]) => {

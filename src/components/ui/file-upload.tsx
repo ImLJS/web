@@ -27,16 +27,9 @@ export const FileUpload = ({
 	}, [value]);
 
 	const handleFileChange = (newFiles: File[]) => {
-		if (multiple) {
-			const updatedFiles = [...files, ...newFiles];
-			setFiles(updatedFiles);
-			onChange?.(updatedFiles);
-		} else {
-			const selectedFile = newFiles[0] ?? null;
-			const fileArray = selectedFile ? [selectedFile] : [];
-			setFiles(fileArray);
-			onChange?.(fileArray);
-		}
+		const updatedFiles = [...files, ...newFiles];
+		setFiles(updatedFiles);
+		onChange?.(updatedFiles);
 	};
 
 	const removeFile = (indexToRemove: number) => {
@@ -79,12 +72,9 @@ export const FileUpload = ({
 					accept="image/*"
 				/>
 				<div className="flex flex-col items-center justify-center">
-					<p className="font-bold text-base">
-						Upload {multiple ? "files" : "file"}
-					</p>
+					<p className="font-bold text-base">Upload files</p>
 					<p className="mt-2 font-normal text-base">
-						Drag or drop your {multiple ? "files" : "file"} here or click to
-						upload
+						Drag or drop your files here or click to upload
 					</p>
 
 					<div className="relative mx-auto mt-4 flex w-full max-w-xl items-center justify-center">
@@ -110,32 +100,27 @@ export const FileUpload = ({
 												</p>
 											</div>
 										</div>
-										{multiple && (
-											<button
-												type="button"
-												onClick={(e) => {
-													e.stopPropagation();
-													removeFile(index);
-												}}
-												className="ml-4 flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700"
-											>
-												<FiX className="h-4 w-4" />
-											</button>
-										)}
+										<button
+											type="button"
+											onClick={(e) => {
+												e.stopPropagation();
+												removeFile(index);
+											}}
+											className="ml-4 flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700"
+										>
+											<FiX className="h-4 w-4" />
+										</button>
 									</div>
 								))}
-								{multiple && (
-									<div className="text-center text-gray-500 text-sm">
-										{files.length} file{files.length !== 1 ? "s" : ""} selected
-									</div>
-								)}
+								<div className="text-center text-gray-500 text-sm">
+									{files.length} file{files.length !== 1 ? "s" : ""} selected
+								</div>
 							</div>
 						) : (
 							<div className="flex h-16 w-full max-w-[8rem] items-center justify-center rounded-md shadow-md dark:bg-neutral-900">
 								{isDragActive ? (
 									<p className="flex flex-col items-center">
-										Drop {multiple ? "them" : "it"}{" "}
-										<FiUpload className="h-4 w-4" />
+										Drop them <FiUpload className="h-4 w-4" />
 									</p>
 								) : (
 									<FiUpload className="h-4 w-4" />

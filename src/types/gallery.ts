@@ -6,6 +6,8 @@ export type GalleryImage = {
 	fileId: string;
 	previewUrl: string;
 	createdAt: Date | null;
+	width: number;
+	height: number;
 };
 
 export type ImageWithDimensions = GalleryImage & {
