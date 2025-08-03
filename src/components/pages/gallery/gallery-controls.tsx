@@ -6,37 +6,14 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
-import type { SortOption } from "@/types/gallery";
 import { Info } from "lucide-react";
 import { useState } from "react";
 
-interface GalleryControlsProps {
-	sortBy: SortOption;
-	onSortChange: (value: SortOption) => void;
-}
-
-const GalleryControls = ({ sortBy, onSortChange }: GalleryControlsProps) => {
+const GalleryControls = () => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 
 	return (
-		<div className="mb-4 flex items-center justify-between">
-			<Select value={sortBy} onValueChange={onSortChange}>
-				<SelectTrigger className="w-48">
-					<SelectValue />
-				</SelectTrigger>
-				<SelectContent>
-					<SelectItem value="newest">Newest First</SelectItem>
-					<SelectItem value="random">Randomized</SelectItem>
-				</SelectContent>
-			</Select>
-
+		<div className="mb-4 flex items-center justify-end">
 			<Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
 				<DialogTrigger asChild>
 					<Button variant="ghost" size="icon">

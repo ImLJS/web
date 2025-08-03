@@ -1,4 +1,5 @@
-import { createFile, getFileDownload, getFilePreview } from "@/lib/appwrite";
+import { createFile, getFileDownload } from "@/lib/appwrite";
+import { createPreviewUrl } from "@/lib/utils";
 import { api } from "@/trpc/server";
 import { NextResponse } from "next/server";
 
@@ -39,7 +40,7 @@ export async function POST(req: Request) {
 			const uploadPromises = validImages.map(async (image) => {
 				const fileRes = await createFile({ file: image });
 				const fileId = fileRes.$id;
-				const previewUrl = getFilePreview({ fileId }).toString();
+				const previewUrl = createPreviewUrl(fileId);
 
 				return {
 					fileId,

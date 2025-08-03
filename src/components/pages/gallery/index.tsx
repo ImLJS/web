@@ -1,44 +1,85 @@
 "use client";
+import {
+	useEffect as useEffectOriginal,
+	useLayoutEffect,
+	useMemo,
+	useState,
+} from "react";
+
+import { cn } from "@/lib/utils";
+import type { GalleryImage } from "@/types/gallery";
 
 import SectionWrapper from "@/components/layout/section-wrapper";
-import { useImageProcessing } from "@/hooks/use-image-processing";
-import { useSorting } from "@/hooks/use-sorting";
-import type { GalleryImage } from "@/types/gallery";
 import GalleryControls from "./gallery-controls";
-import GalleryGrid from "./gallery-grid";
-import LoadingGrid from "./loading-grid";
+import GalleryPhoto from "./gallery-photo";
 
-interface GalleryProps {
-	galleryData: GalleryImage[];
-}
+const useEffect =
+	typeof window === "undefined" ? useEffectOriginal : useLayoutEffect;
 
-const Gallery = ({ galleryData }: GalleryProps) => {
-	const { imagesWithSize, setImagesWithSize } = useImageProcessing(galleryData);
-	const { sortBy, sortedImages, handleSortChange } = useSorting(imagesWithSize);
+const BREAKPOINTS = [640, 1024];
 
-	const handleImageLoad = (imageId: number) => {
-		setImagesWithSize(
-			(prev) =>
-				prev?.map((img) =>
-					img.id === imageId ? { ...img, loaded: true } : img,
-				) || null,
-		);
-	};
+const useColumnCount = () => {
+	const [columnCount, setColumnCount] = useState<number | null>(null);
+	useEffect(() => {
+		function handleResize() {
+			let currentCount = 1;
+			for (const breakpoint of BREAKPOINTS)
+				if (window.matchMedia(`(min-width: ${breakpoint}px)`).matches)
+					currentCount++;
+			setColumnCount(currentCount);
+		}
+		handleResize();
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+	return columnCount;
+};
 
-	if (!imagesWithSize) {
-		return (
-			<div className="mt-6">
-				<SectionWrapper
-					heading="Image Gallery"
-					description="A dynamic bento-style grid of uploaded visuals."
-					className="p-2"
-				>
-					<GalleryControls sortBy={sortBy} onSortChange={handleSortChange} />
-					<LoadingGrid galleryData={galleryData} />
-				</SectionWrapper>
-			</div>
-		);
-	}
+const useOrganisedPhotos = (
+	photos: GalleryImage[],
+	columnCount: number | null,
+) => {
+	const organisedPhotos = useMemo(() => {
+		if (columnCount === null || columnCount <= 0) return [];
+
+		const columns: { photos: GalleryImage[]; height: number; index: number }[] =
+			new Array(columnCount)
+				.fill(null)
+				.map((_, i) => ({ photos: [], height: 0, index: i }));
+
+		for (const photo of photos) {
+			// Ensure we have valid dimensions
+			if (
+				!photo.width ||
+				!photo.height ||
+				photo.width <= 0 ||
+				photo.height <= 0
+			) {
+				continue;
+			}
+
+			const lowestColumn = columns
+				.slice()
+				.sort((a, b) => a.height - b.height)[0];
+
+			if (!lowestColumn) continue;
+
+			const columnIndex = lowestColumn.index;
+			if (columns[columnIndex]) {
+				columns[columnIndex].photos.push(photo);
+				columns[columnIndex].height += photo.height / photo.width;
+			}
+		}
+
+		return columns.map((column) => column.photos);
+	}, [photos, columnCount]);
+
+	return organisedPhotos;
+};
+
+const GalleryCollage = ({ photos }: { photos: GalleryImage[] }) => {
+	const count = useColumnCount();
+	const columns = useOrganisedPhotos(photos, count);
 
 	return (
 		<div className="mt-6">
@@ -46,13 +87,25 @@ const Gallery = ({ galleryData }: GalleryProps) => {
 				heading="Image Gallery"
 				description="A dynamic bento-style grid of uploaded visuals."
 				className="p-2"
-				headingClassName="border-b"
 			>
-				<GalleryControls sortBy={sortBy} onSortChange={handleSortChange} />
-				<GalleryGrid images={sortedImages} onImageLoad={handleImageLoad} />
+				<GalleryControls />
+				<div
+					className={cn(
+						"grid min-h-screen grid-cols-1 divide-x divide-separator transition duration-600 sm:grid-cols-2 lg:grid-cols-3",
+						count === null ? "opacity-0" : "opacity-100",
+					)}
+				>
+					{columns.map((column, i) => (
+						<div key={i} className="flex flex-col divide-y divide-separator">
+							{column.map((photo) => (
+								<GalleryPhoto key={photo.fileId} {...photo} />
+							))}
+						</div>
+					))}
+				</div>
 			</SectionWrapper>
 		</div>
 	);
 };
 
-export default Gallery;
+export default GalleryCollage;

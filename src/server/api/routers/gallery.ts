@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { createFile, deleteFile, getFilePreview } from "@/lib/appwrite";
+import { deleteFile } from "@/lib/appwrite";
 import {
 	createTRPCRouter,
 	protectedProcedure,
@@ -23,7 +23,8 @@ export const galleryRouter = createTRPCRouter({
 			}),
 		)
 		.mutation(async ({ input, ctx }) => {
-			const { username, handle, source, fileId, previewUrl, width, height } = input;
+			const { username, handle, source, fileId, previewUrl, width, height } =
+				input;
 
 			// Insert the new gallery item into the database
 			await ctx.db.insert(gallery).values({
@@ -39,7 +40,6 @@ export const galleryRouter = createTRPCRouter({
 			return { success: true };
 		}),
 
-	// New procedure for inserting multiple gallery items
 	insertMultiple: protectedProcedure
 		.input(
 			z.object({
@@ -73,25 +73,6 @@ export const galleryRouter = createTRPCRouter({
 		const result = await ctx.db.select().from(gallery);
 		return result;
 	}),
-
-	createFile: protectedProcedure
-		.input(
-			z.object({
-				image: z.file("Invalid file type"),
-			}),
-		)
-		.mutation(async ({ input, ctx }) => {
-			const { image } = input;
-
-			// Upload the image file to the storage
-			const fileRes = await createFile({ file: image });
-			const previewUrl = getFilePreview({ fileId: fileRes.$id }).toString();
-
-			return {
-				...fileRes,
-				previewUrl,
-			};
-		}),
 
 	deleteFiles: protectedProcedure
 		.input(
