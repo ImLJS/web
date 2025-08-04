@@ -10,13 +10,12 @@ import {
 	OpenAI,
 	Prettier,
 	Python,
-	RadixUI,
 	React,
 	ReactQuery,
 	Redux,
 	TailwindCSS,
 	TypeScript,
-	VercelDark,
+	VercelLight,
 } from "developer-icons";
 
 export const allSkills = [
@@ -72,12 +71,6 @@ export const allSkills = [
 		className: "[&_path]:fill-foreground",
 	},
 	{
-		name: "Radix UI",
-		link: "https://www.radix-ui.com",
-		icon: RadixUI,
-		className: "[&_path]:fill-foreground",
-	},
-	{
 		name: "React Query",
 		link: "https://tanstack.com/query",
 		icon: ReactQuery,
@@ -90,7 +83,7 @@ export const allSkills = [
 	{
 		name: "Vercel",
 		link: "https://vercel.com",
-		icon: VercelDark,
+		icon: VercelLight,
 		className: "[&_path]:fill-foreground",
 	},
 	{

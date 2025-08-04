@@ -20,7 +20,7 @@ export const getMetadata = ({
 			url,
 			images: [
 				{
-					url: "https://imljs.me/og-image.png",
+					url: "https://imljs.me/opengraph-image.png",
 					width: 1200,
 					height: 630,
 				},

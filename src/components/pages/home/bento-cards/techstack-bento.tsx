@@ -34,7 +34,7 @@ const TechStackBento = ({ linkTo }: { linkTo?: string }) => {
 								<Icon
 									className={cn(
 										"h-6 w-6 md:h-8 md:w-8",
-										"grayscale filter transition-all duration-300 hover:grayscale-0",
+										"grayscale-50 filter transition-all duration-300 hover:grayscale-0",
 									)}
 								/>
 							</div>

@@ -18,7 +18,12 @@ type NavLinkType = {
 const NavLink = ({ title, href }: NavLinkType) => {
 	const pathname = usePathname();
 
-	const isActive = href === "/" ? pathname === href : pathname.startsWith(href);
+	console.log("Current pathname:", pathname);
+	const isActive = pathname
+		? href === "/"
+			? pathname === href
+			: pathname.startsWith(href)
+		: false;
 
 	return (
 		<Link

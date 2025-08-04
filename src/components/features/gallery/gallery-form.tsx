@@ -72,7 +72,6 @@ const GalleryForm = () => {
 						toast.error(errorData.error || "Failed to add gallery item");
 					}
 				} catch (error) {
-					console.error("Submission error:", error);
 					toast.error("Failed to add gallery item. Please try again.");
 				}
 			},

@@ -43,7 +43,6 @@ const handleFileDownload = async (fileId: string) => {
 
 		window.URL.revokeObjectURL(blobUrl);
 
-		console.log("File download completed:", fileId);
 	} catch (error) {
 		console.error("Error downloading file:", error);
 	}
