@@ -1,7 +1,7 @@
 import DashedLayout from "@/components/layout/dashed-layout";
 import { ROUTES } from "@/data/routes";
-import { getSession } from "@/lib/auth";
 import { getMetadata } from "@/lib/seo";
+import { auth } from "@/server/auth";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 };
 
 const LogInLayout = async ({ children }: { children: React.ReactNode }) => {
-	const session = await getSession();
+	const session = await auth();
 
 	if (session) {
 		redirect(ROUTES.ADMIN);

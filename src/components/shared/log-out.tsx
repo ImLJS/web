@@ -2,13 +2,13 @@
 
 import { Icons } from "@/components/shared/icons";
 import { ROUTES } from "@/data/routes";
-import { checkIsAdminClient, signOut } from "@/lib/auth-client";
+import { signOut, useSession } from "@/server/auth/auth-client";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const LogOut = () => {
 	const router = useRouter();
-	const isAdmin = checkIsAdminClient();
+	const { data: session } = useSession();
 
 	const handleSignOut = async () => {
 		await signOut({
@@ -24,7 +24,7 @@ const LogOut = () => {
 		});
 	};
 
-	if (!isAdmin) {
+	if (!session) {
 		return null;
 	}
 

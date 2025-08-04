@@ -3,8 +3,8 @@
 import AvatarPic from "@/assets/images/avatar.webp";
 import SocialPill from "@/components/shared/social-pill";
 import { NAVIGATION } from "@/data/nav";
-import { checkIsAdminClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
+import { useSession } from "@/server/auth/auth-client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -37,7 +37,8 @@ const NavLink = ({ title, href }: NavLinkType) => {
 };
 
 const DesktopNav = () => {
-	const NAV_DATA = checkIsAdminClient() ? NAVIGATION.admin : NAVIGATION.main;
+	const { data: session } = useSession();
+	const NAV_DATA = session?.user ? NAVIGATION.admin : NAVIGATION.main;
 
 	return (
 		<>

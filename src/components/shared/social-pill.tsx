@@ -1,7 +1,7 @@
 "use client";
 
 import { socialIcons } from "@/data/social-icons";
-import { useSession } from "@/lib/auth-client";
+import { useSession } from "@/server/auth/auth-client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LogOut from "./log-out";

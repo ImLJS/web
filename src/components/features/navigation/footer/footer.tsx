@@ -90,9 +90,14 @@ const Footer = () => {
 										</span>
 										<ul className="space-y-2 text-sm">
 											{section.links
-												.filter((link) => typeof link.href === "string" && !!link.href)
+												.filter(
+													(link) =>
+														typeof link.href === "string" && !!link.href,
+												)
 												.map((link) => (
-													<li key={link.title}>{renderFooterLink(link as FooterLink)}</li>
+													<li key={link.title}>
+														{renderFooterLink(link as FooterLink)}
+													</li>
 												))}
 										</ul>
 									</div>

@@ -2,7 +2,7 @@
 
 import { useAppForm } from "@/components/forms";
 import { ROUTES } from "@/data/routes";
-import { authClient } from "@/lib/auth-client";
+import { signIn } from "@/server/auth/auth-client";
 import { toast } from "sonner";
 import z from "zod";
 
@@ -30,7 +30,7 @@ const LoginForm = () => {
 			onSubmit: userSchema,
 		},
 		onSubmit: async ({ value }) => {
-			await authClient.signIn.email({
+			await signIn.email({
 				email: value.Email,
 				password: value.Password,
 				rememberMe: false,

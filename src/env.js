@@ -15,6 +15,7 @@ export const env = createEnv({
 		UMAMI_WEBSITE_URL: z.url(),
 		UMAMI_WEBSITE_ID: z.string(),
 		UMAMI_SHARE_URL: z.url(),
+		NEXT_TELEMETRY_DISABLED: z.string().default("true"),
 		NODE_ENV: z
 			.enum(["development", "test", "production"])
 			.default("development"),
@@ -50,6 +51,7 @@ export const env = createEnv({
 		UMAMI_WEBSITE_URL: process.env.UMAMI_WEBSITE_URL,
 		UMAMI_WEBSITE_ID: process.env.UMAMI_WEBSITE_ID,
 		UMAMI_SHARE_URL: process.env.UMAMI_SHARE_URL,
+		NEXT_TELEMETRY_DISABLED: process.env.NEXT_TELEMETRY_DISABLED,
 
 		// Client-side environment variables
 		NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
