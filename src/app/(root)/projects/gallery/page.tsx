@@ -1,8 +1,8 @@
-import { getPhotos } from "@/server/admin/gallery";
-import Gallery from "./gallery-page";
-import type { Metadata } from "next";
-import { getMetadata } from "@/lib/seo";
+import GalleryCollage from "@/components/pages/gallery";
 import { siteMetadata } from "@/data/siteMetadata";
+import { getMetadata } from "@/lib/seo";
+import { api } from "@/trpc/server";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = getMetadata({
 	title: "Gallery",
@@ -11,9 +11,9 @@ export const metadata: Metadata = getMetadata({
 });
 
 const GalleryPage = async () => {
-	const galleryItems = await getPhotos();
+	const galleryItems = await api.gallery.getAll();
 
-	return <Gallery galleryData={galleryItems} />;
+	return <GalleryCollage photos={galleryItems} />;
 };
 
 export default GalleryPage;

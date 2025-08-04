@@ -1,5 +1,5 @@
-import AdminAppCard from "@/components/admin/admin-app-grid";
-import SectionCards from "@/components/admin/section-cards";
+import AdminAppCard from "@/components/pages/admin/admin-app-grid";
+import SectionCards from "@/components/pages/admin/section-cards";
 import { getMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 

@@ -1,9 +1,9 @@
-import GitHubActivity from "@/components/common/github";
-import About from "@/components/home/about";
-import FeaturedProject from "@/components/home/featured-project";
-import Hero from "@/components/home/hero";
-import Misc from "@/components/home/misc";
-import MySite from "@/components/home/my-site";
+import GitHubActivity from "@/components/features/github";
+import About from "@/components/pages/home/about";
+import FeaturedProject from "@/components/pages/home/featured-project";
+import Hero from "@/components/pages/home/hero";
+import Misc from "@/components/pages/home/misc";
+import MySite from "@/components/pages/home/my-site";
 import { siteMetadata } from "@/data/siteMetadata";
 import { getMetadata } from "@/lib/seo";
 import type { Metadata } from "next";

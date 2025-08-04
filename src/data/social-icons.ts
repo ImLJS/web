@@ -1,4 +1,4 @@
-import { Icons } from "@/components/common/icons";
+import { Icons } from "@/components/shared/icons";
 import { siteMetadata } from "./siteMetadata";
 
 export const socialIcons = [

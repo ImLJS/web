@@ -1,7 +1,7 @@
-import GitHubActivity from "@/components/common/github";
-import HeroLayout from "@/components/layouts/hero-layout";
-import Projects from "@/components/projects/project-listing";
-import Skills from "@/components/projects/skills";
+import GitHubActivity from "@/components/features/github";
+import HeroLayout from "@/components/layout/hero-layout";
+import Projects from "@/components/pages/projects/project-listing";
+import Skills from "@/components/pages/projects/skills";
 import { siteMetadata } from "@/data/siteMetadata";
 import { getMetadata } from "@/lib/seo";
 import type { Metadata } from "next";

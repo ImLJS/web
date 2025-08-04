@@ -8,6 +8,7 @@ import {
 	FiUploadCloud,
 } from "react-icons/fi";
 import { ROUTES } from "./routes";
+import { siteMetadata } from "./siteMetadata";
 
 export const NAVIGATION = {
 	main: [
@@ -24,7 +25,11 @@ export const NAVIGATION = {
 	],
 
 	extra: [
-		{ title: "Analytics", href: "#", isExternal: false },
+		{
+			title: "Analytics",
+			href: siteMetadata.umamiAnalyticsShareUrl,
+			isExternal: true,
+		},
 		{ title: "RSS", href: "#", isExternal: false },
 		{ title: "Source Code", href: "#", isExternal: false },
 	],

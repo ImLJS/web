@@ -21,4 +21,7 @@ export const siteMetadata = {
 		"https://github.com/dteviot/WebToEpub/graphs/contributors",
 	spotifyRadwimps:
 		"https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7?si=FbtygkrfQ7-bZjrpl32AVw",
+	umamiWebsiteUrl: process.env.UMAMI_WEBSITE_URL,
+	umamiWebsiteId: process.env.UMAMI_WEBSITE_ID,
+	umamiAnalyticsShareUrl: process.env.UMAMI_SHARE_URL,
 };
