@@ -2,10 +2,10 @@ import "@/styles/globals.css";
 
 import { siteMetadata } from "@/data/siteMetadata";
 import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import Providers from "./providers";
-import type { Metadata } from "next";
 
 const geist = Geist({
 	subsets: ["latin"],
@@ -24,10 +24,7 @@ export const metadata: Metadata = {
 	robots: { index: true, follow: true },
 	twitter: { card: "summary_large_image", creator: "@imljs" },
 	icons: {
-		icon: [
-			{ url: "/favicon.svg", type: "image/svg+xml" },
-			{ url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
-		],
+		icon: [{ url: "/favicon.ico", type: "image/x-icon", sizes: "any" }],
 	},
 };
 
