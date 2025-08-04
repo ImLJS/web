@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import Providers from "./providers";
+import type { Metadata } from "next";
 
 const geist = Geist({
 	subsets: ["latin"],
@@ -17,6 +18,18 @@ const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
 	preload: false,
 });
+
+export const metadata: Metadata = {
+	metadataBase: new URL("https://imljs.me"),
+	robots: { index: true, follow: true },
+	twitter: { card: "summary_large_image", creator: "@imljs" },
+	icons: {
+		icon: [
+			{ url: "/favicon.svg", type: "image/svg+xml" },
+			{ url: "/favicon.ico", type: "image/x-icon", sizes: "any" },
+		],
+	},
+};
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
