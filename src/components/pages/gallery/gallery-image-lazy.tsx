@@ -42,7 +42,7 @@ const GalleryImageLazy = ({
 	}, [inView, src, dataUrl]);
 
 	return (
-		<div ref={ref} className="bg-daw-main-100">
+		<div ref={ref}>
 			<img
 				src={
 					dataUrl ||

@@ -31,7 +31,7 @@ const ProjectCardBento = ({
 					<h2 className="mb-2 font-medium text-base">{title}</h2>
 					<p className="text-muted-foreground text-sm">{description}</p>
 				</div>
-				<div className="relative w-full">
+				<div className="relative mt-4 w-full md:mt-0">
 					<div
 						className="rounded-[20px] border p-2 transition-all duration-500 ease-out group-hover:border-indigo-primary"
 						style={{ width: "100%", height: "130px" }}
