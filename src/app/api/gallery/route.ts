@@ -65,11 +65,9 @@ export async function POST(req: Request) {
 			}));
 
 			// Insert all gallery items using tRPC
-			const response = await api.gallery.insertMultiple({
+			await api.gallery.insertMultiple({
 				items: galleryItems,
 			});
-
-			console.log("Insert response:", response);
 
 			return NextResponse.json({
 				success: true,
@@ -77,15 +75,12 @@ export async function POST(req: Request) {
 				files: uploadResults,
 			});
 		} catch (uploadError) {
-			console.error("Upload error:", uploadError);
-
 			return NextResponse.json(
 				{ error: "Failed to process uploads. Please try again." },
 				{ status: 500 },
 			);
 		}
 	} catch (err) {
-		console.error("Request processing error:", err);
 		return NextResponse.json({ error: "Upload failed" }, { status: 500 });
 	}
 }
@@ -105,7 +100,6 @@ export async function GET(req: Request) {
 		// Redirect to the actual file download URL
 		return NextResponse.redirect(downloadUrl.toString());
 	} catch (err) {
-		console.error("Download error:", err);
 		return NextResponse.json({ error: "Download failed" }, { status: 500 });
 	}
 }
@@ -125,7 +119,6 @@ export async function DELETE(req: Request) {
 
 		return NextResponse.json({ success: true });
 	} catch (err) {
-		console.error("Delete error:", err);
 		return NextResponse.json({ error: "Delete failed" }, { status: 500 });
 	}
 }

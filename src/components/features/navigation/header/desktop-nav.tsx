@@ -8,6 +8,7 @@ import { useSession } from "@/server/auth/auth-client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { MobileNavTrigger } from "./mobile-nav";
 
 type NavLinkType = {
@@ -17,8 +18,18 @@ type NavLinkType = {
 
 const NavLink = ({ title, href }: NavLinkType) => {
 	const pathname = usePathname();
+	const [mounted, setMounted] = useState(false);
 
-	const isActive = href === "/" ? pathname === href : pathname.startsWith(href);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	const isActive =
+		mounted && pathname
+			? href === "/"
+				? pathname === href
+				: pathname.startsWith(href)
+			: false;
 
 	return (
 		<Link

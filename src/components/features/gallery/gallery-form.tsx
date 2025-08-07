@@ -72,7 +72,6 @@ const GalleryForm = () => {
 						toast.error(errorData.error || "Failed to add gallery item");
 					}
 				} catch (error) {
-					console.error("Submission error:", error);
 					toast.error("Failed to add gallery item. Please try again.");
 				}
 			},
@@ -85,7 +84,7 @@ const GalleryForm = () => {
 	] as const;
 
 	return (
-		<div className="mx-auto max-w-6xl gap-y-10 rounded-lg border p-6">
+		<div className="mx-4 max-w-7xl gap-y-10 rounded-lg border p-6 sm:mx-6 lg:mx-8">
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();

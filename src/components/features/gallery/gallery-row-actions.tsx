@@ -8,12 +8,12 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuSeparator,
 	DropdownMenuShortcut,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 import { api } from "@/trpc/react";
+import { toast } from "sonner";
 import { gallerySchema } from "./columns";
 
 interface DataTableRowActionsProps<TData> {
@@ -37,9 +37,10 @@ export function DataTableRowActions<TData>({
 				throw new Error("Failed to delete file");
 			}
 			await utils.gallery.invalidate();
+			toast.success("File deleted successfully");
 		} catch (error) {
 			console.error("Error deleting file:", error);
-			alert("Failed to delete file. Please try again.");
+			toast.error("Failed to delete file");
 		}
 	};
 
@@ -56,10 +57,6 @@ export function DataTableRowActions<TData>({
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end" className="w-[160px]">
-				<DropdownMenuItem>Edit</DropdownMenuItem>
-				<DropdownMenuItem>Make a copy</DropdownMenuItem>
-				<DropdownMenuItem>Favorite</DropdownMenuItem>
-				<DropdownMenuSeparator />
 				<DropdownMenuItem variant="destructive" onClick={handleDelete}>
 					Delete
 					<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>

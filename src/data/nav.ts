@@ -30,8 +30,6 @@ export const NAVIGATION = {
 			href: siteMetadata.umamiAnalyticsShareUrl,
 			isExternal: true,
 		},
-		{ title: "RSS", href: "#", isExternal: false },
-		{ title: "Source Code", href: "#", isExternal: false },
 	],
 
 	misc: [

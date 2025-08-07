@@ -1,5 +1,5 @@
 import TempProjectImage from "@/assets/images/temp_project.webp";
-import { FaDatabase, FaLaptopCode, FaPencilRuler } from "react-icons/fa";
+import { FaLaptopCode } from "react-icons/fa";
 import { FiImage } from "react-icons/fi";
 
 export const PROJECTS = [
@@ -23,28 +23,6 @@ export const PROJECTS = [
 		href: "/projects/gallery",
 		icon: FiImage,
 		tags: ["Supabase", "Drizzle", "Appwrite"],
-		image: TempProjectImage,
-		archived: true,
-	},
-	{
-		featured: true,
-		slug: "data_store",
-		title: "Datastore",
-		description: "Scalable data system with Node.js.",
-		href: "#",
-		icon: FaDatabase,
-		tags: ["MySQL", "Node.js", "Express"],
-		image: TempProjectImage,
-		archived: true,
-	},
-	{
-		featured: false,
-		slug: "revamp",
-		title: "Revamp",
-		description: "UI/UX redesign for better usability.",
-		href: "#",
-		icon: FaPencilRuler,
-		tags: ["Figma", "Adobe XD", "Sketch"],
 		image: TempProjectImage,
 		archived: true,
 	},

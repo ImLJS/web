@@ -99,7 +99,6 @@ export const galleryRouter = createTRPCRouter({
 					deletedCount: fileIds.length,
 				};
 			} catch (error) {
-				console.error("Error deleting files:", error);
 				throw new Error("Failed to delete files");
 			}
 		}),
