@@ -8,14 +8,13 @@ import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuSeparator,
 	DropdownMenuShortcut,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 import { api } from "@/trpc/react";
-import { gallerySchema } from "./columns";
 import { toast } from "sonner";
+import { gallerySchema } from "./columns";
 
 interface DataTableRowActionsProps<TData> {
 	row: Row<TData>;
