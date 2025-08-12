@@ -84,9 +84,10 @@ const GalleryCollage = ({ photos }: { photos: GalleryImage[] }) => {
 	return (
 		<div className="mt-6">
 			<SectionWrapper
-				heading="Image Gallery"
-				description="A dynamic bento-style grid of uploaded visuals."
+				heading="Yūgen Gallery"
+				description="A timeless collection of soulful Japanese visual works."
 				className="p-2"
+				headingClassName="border-b"
 			>
 				<GalleryControls />
 				<div

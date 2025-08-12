@@ -5,15 +5,15 @@ import { api } from "@/trpc/server";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = getMetadata({
-	title: "Gallery",
+	title: "Yūgen Gallery",
 	description: siteMetadata.galleryDescription,
-	url: "/projects/gallery",
+	url: "/projects/yugen",
 });
 
-const GalleryPage = async () => {
-	const galleryItems = await api.gallery.getAll();
+const YugenPage = async () => {
+	const photos = await api.gallery.getAll();
 
-	return <GalleryCollage photos={galleryItems} />;
+	return <GalleryCollage photos={photos} />;
 };
 
-export default GalleryPage;
+export default YugenPage;

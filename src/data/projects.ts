@@ -16,14 +16,14 @@ export const PROJECTS = [
 	},
 	{
 		featured: true,
-		slug: "gallery",
-		title: "Gallery",
+		slug: "yugen",
+		title: "Yūgen Gallery",
 		description:
 			"A personal image gallery to showcase illustrations and visual experiments.",
-		href: "/projects/gallery",
+		href: "/projects/yugen",
 		icon: FiImage,
 		tags: ["Supabase", "Drizzle", "Appwrite"],
 		image: TempProjectImage,
-		archived: true,
+		archived: false,
 	},
 ] as const;
