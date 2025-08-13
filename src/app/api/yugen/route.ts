@@ -54,7 +54,7 @@ export async function POST(req: Request) {
 			const uploadResults = await Promise.all(uploadPromises);
 
 			// Prepare data for batch database insert
-			const galleryItems = uploadResults.map((result, index) => ({
+			const yugenItems = uploadResults.map((result, index) => ({
 				username,
 				handle,
 				source,
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
 
 			// Insert all gallery items using tRPC
 			await api.gallery.insertMultiple({
-				items: galleryItems,
+				items: yugenItems,
 			});
 
 			return NextResponse.json({

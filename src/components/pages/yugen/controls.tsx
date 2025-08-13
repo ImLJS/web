@@ -9,7 +9,7 @@ import {
 import { Info } from "lucide-react";
 import { useState } from "react";
 
-const GalleryControls = () => {
+const Controls = () => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 
 	return (
@@ -22,12 +22,12 @@ const GalleryControls = () => {
 				</DialogTrigger>
 				<DialogContent>
 					<DialogHeader>
-						<DialogTitle>Gallery Disclaimer</DialogTitle>
+						<DialogTitle>Yugen Gallery Disclaimer</DialogTitle>
 					</DialogHeader>
 					<div className="space-y-3 text-muted-foreground text-sm">
 						<p>
-							This gallery features curated illustrations sourced from various
-							platforms. Please note:
+							This Yugen gallery features curated illustrations sourced from
+							various platforms. Please note:
 						</p>
 						<ul className="list-inside list-disc space-y-1">
 							<li>
@@ -59,4 +59,4 @@ const GalleryControls = () => {
 	);
 };
 
-export default GalleryControls;
+export default Controls;

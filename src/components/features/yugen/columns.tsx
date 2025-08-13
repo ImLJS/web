@@ -1,13 +1,13 @@
 "use client";
 import { Checkbox } from "@/components/ui/checkbox";
 import { DataTableColumnHeader } from "@/components/ui/data-table/data-table-column-header";
-import { getFileDownload } from "@/lib/appwrite"; // Update this import path
+import { getFileDownload } from "@/lib/appwrite";
 import type { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
 import { z } from "zod";
-import { DataTableRowActions } from "./gallery-row-actions";
+import { RowActions } from "./row-actions";
 
-export const gallerySchema = z.object({
+export const yugenSchema = z.object({
 	id: z.number(),
 	username: z.string(),
 	handle: z.string(),
@@ -16,7 +16,7 @@ export const gallerySchema = z.object({
 	previewUrl: z.url(),
 });
 
-export type Gallery = z.infer<typeof gallerySchema>;
+export type Yugen = z.infer<typeof yugenSchema>;
 
 const handleFileDownload = async (fileId: string) => {
 	try {
@@ -47,7 +47,7 @@ const handleFileDownload = async (fileId: string) => {
 	}
 };
 
-export const columns: ColumnDef<Gallery>[] = [
+export const columns: ColumnDef<Yugen>[] = [
 	{
 		id: "select",
 		header: ({ table }) => (
@@ -84,7 +84,7 @@ export const columns: ColumnDef<Gallery>[] = [
 				<div className="flex items-center justify-center">
 					<Image
 						src={previewUrl}
-						alt="Gallery Item"
+						alt="Yugen Gallery Item"
 						width={40}
 						height={40}
 						className="h-10 w-10 rounded object-cover"
@@ -140,6 +140,6 @@ export const columns: ColumnDef<Gallery>[] = [
 	},
 	{
 		id: "actions",
-		cell: ({ row }) => <DataTableRowActions row={row} />,
+		cell: ({ row }) => <RowActions row={row} />,
 	},
 ];

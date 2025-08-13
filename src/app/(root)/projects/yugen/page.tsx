@@ -1,4 +1,4 @@
-import GalleryCollage from "@/components/pages/gallery";
+import YugenCollage from "@/components/pages/yugen";
 import { siteMetadata } from "@/data/siteMetadata";
 import { getMetadata } from "@/lib/seo";
 import { api } from "@/trpc/server";
@@ -13,7 +13,7 @@ export const metadata: Metadata = getMetadata({
 const YugenPage = async () => {
 	const photos = await api.gallery.getAll();
 
-	return <GalleryCollage photos={photos} />;
+	return <YugenCollage photos={photos} />;
 };
 
 export default YugenPage;

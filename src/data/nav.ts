@@ -58,8 +58,8 @@ export const NAVIGATION = {
 
 	adminApps: [
 		{
-			title: "Gallery",
-			href: "/admin/gallery",
+			title: "Yūgen Gallery",
+			href: "/admin/yugen",
 			isExternal: false,
 			description: "Manage your image uploads",
 			icon: FiImage,

@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 
 import { cn } from "@/lib/utils";
 
-const GalleryImageLazy = ({
+const LazyImage = ({
 	src,
 	alt,
 	className,
@@ -60,4 +60,4 @@ const GalleryImageLazy = ({
 	);
 };
 
-export default GalleryImageLazy;
+export default LazyImage;

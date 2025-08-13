@@ -19,7 +19,7 @@ const userSchema = z.object({
 
 type UserFormValues = z.infer<typeof userSchema>;
 
-const GalleryForm = () => {
+const YugenForm = () => {
 	const utils = api.useUtils();
 
 	const { AppField, AppForm, handleSubmit, reset, state, SubmitButton } =
@@ -55,7 +55,7 @@ const GalleryForm = () => {
 						formData.append("Height", height.toString());
 					}
 
-					const response = await fetch("/api/gallery", {
+					const response = await fetch("/api/yugen", {
 						method: "POST",
 						body: formData,
 					});
@@ -139,4 +139,4 @@ const GalleryForm = () => {
 	);
 };
 
-export default GalleryForm;
+export default YugenForm;

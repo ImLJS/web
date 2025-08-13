@@ -14,22 +14,20 @@ import {
 
 import { api } from "@/trpc/react";
 import { toast } from "sonner";
-import { gallerySchema } from "./columns";
+import { yugenSchema } from "./columns";
 
 interface DataTableRowActionsProps<TData> {
 	row: Row<TData>;
 }
 
-export function DataTableRowActions<TData>({
-	row,
-}: DataTableRowActionsProps<TData>) {
-	const galleryRow = gallerySchema.parse(row.original);
+export function RowActions<TData>({ row }: DataTableRowActionsProps<TData>) {
+	const galleryRow = yugenSchema.parse(row.original);
 	const utils = api.useUtils();
 
 	const handleDelete = async () => {
 		const fileId = galleryRow.fileId;
 		try {
-			const response = await fetch("/api/gallery", {
+			const response = await fetch("/api/yugen", {
 				method: "DELETE",
 				body: JSON.stringify([fileId]),
 			});
