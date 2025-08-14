@@ -30,6 +30,11 @@ export const NAVIGATION = {
 			href: siteMetadata.umamiAnalyticsShareUrl,
 			isExternal: true,
 		},
+		{
+			title: "Source Code",
+			href: "https://github.com/ImLJS/web",
+			isExternal: true,
+		},
 	],
 
 	misc: [
