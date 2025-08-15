@@ -16,11 +16,11 @@ export const getMetadata = ({
 	const imageUrl = `${baseUrl}/opengraph-image.jpg`;
 
 	return {
-		title,
+		title: `${title} | ImLJS`,
 		description,
 		metadataBase: new URL(baseUrl),
 		openGraph: {
-			title,
+			title: `${title} | ImLJS`,
 			description,
 			url: fullUrl,
 			siteName: "ImLJS",
@@ -30,13 +30,13 @@ export const getMetadata = ({
 					url: imageUrl,
 					width: 1200,
 					height: 630,
-					alt: title,
+					alt: `${title} | ImLJS Open Graph Image`,
 				},
 			],
 		},
 		twitter: {
 			card: "summary_large_image",
-			title,
+			title: `${title} | ImLJS`,
 			description,
 			images: [imageUrl],
 		},

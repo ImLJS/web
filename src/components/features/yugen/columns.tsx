@@ -4,6 +4,7 @@ import { DataTableColumnHeader } from "@/components/ui/data-table/data-table-col
 import { getFileDownload } from "@/lib/appwrite";
 import type { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
+import { toast } from "sonner";
 import { z } from "zod";
 import { RowActions } from "./row-actions";
 
@@ -42,8 +43,10 @@ const handleFileDownload = async (fileId: string) => {
 		document.body.removeChild(link);
 
 		window.URL.revokeObjectURL(blobUrl);
+
+		toast.success("File downloaded successfully!");
 	} catch (error) {
-		console.error("Error downloading file:", error);
+		toast.error("Failed to download file. Please try again.");
 	}
 };
 

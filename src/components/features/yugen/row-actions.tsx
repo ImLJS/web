@@ -37,7 +37,6 @@ export function RowActions<TData>({ row }: DataTableRowActionsProps<TData>) {
 			await utils.gallery.invalidate();
 			toast.success("File deleted successfully");
 		} catch (error) {
-			console.error("Error deleting file:", error);
 			toast.error("Failed to delete file");
 		}
 	};
