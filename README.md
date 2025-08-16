@@ -12,20 +12,22 @@ A modern, full-stack personal portfolio website built with the T3 Stack and enha
 - **Admin Dashboard** - Protected admin routes for content management
 - **Responsive Layout** - Mobile-first design with desktop optimizations
 - **Smooth Animations** - Framer Motion powered interactions and transitions
-- **Optimized Performance** - Next.js 14 with App Router for lightning-fast loading
+- **Optimized Performance** - Next.js 15 with App Router and Turbo for lightning-fast loading
 - **Type Safety** - End-to-end TypeScript for robust development
 - **Accessible** - Built with accessibility best practices in mind
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **Framework:** [Next.js 14](https://nextjs.org) with App Router
-- **Styling:** [Tailwind CSS](https://tailwindcss.com) + Custom Design System
+- **Framework:** [Next.js 15](https://nextjs.org) with App Router & Turbo
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com) + Custom Design System
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com) + [Radix UI](https://radix-ui.com) primitives
-- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Animations:** [Motion](https://motion.dev) (Framer Motion successor)
 - **State Management:** [TanStack Query](https://tanstack.com/query) + [Jotai](https://jotai.org)
+- **Forms:** [TanStack Form](https://tanstack.com/form)
+- **Tables:** [TanStack Table](https://tanstack.com/table) for data grids
 - **Typography:** [Geist Sans & Mono](https://vercel.com/font)
-- **Icons:** Custom SVG icon system
+- **Icons:** [Lucide React](https://lucide.dev) + [Developer Icons](https://developer-icons.dev)
 
 ### Backend
 - **API:** [tRPC](https://trpc.io) for type-safe APIs
@@ -38,7 +40,8 @@ A modern, full-stack personal portfolio website built with the T3 Stack and enha
 - **Package Manager:** [Bun](https://bun.sh)
 - **Linting:** [Biome](https://biomejs.dev) for fast linting and formatting
 - **Type Checking:** [TypeScript](https://typescriptlang.org)
-- **Deployment:** [Vercel](https://vercel.com)
+- **Database Tools:** [Drizzle Kit](https://orm.drizzle.team/kit-docs/overview) for migrations
+- **Deployment:** [Vercel](https://vercel.com) with Speed Insights
 
 ## 🏗️ Project Structure
 
@@ -83,7 +86,7 @@ This website is intentionally over-engineered to serve as:
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ or [Bun](https://bun.sh)
+- Node.js 18+ or [Bun](https://bun.sh) (recommended)
 - PostgreSQL database
 - Appwrite account for file storage
 - GitHub OAuth app for authentication
@@ -99,7 +102,6 @@ This website is intentionally over-engineered to serve as:
 2. **Install dependencies**
    ```bash
    bun install
-   # or npm install
    ```
 
 3. **Set up environment variables**
@@ -110,13 +112,11 @@ This website is intentionally over-engineered to serve as:
 4. **Set up the database**
    ```bash
    bun run db:push
-   # or npm run db:push
    ```
 
 5. **Start the development server**
    ```bash
    bun dev
-   # or npm run dev
    ```
 
 6. **Open your browser**
@@ -124,34 +124,39 @@ This website is intentionally over-engineered to serve as:
 
 ## 📦 Available Scripts
 
-- `bun dev` - Start development server
+- `bun dev` - Start development server with Turbo
 - `bun build` - Build for production  
 - `bun start` - Start production server
-- `bun lint` - Run Biome linter
-- `bun lint:fix` - Fix linting issues
-- `bun type-check` - Run TypeScript compiler
-- `bun db:push` - Push database schema changes
-- `bun db:studio` - Open Drizzle Studio
+- `bun run preview` - Build and preview production locally
+- `bun run check` - Run Biome linter and formatter
+- `bun run check:write` - Fix linting issues automatically
+- `bun run check:unsafe` - Fix with unsafe transformations
+- `bun run typecheck` - Run TypeScript compiler
+- `bun run db:generate` - Generate database migrations
+- `bun run db:migrate` - Run database migrations
+- `bun run db:push` - Push database schema changes
+- `bun run db:studio` - Open Drizzle Studio
 
 ## 🎯 Key Features
 
 ### Gallery Management
-- **File Upload** - Multi-file upload with drag-and-drop support
+- **File Upload** - Multi-file upload with drag-and-drop support via React Dropzone
 - **Image Processing** - Automatic dimension detection and optimization
 - **Admin Controls** - Protected routes for gallery management
-- **Data Tables** - Sortable and filterable gallery items
-- **File Downloads** - Direct download functionality
+- **Data Tables** - Advanced sortable and filterable tables with TanStack Table
+- **File Downloads** - Direct download functionality with Appwrite integration
+- **Lazy Loading** - Optimized image loading with intersection observer
 
 ### Authentication System
-- **GitHub OAuth** - Secure authentication via GitHub
 - **Role-based Access** - Admin and user role separation
 - **Protected Routes** - Server-side route protection
 - **Session Management** - Persistent login sessions
 
 ### Database Features
-- **Type-safe Queries** - End-to-end type safety with tRPC and Drizzle
-- **Schema Management** - Version-controlled database schemas
+- **Type-safe Queries** - End-to-end type safety with tRPC and Drizzle ORM
+- **Schema Management** - Version-controlled database schemas with Drizzle Kit
 - **Data Validation** - Runtime validation with Zod schemas
+- **Database Studio** - Visual database management with Drizzle Studio
 
 ## 🔧 Customization
 
@@ -186,7 +191,7 @@ This project is optimized for deployment on Vercel:
    - Deploy automatically on every push to main
 
 3. **Environment Variables on Vercel**
-   Make sure to set all required environment variables in your Vercel project settings.
+   Add all the environment variables from your `.env.local` to your Vercel project settings.
 
 For other platforms, follow the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
