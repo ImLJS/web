@@ -7,11 +7,11 @@ import {
 } from "react";
 
 import { cn } from "@/lib/utils";
-import type { GalleryImage } from "@/types/gallery";
+import type { YugenImage } from "@/types/yugen";
 
 import SectionWrapper from "@/components/layout/section-wrapper";
-import GalleryControls from "./gallery-controls";
-import GalleryPhoto from "./gallery-photo";
+import Controls from "./controls";
+import Photo from "./photo";
 
 const useEffect =
 	typeof window === "undefined" ? useEffectOriginal : useLayoutEffect;
@@ -36,13 +36,13 @@ const useColumnCount = () => {
 };
 
 const useOrganisedPhotos = (
-	photos: GalleryImage[],
+	photos: YugenImage[],
 	columnCount: number | null,
 ) => {
 	const organisedPhotos = useMemo(() => {
 		if (columnCount === null || columnCount <= 0) return [];
 
-		const columns: { photos: GalleryImage[]; height: number; index: number }[] =
+		const columns: { photos: YugenImage[]; height: number; index: number }[] =
 			new Array(columnCount)
 				.fill(null)
 				.map((_, i) => ({ photos: [], height: 0, index: i }));
@@ -77,18 +77,19 @@ const useOrganisedPhotos = (
 	return organisedPhotos;
 };
 
-const GalleryCollage = ({ photos }: { photos: GalleryImage[] }) => {
+const YugenCollage = ({ photos }: { photos: YugenImage[] }) => {
 	const count = useColumnCount();
 	const columns = useOrganisedPhotos(photos, count);
 
 	return (
 		<div className="mt-6">
 			<SectionWrapper
-				heading="Image Gallery"
-				description="A dynamic bento-style grid of uploaded visuals."
+				heading="Yūgen Gallery"
+				description="A timeless collection of soulful Japanese visual works."
 				className="p-2"
+				headingClassName="border-b"
 			>
-				<GalleryControls />
+				<Controls />
 				<div
 					className={cn(
 						"grid min-h-screen grid-cols-1 divide-x divide-separator transition duration-600 sm:grid-cols-2 lg:grid-cols-3",
@@ -98,7 +99,7 @@ const GalleryCollage = ({ photos }: { photos: GalleryImage[] }) => {
 					{columns.map((column, i) => (
 						<div key={i} className="flex flex-col divide-y divide-separator">
 							{column.map((photo) => (
-								<GalleryPhoto key={photo.fileId} {...photo} />
+								<Photo key={photo.fileId} {...photo} />
 							))}
 						</div>
 					))}
@@ -108,4 +109,4 @@ const GalleryCollage = ({ photos }: { photos: GalleryImage[] }) => {
 	);
 };
 
-export default GalleryCollage;
+export default YugenCollage;

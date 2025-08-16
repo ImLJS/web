@@ -30,6 +30,11 @@ export const NAVIGATION = {
 			href: siteMetadata.umamiAnalyticsShareUrl,
 			isExternal: true,
 		},
+		{
+			title: "Source Code",
+			href: "https://github.com/ImLJS/web",
+			isExternal: true,
+		},
 	],
 
 	misc: [
@@ -58,8 +63,8 @@ export const NAVIGATION = {
 
 	adminApps: [
 		{
-			title: "Gallery",
-			href: "/admin/gallery",
+			title: "Yūgen Gallery",
+			href: "/admin/yugen",
 			isExternal: false,
 			description: "Manage your image uploads",
 			icon: FiImage,

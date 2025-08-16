@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { FiUpload, FiX } from "react-icons/fi";
+import { toast } from "sonner";
 
 export const FileUpload = ({
 	onChange,
@@ -46,8 +47,8 @@ export const FileUpload = ({
 		multiple,
 		noClick: true,
 		onDrop: handleFileChange,
-		onDropRejected: (error) => {
-			console.log(error);
+		onDropRejected: () => {
+			toast.error("File upload failed. Please try again.");
 		},
 	});
 

@@ -1,5 +1,5 @@
-import GalleryForm from "@/components/features/gallery/gallery-form";
-import GalleryTable from "@/components/features/gallery/gallery-table";
+import YugenForm from "@/components/features/yugen/yugen-form";
+import YugenTable from "@/components/features/yugen/yugen-table";
 import { getMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -8,17 +8,17 @@ export const metadata: Metadata = {
 	...getMetadata({
 		title: "Gallery",
 		description: "Internal",
-		url: "/admin/gallery",
+		url: "/admin/yugen",
 	}),
 };
 
-const GalleryPage = () => {
+const YugenManagePage = () => {
 	return (
 		<div className="my-6 space-y-10 md:mt-10 md:space-y-16">
-			<GalleryForm />
-			<GalleryTable />
+			<YugenForm />
+			<YugenTable />
 		</div>
 	);
 };
 
-export default GalleryPage;
+export default YugenManagePage;

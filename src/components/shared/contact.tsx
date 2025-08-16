@@ -1,7 +1,17 @@
+"use client";
+
 import { siteMetadata } from "@/data/siteMetadata";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Icons } from "./icons";
+
+const handleDownload = () => {
+	const link = document.createElement("a");
+	link.href = "/public/Resume.pdf";
+	link.download = "Resume.pdf";
+	document.body.appendChild(link);
+	link.click();
+};
 
 const Contact = () => {
 	return (
@@ -15,7 +25,15 @@ const Contact = () => {
 			</h2>
 			<div className="relative">
 				<div className="grid h-full grid-cols-2 divide-x">
-					<div className="group flex items-center justify-center py-5 transition-colors hover:bg-paper/10 md:py-0">
+					<div
+						className="group flex cursor-pointer items-center justify-center py-5 transition-colors hover:bg-paper/10 md:py-0"
+						onClick={handleDownload}
+						onKeyDown={(e) => {
+							if (e.key === "Enter" || e.key === " ") {
+								handleDownload();
+							}
+						}}
+					>
 						<Icons.file className="h-8 w-8 text-paper opacity-50 group-hover:opacity-100" />
 						<h3 className="ml-2 font-semibold text-xl">Resume</h3>
 					</div>

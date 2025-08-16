@@ -1,19 +1,19 @@
-import GalleryCollage from "@/components/pages/gallery";
+import YugenCollage from "@/components/pages/yugen";
 import { siteMetadata } from "@/data/siteMetadata";
 import { getMetadata } from "@/lib/seo";
 import { api } from "@/trpc/server";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = getMetadata({
-	title: "Gallery",
+	title: "Yūgen Gallery",
 	description: siteMetadata.galleryDescription,
-	url: "/projects/gallery",
+	url: "/projects/yugen",
 });
 
-const GalleryPage = async () => {
-	const galleryItems = await api.gallery.getAll();
+const YugenPage = async () => {
+	const photos = await api.gallery.getAll();
 
-	return <GalleryCollage photos={galleryItems} />;
+	return <YugenCollage photos={photos} />;
 };
 
-export default GalleryPage;
+export default YugenPage;

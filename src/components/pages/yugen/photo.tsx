@@ -1,19 +1,20 @@
 "use client";
 
 import { createPreviewUrl } from "@/lib/utils";
-import type { GalleryImage } from "@/types/gallery";
-import GalleryImageLazy from "./gallery-image-lazy";
+import type { YugenImage } from "@/types/yugen";
+import LazyImage from "./lazy-image";
 
-const GalleryPhoto = ({
+const Photo = ({
 	fileId,
 	width,
 	height,
 	username,
 	handle,
-}: GalleryImage) => {
+	source,
+}: YugenImage) => {
 	return (
 		<div className="group relative overflow-hidden">
-			<GalleryImageLazy
+			<LazyImage
 				src={createPreviewUrl(fileId)}
 				alt={`Illustration by ${username} (@${handle})`}
 				width={width}
@@ -29,4 +30,4 @@ const GalleryPhoto = ({
 	);
 };
 
-export default GalleryPhoto;
+export default Photo;
