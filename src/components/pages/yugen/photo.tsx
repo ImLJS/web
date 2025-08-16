@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import { createPreviewUrl } from "@/lib/utils";
 import type { YugenImage } from "@/types/yugen";
 import LazyImage from "./lazy-image";
@@ -22,15 +20,12 @@ const Photo = ({
 				width={width}
 				height={height}
 			/>
-			<Link
-				href={source}
-				className="absolute inset-0 flex flex-col justify-end bg-gradient-to-b from-[#0000] to-[#000c] p-6 opacity-0 transition [.group:hover_&]:opacity-100"
-			>
+			<div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-b from-[#0000] to-[#140202cc] p-6 opacity-0 transition [.group:hover_&]:opacity-100">
 				<div className="flex flex-col justify-end">
-					<div className="font-semibold text-text-primary">{username}</div>
-					<div className="text-sm text-text-secondary">{handle}</div>
+					<div className="font-semibold text-white">{username}</div>
+					<div className="text-sm text-white">{handle}</div>
 				</div>
-			</Link>
+			</div>
 		</div>
 	);
 };
