@@ -9,7 +9,6 @@ import { cache } from "react";
 
 export const betterAuth = betterAuthClient({
 	baseURL: getBaseUrl(),
-	trustedOrigins: [getBaseUrl()],
 	database: drizzleAdapter(db, {
 		provider: "pg",
 		usePlural: true,
