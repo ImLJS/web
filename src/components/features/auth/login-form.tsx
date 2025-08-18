@@ -36,8 +36,9 @@ const LoginForm = () => {
 				rememberMe: false,
 				callbackURL: ROUTES.ADMIN,
 				fetchOptions: {
-					onError: () => {
+					onError: (err) => {
 						toast.error("Login failed. Please check your credentials.");
+						console.error("Login error:", err);
 						reset();
 					},
 					onSuccess: () => {
