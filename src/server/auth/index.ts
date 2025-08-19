@@ -9,6 +9,8 @@ import { cache } from "react";
 
 export const betterAuth = betterAuthClient({
 	baseURL: getBaseUrl(),
+	trustedOrigins: ["*.vercel.app", getBaseUrl()],
+	secret: process.env.BETTER_AUTH_SECRET,
 	database: drizzleAdapter(db, {
 		provider: "pg",
 		usePlural: true,
