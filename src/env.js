@@ -17,7 +17,7 @@ export const env = createEnv({
 		UMAMI_SHARE_URL: z.url(),
 		NEXT_TELEMETRY_DISABLED: z.string().default("true"),
 		NODE_ENV: z
-			.enum(["development", "test", "production"])
+			.enum(["development", "preview", "production"])
 			.default("development"),
 	},
 

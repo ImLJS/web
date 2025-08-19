@@ -9,7 +9,7 @@ import { cache } from "react";
 
 export const betterAuth = betterAuthClient({
 	baseURL: getBaseUrl(),
-	trustedOrigins: [getBaseUrl()],
+	trustedOrigins: ["*.vercel.app", "localhost:3000", "*.imljs.me", getBaseUrl()],
 	database: drizzleAdapter(db, {
 		provider: "pg",
 		usePlural: true,

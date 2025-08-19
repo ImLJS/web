@@ -2,7 +2,7 @@ import { inferAdditionalFields } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
 import { toast } from "sonner";
 
-const authClient = createAuthClient({
+export const authClient = createAuthClient({
 	plugins: [
 		inferAdditionalFields({
 			user: {
