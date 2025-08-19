@@ -12,13 +12,13 @@ export const env = createEnv({
 		SPOTIFY_CLIENT_SECRET: z.string(),
 		SPOTIFY_REFRESH_TOKEN: z.string(),
 		BETTER_AUTH_SECRET: z.string(),
-		BETTER_AUTH_URL: z.url().default("http://localhost:3000"),
+		BETTER_AUTH_URL: z.url(),
 		UMAMI_WEBSITE_URL: z.url(),
 		UMAMI_WEBSITE_ID: z.string(),
 		UMAMI_SHARE_URL: z.url(),
 		NEXT_TELEMETRY_DISABLED: z.string().default("true"),
 		NODE_ENV: z
-			.enum(["development", "test", "production"])
+			.enum(["development", "preview", "production"])
 			.default("development"),
 	},
 
