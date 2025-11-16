@@ -32,8 +32,8 @@
 		"@orpc/client": "catalog:",
 		"@orpc/server": "catalog:",
 		"better-auth": "catalog:",
-		"@my-better-t-app/api": "workspace:*",
-		"@my-better-t-app/auth": "workspace:*"
+		"@repo/api": "workspace:*",
+		"@repo/auth": "workspace:*"
 	},
 	"devDependencies": {
 		"@tanstack/react-router-devtools": "^1.132.31",

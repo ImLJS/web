@@ -17,15 +17,15 @@
         "turbo": "^2.5.4",
       },
     },
-    "apps/server": {
-      "name": "server",
+    "apps/api": {
+      "name": "api",
       "dependencies": {
-        "@my-better-t-app/api": "workspace:*",
-        "@my-better-t-app/auth": "workspace:*",
-        "@my-better-t-app/db": "workspace:*",
         "@orpc/openapi": "catalog:",
         "@orpc/server": "catalog:",
         "@orpc/zod": "catalog:",
+        "@repo/api": "workspace:*",
+        "@repo/auth": "workspace:*",
+        "@repo/db": "workspace:*",
         "better-auth": "catalog:",
         "dotenv": "catalog:",
         "hono": "catalog:",
@@ -41,11 +41,11 @@
     "apps/web": {
       "name": "web",
       "dependencies": {
-        "@my-better-t-app/api": "workspace:*",
-        "@my-better-t-app/auth": "workspace:*",
         "@orpc/client": "catalog:",
         "@orpc/server": "catalog:",
         "@orpc/tanstack-query": "^1.10.0",
+        "@repo/api": "workspace:*",
+        "@repo/auth": "workspace:*",
         "@tailwindcss/vite": "^4.1.8",
         "@tanstack/react-form": "^1.23.5",
         "@tanstack/react-query": "^5.85.5",
@@ -84,14 +84,14 @@
       },
     },
     "packages/api": {
-      "name": "@my-better-t-app/api",
+      "name": "@repo/api",
       "dependencies": {
-        "@my-better-t-app/auth": "workspace:*",
-        "@my-better-t-app/db": "workspace:*",
         "@orpc/client": "catalog:",
         "@orpc/openapi": "catalog:",
         "@orpc/server": "catalog:",
         "@orpc/zod": "catalog:",
+        "@repo/auth": "workspace:*",
+        "@repo/db": "workspace:*",
         "dotenv": "catalog:",
         "hono": "catalog:",
         "zod": "catalog:",
@@ -105,9 +105,9 @@
       },
     },
     "packages/auth": {
-      "name": "@my-better-t-app/auth",
+      "name": "@repo/auth",
       "dependencies": {
-        "@my-better-t-app/db": "workspace:*",
+        "@repo/db": "workspace:*",
         "better-auth": "catalog:",
         "dotenv": "catalog:",
         "zod": "catalog:",
@@ -121,7 +121,7 @@
       },
     },
     "packages/db": {
-      "name": "@my-better-t-app/db",
+      "name": "@repo/db",
       "dependencies": {
         "@neondatabase/serverless": "^1.0.1",
         "dotenv": "catalog:",
@@ -343,12 +343,6 @@
 
     "@levischuck/tiny-cbor": ["@levischuck/tiny-cbor@0.2.11", "", {}, "sha512-llBRm4dT4Z89aRsm6u2oEZ8tfwL/2l6BwpZ7JcyieouniDECM5AqNgr/y08zalEIvW3RSK4upYyybDcmjXqAow=="],
 
-    "@my-better-t-app/api": ["@my-better-t-app/api@workspace:packages/api"],
-
-    "@my-better-t-app/auth": ["@my-better-t-app/auth@workspace:packages/auth"],
-
-    "@my-better-t-app/db": ["@my-better-t-app/db@workspace:packages/db"],
-
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.0.7", "", { "dependencies": { "@emnapi/core": "^1.5.0", "@emnapi/runtime": "^1.5.0", "@tybys/wasm-util": "^0.10.1" } }, "sha512-SeDnOO0Tk7Okiq6DbXmmBODgOAb9dp9gjlphokTUxmt8U3liIP1ZsozBahH69j/RJv+Rfs6IwUKHTgQYJ/HBAw=="],
 
     "@neondatabase/serverless": ["@neondatabase/serverless@1.0.2", "", { "dependencies": { "@types/node": "^22.15.30", "@types/pg": "^8.8.0" } }, "sha512-I5sbpSIAHiB+b6UttofhrN/UJXII+4tZPAq1qugzwCwLIL8EZLV7F/JyHUrEIiGgQpEXzpnjlJ+zwcEhheGvCw=="],
@@ -544,6 +538,12 @@
     "@radix-ui/react-visually-hidden": ["@radix-ui/react-visually-hidden@1.2.3", "", { "dependencies": { "@radix-ui/react-primitive": "2.1.3" }, "peerDependencies": { "@types/react": "*", "@types/react-dom": "*", "react": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc", "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc" }, "optionalPeers": ["@types/react", "@types/react-dom"] }, "sha512-pzJq12tEaaIhqjbzpCuv/OypJY/BPavOofm+dbab+MHLajy277+1lLm6JFcGgF5eskJ6mquGirhXY2GD/8u8Ug=="],
 
     "@radix-ui/rect": ["@radix-ui/rect@1.1.1", "", {}, "sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw=="],
+
+    "@repo/api": ["@repo/api@workspace:packages/api"],
+
+    "@repo/auth": ["@repo/auth@workspace:packages/auth"],
+
+    "@repo/db": ["@repo/db@workspace:packages/db"],
 
     "@repo/tsconfig": ["@repo/tsconfig@workspace:tooling/tsconfig"],
 
@@ -760,6 +760,8 @@
     "ansis": ["ansis@4.2.0", "", {}, "sha512-HqZ5rWlFjGiV0tDm3UxxgNRqsOTniqoKZu0pIAfh7TZQMGuZK+hH0drySty0si0QXj1ieop4+SkSfPZBPPkHig=="],
 
     "anymatch": ["anymatch@3.1.3", "", { "dependencies": { "normalize-path": "^3.0.0", "picomatch": "^2.0.4" } }, "sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw=="],
+
+    "api": ["api@workspace:apps/api"],
 
     "argparse": ["argparse@1.0.10", "", { "dependencies": { "sprintf-js": "~1.0.2" } }, "sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg=="],
 
@@ -1124,8 +1126,6 @@
     "seroval": ["seroval@1.3.2", "", {}, "sha512-RbcPH1n5cfwKrru7v7+zrZvjLurgHhGyso3HTyGtRivGWgYjbOmGuivCQaORNELjNONoK35nj28EoWul9sb1zQ=="],
 
     "seroval-plugins": ["seroval-plugins@1.3.3", "", { "peerDependencies": { "seroval": "^1.0" } }, "sha512-16OL3NnUBw8JG1jBLUoZJsLnQq0n5Ua6aHalhJK4fMQkz1lqR7Osz1sA30trBtd9VUDc2NgkuRCn8+/pBwqZ+w=="],
-
-    "server": ["server@workspace:apps/server"],
 
     "set-cookie-parser": ["set-cookie-parser@2.7.2", "", {}, "sha512-oeM1lpU/UvhTxw+g3cIfxXHyJRc/uidd3yK1P242gzHds0udQBYzs3y8j4gCCW+ZJ7ad0yctld8RYO+bdurlvw=="],
 

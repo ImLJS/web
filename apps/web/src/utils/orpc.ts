@@ -1,10 +1,10 @@
-import { createContext } from "@my-better-t-app/api/context";
-import { appRouter } from "@my-better-t-app/api/routers/index";
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
 import type { RouterClient } from "@orpc/server";
 import { createRouterClient } from "@orpc/server";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
+import { createContext } from "@repo/api/context";
+import { appRouter } from "@repo/api/routers/index";
 import { QueryCache, QueryClient } from "@tanstack/react-query";
 import { createIsomorphicFn } from "@tanstack/react-start";
 import { toast } from "sonner";

@@ -1,5 +1,5 @@
 {
-	"name": "@my-better-t-app/auth",
+	"name": "@repo/auth",
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -25,6 +25,6 @@
 		"better-auth": "catalog:",
 		"dotenv": "catalog:",
 		"zod": "catalog:",
-		"@my-better-t-app/db": "workspace:*"
+		"@repo/db": "workspace:*"
 	}
 }

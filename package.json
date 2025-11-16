@@ -30,11 +30,11 @@
 		"check-types": "turbo check-types",
 		"dev:native": "turbo -F native dev",
 		"dev:web": "turbo -F web dev",
-		"dev:server": "turbo -F server dev",
-		"db:push": "turbo -F @my-better-t-app/db db:push",
-		"db:studio": "turbo -F @my-better-t-app/db db:studio",
-		"db:generate": "turbo -F @my-better-t-app/db db:generate",
-		"db:migrate": "turbo -F @my-better-t-app/db db:migrate"
+		"dev:api": "turbo -F api dev",
+		"db:push": "turbo -F @repo/db db:push",
+		"db:studio": "turbo -F @repo/db db:studio",
+		"db:generate": "turbo -F @repo/db db:generate",
+		"db:migrate": "turbo -F @repo/db db:migrate"
 	},
 	"dependencies": {
 		"dotenv": "^17.2.2",
