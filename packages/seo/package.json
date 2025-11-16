@@ -1,0 +1,28 @@
+{
+	"name": "@repo/seo",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"main": "./src/index.ts",
+	"types": "./src/index.ts",
+	"scripts": {
+		"build": "tsc",
+		"clean": "git clean -xdf .cache .turbo dist node_modules",
+		"dev": "tsc",
+		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
+	},
+	"devDependencies": {
+		"@repo/tsconfig": "workspace:*",
+		"typescript": "catalog:",
+		"@types/lodash.merge": "^4.6.9",
+		"@types/node": "catalog:react19",
+		"@types/react": "catalog:react19",
+		"@types/react-dom": "catalog:react19",
+		"next": "catalog:react19"
+	},
+	"dependencies": {
+		"lodash.merge": "^4.6.2",
+		"react": "catalog:react19",
+		"zod": "catalog:"
+	}
+}
