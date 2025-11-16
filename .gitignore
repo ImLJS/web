@@ -4,6 +4,8 @@ dist/
 /out/
 
 # dev
+.turbo/
+.next/
 .yarn/
 !.yarn/patches
 !.yarn/plugins
@@ -17,7 +19,6 @@ dist/
 .idea/shelf
 .wrangler
 .alchemy
-/.next/
 .vercel
 prisma/generated/
 

@@ -1,4 +1,5 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -12,7 +13,7 @@ import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
 
 export default function UserMenu() {
-	const navigate = useNavigate();
+	const router = useRouter();
 	const { data: session, isPending } = authClient.useSession();
 
 	if (isPending) {
@@ -22,7 +23,7 @@ export default function UserMenu() {
 	if (!session) {
 		return (
 			<Button variant="outline" asChild>
-				<Link to="/login">Sign In</Link>
+				<Link href="/login">Sign In</Link>
 			</Button>
 		);
 	}
@@ -44,9 +45,7 @@ export default function UserMenu() {
 							authClient.signOut({
 								fetchOptions: {
 									onSuccess: () => {
-										navigate({
-											to: "/",
-										});
+										router.push("/");
 									},
 								},
 							});

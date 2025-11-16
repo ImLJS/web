@@ -14,7 +14,6 @@
 			"@orpc/openapi": "^1.10.0",
 			"@orpc/zod": "^1.10.0",
 			"better-auth": "^1.3.28",
-			"dotenv": "^17.2.2",
 			"zod": "^4.1.11",
 			"typescript": "^5.8.2",
 			"tsdown": "^0.15.5",
@@ -37,7 +36,6 @@
 		"db:migrate": "turbo -F @repo/db db:migrate"
 	},
 	"dependencies": {
-		"dotenv": "^17.2.2",
 		"zod": "^4.1.11"
 	},
 	"devDependencies": {
