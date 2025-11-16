@@ -149,6 +149,18 @@
         "typescript": "catalog:",
       },
     },
+    "packages/storage": {
+      "name": "@repo/storage",
+      "version": "0.1.0",
+      "dependencies": {
+        "appwrite": "^21.4.0",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@repo/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
     "tooling/tsconfig": {
       "name": "@repo/tsconfig",
       "version": "0.0.0",
@@ -578,6 +590,8 @@
 
     "@repo/seo": ["@repo/seo@workspace:packages/seo"],
 
+    "@repo/storage": ["@repo/storage@workspace:packages/storage"],
+
     "@repo/tsconfig": ["@repo/tsconfig@workspace:tooling/tsconfig"],
 
     "@rolldown/binding-android-arm64": ["@rolldown/binding-android-arm64@1.0.0-beta.45", "", { "os": "android", "cpu": "arm64" }, "sha512-bfgKYhFiXJALeA/riil908+2vlyWGdwa7Ju5S+JgWZYdR4jtiPOGdM6WLfso1dojCh+4ZWeiTwPeV9IKQEX+4g=="],
@@ -699,6 +713,8 @@
     "ansis": ["ansis@4.2.0", "", {}, "sha512-HqZ5rWlFjGiV0tDm3UxxgNRqsOTniqoKZu0pIAfh7TZQMGuZK+hH0drySty0si0QXj1ieop4+SkSfPZBPPkHig=="],
 
     "api": ["api@workspace:apps/api"],
+
+    "appwrite": ["appwrite@21.4.0", "", {}, "sha512-xlLYTRj6jYKZrZhpmSlDRa8PARdn6wjXY1EWr1Fv5mbnbHDt8Jse+NCqNC6GRVVcVZgNorpjLgP5Xn/N3yph0w=="],
 
     "argparse": ["argparse@2.0.1", "", {}, "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q=="],
 
