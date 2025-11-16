@@ -18,10 +18,10 @@
 		"zod": "catalog:",
 		"@repo/api": "workspace:*",
 		"@repo/auth": "workspace:*",
-		"@repo/db": "workspace:*",
-		"@repo/env": "workspace:*"
+		"@repo/db": "workspace:*"
 	},
 	"devDependencies": {
+		"dotenv": "catalog:",
 		"typescript": "catalog:",
 		"@types/bun": "^1.2.6",
 		"tsdown": "catalog:",

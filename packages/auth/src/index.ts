@@ -1,19 +1,42 @@
-import { db } from "@repo/db";
-import * as schema from "@repo/db/schema/index";
-import { env } from "@repo/env";
-import { type BetterAuthOptions, betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import dotenv from "dotenv";
 
-export const auth = betterAuth<BetterAuthOptions>({
+dotenv.config({
+	path: "../../../.env",
+});
+
+import { db } from "@repo/db";
+import * as schema from "@repo/db/schema/auth-schema";
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { nextCookies } from "better-auth/next-js";
+
+export const auth = betterAuth({
 	database: drizzleAdapter(db, {
 		provider: "pg",
-		usePlural: true,
 		schema: schema,
+		usePlural: true,
 	}),
-	trustedOrigins: env.CORS_ORIGIN ? env.CORS_ORIGIN.split(",") : [],
+	trustedOrigins: process.env.CORS_ORIGIN
+		? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
+		: [],
 	emailAndPassword: {
 		enabled: true,
 	},
+	user: {
+		additionalFields: {
+			role: {
+				type: "string",
+				required: true,
+				input: false,
+				defaultValue: "user",
+			},
+		},
+	},
+	session: {
+		expiresIn: 60 * 60 * 24 * 14, // 14 days
+		updateAge: 60 * 60 * 24, // 1 day (every 1 day the session expiration is updated)
+	},
+	plugins: [nextCookies()],
 	advanced: {
 		defaultCookieAttributes: {
 			sameSite: "none",
@@ -22,3 +45,5 @@ export const auth = betterAuth<BetterAuthOptions>({
 		},
 	},
 });
+
+export type Session = typeof auth.$Infer.Session;

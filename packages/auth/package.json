@@ -16,6 +16,7 @@
 	},
 	"devDependencies": {
 		"tsdown": "catalog:",
+		"dotenv": "catalog:",
 		"@repo/tsconfig": "workspace:*"
 	},
 	"peerDependencies": {
@@ -24,7 +25,6 @@
 	"dependencies": {
 		"better-auth": "catalog:",
 		"zod": "catalog:",
-		"@repo/db": "workspace:*",
-		"@repo/env": "workspace:*"
+		"@repo/db": "workspace:*"
 	}
 }
