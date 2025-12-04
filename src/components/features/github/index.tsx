@@ -76,9 +76,9 @@ const GitHubActivity = async () => {
 				{totalData.map((data) => (
 					<Calendar
 						key={data.id}
-						hideColorLegend
-						hideTotalCount
-						hideMonthLabels
+						showColorLegend={false}
+						showTotalCount={false}
+						showMonthLabels={false}
 						data={data.data}
 					/>
 				))}
